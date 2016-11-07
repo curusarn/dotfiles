@@ -13,6 +13,7 @@ git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME\
 ## vim
 # clone vundle
 cd ~/.vim/bundle
+rm -rf Vundle.vim
 git clone https://github.com/VundleVim/Vundle.vim.git
 
 # install plugins
