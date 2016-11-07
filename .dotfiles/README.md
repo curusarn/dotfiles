@@ -28,7 +28,18 @@ OR
 ```bash
 git clone --separate-git-dir=$HOME/.dotfiles https://github.com/curusarn/dotfiles.git dotfiles-tmp
 ```
+
+AND
+
+```bash
+.dotfiles/init.sh
+```
+OR if you hate yourself...
 ```bash
 rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
 rm --recursive dotfiles-tmp
+
+cd ~/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git
+vim +PluginInstall +qall
 ```
