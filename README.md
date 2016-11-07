@@ -1,4 +1,4 @@
-# my-dotfiles
+# dotfiles
 
 ## Setup
 ```bash
