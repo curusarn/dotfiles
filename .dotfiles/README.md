@@ -22,7 +22,13 @@ dotfiles push
 
 ## Replication
 ```bash
+git clone --separate-git-dir=$HOME/.dotfiles git@github.com:curusarn/dotfiles.git dotfiles-tmp
+```
+OR
+```bash
 git clone --separate-git-dir=$HOME/.dotfiles https://github.com/curusarn/dotfiles.git dotfiles-tmp
+```
+```bash
 rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
 rm --recursive dotfiles-tmp
 ```
