@@ -13,7 +13,7 @@ fi
 # dotfiles repo config
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME\
                                 config status.showUntrackedFiles no
-
+## config includes
 # git global config
 if [[ ! -f .gitconfig ]]; then
     touch .gitconfig
@@ -24,6 +24,15 @@ if ! echo `cat .gitconfig` | grep -q '\[include\][^\[\]]*path = .dotfiles/gitcon
     echo -e "[include]\n    path = .dotfiles/gitconfig\n${gitconfig}" > .gitconfig
 fi
 
+# bashrc
+if [[ ! -f .bashrc ]]; then
+    touch .bashrc
+fi
+if ! echo `cat .bashrc` | grep -q 'source .dotfiles/bashrc'; then # if not already in bashrc
+    cp -f .bashrc .dotfiles/bashrc.old
+    bashrc=`cat .bashrc`
+    echo -e "source .dotfiles/bashrc" > .bashrc
+fi
 
 ## vim
 # clone vundle
