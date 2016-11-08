@@ -32,5 +32,5 @@ git clone --separate-git-dir=$HOME/.dotfiles https://github.com/curusarn/dotfile
 
 ### Setup stuffs
 ```bash
-.dotfiles/init.sh
+dotfiles-tmp/.dotfiles/init.sh
 ```

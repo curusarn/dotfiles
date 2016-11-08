@@ -12,6 +12,7 @@ git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME\
 
 ## vim
 # clone vundle
+mkdir -p ~/.vim/bundle 2>/dev/null
 cd ~/.vim/bundle
 rm -rf Vundle.vim
 git clone https://github.com/VundleVim/Vundle.vim.git
