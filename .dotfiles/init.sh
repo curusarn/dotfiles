@@ -18,9 +18,9 @@ git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME\
 if [[ ! -f .gitconfig ]]; then
     touch .gitconfig
 fi
-gitconfig=`cat .gitconfig`
-if ! echo $gitconfig | grep '\[include\][^\[\]]*path = .dotfiles/gitconfig'; then # if not already in gitconfig
+if ! echo `cat .gitconfig` | grep -q '\[include\][^\[\]]*path = .dotfiles/gitconfig'; then # if not already in gitconfig
     cp -f .gitconfig .dotfiles/global_gitconfig.old
+    gitconfig=`cat .gitconfig`
     echo -e "[include]\n    path = .dotfiles/gitconfig\n${gitconfig}" > .gitconfig
 fi
 
