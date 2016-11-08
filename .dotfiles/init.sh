@@ -31,7 +31,7 @@ fi
 if ! echo `cat .bashrc` | grep -q 'source .dotfiles/bashrc'; then # if not already in bashrc
     cp -f .bashrc .dotfiles/bashrc.old
     bashrc=`cat .bashrc`
-    echo -e "source .dotfiles/bashrc" > .bashrc
+    echo -e "# added by .dotfiles/init.sh\nsource .dotfiles/bashrc\n${bashrc}" > .bashrc
 fi
 
 ## vim
