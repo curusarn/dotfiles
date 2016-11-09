@@ -25,7 +25,7 @@ set undofile
 " highlight long lines
 augroup vimrc_autocmds
     autocmd BufEnter * highlight OverLength ctermbg=darkred ctermfg=white
-    autocmd BufEnter * match OverLength /\%80v.*/
+    autocmd BufEnter * match OverLength /\%81v./
 augroup END
 
 " highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
