@@ -23,11 +23,16 @@ set undodir=~/.vim/undo-dir
 set undofile
 
 " highlight long lines
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%81v.*/
+augroup vimrc_autocmds
+    autocmd BufEnter * highlight OverLength ctermbg=darkred ctermfg=white
+    autocmd BufEnter * match OverLength /\%80v.*/
+augroup END
+
+" highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+" match OverLength /\%81v.*/
+
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " let &colorcolumn=join(range(81,81),",")
-
 
 
 
