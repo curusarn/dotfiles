@@ -22,6 +22,17 @@ endif
 set undodir=~/.vim/undo-dir
 set undofile
 
+" highlight long lines
+augroup vimrc_autocmds
+    autocmd BufEnter * highlight OverLength ctermbg=darkred ctermfg=white
+    autocmd BufEnter * match OverLength /\%81v./
+augroup END
+
+" highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+" match OverLength /\%81v.*/
+
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" let &colorcolumn=join(range(81,81),",")
 
 
 
@@ -45,6 +56,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+Plugin 'Robitx/vim-yapf-autopep8'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -72,3 +85,11 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+let g:syntastic_check_on_open = 1
+let g:flake8_show_quickfix=1
+let g:syntastic_python_checkers = ['flake8']
+" let g:autopep8_disable_show_diff=1
+" "
+" let g:autopep8_ignore="E226,E24,W6,E309"
+"
