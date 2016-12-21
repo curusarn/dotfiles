@@ -6,5 +6,5 @@
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 
 [push]
-	default = simple
+	default = current
 	
