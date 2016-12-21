@@ -1,11 +1,16 @@
+[push]
+    default = simple
+        
 [alias]
 
-    ## simplae aliases
+    ## simple aliases
     #co = checkout
     #br = branch
     #ci = commit
     #st = status
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+    # stolen aliases from github.com/rdegges/dot-git
 
     # `git add` aliases.
     a = add                         # Add.
