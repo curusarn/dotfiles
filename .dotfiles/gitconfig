@@ -19,7 +19,7 @@
 
     # `git branch` aliases.
     b = branch -v                   # Verbose branch.
-    br = branch -v                   # Verbose branch.
+    br = branch -v                  # Verbose branch.
 
     # `git commit` aliases.
     c = commit -m                   # Commit with message.
@@ -75,7 +75,7 @@
 
     # `git status` aliases.
     s = status                      # Status.
-    st = status                      # Status.
+    st = status                     # Status.
 
     # `git tag` aliases.
     t = tag -n                      # Show tags with <n> lines of each tag message.
