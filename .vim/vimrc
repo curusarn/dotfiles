@@ -12,6 +12,10 @@ set expandtab
 " keep x lines around cursor
 set scrolloff=15
 
+" move up and down inside of wrapped lines
+:noremap j gj
+:noremap k gk
+
 " Let's save undo info!
 if !isdirectory($HOME."/.vim")
     call mkdir($HOME."/.vim", "", 0770)
