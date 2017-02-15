@@ -1,7 +1,11 @@
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias v='vim'
 export EDITOR=vim
 
+PATH=$PATH:~/bin
+
+# does this even work?
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
@@ -9,6 +13,7 @@ alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --colo
 alias grep='grep --color=tty -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
+
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

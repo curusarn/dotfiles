@@ -4,6 +4,9 @@ set autoindent
 set ignorecase
 set smartcase
 
+" no .swp files
+set noswapfile
+
 " tabs are 4 spaces wide, transform tabs into sapces
 set shiftwidth=4 
 set softtabstop=4
@@ -60,7 +63,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'Robitx/vim-yapf-autopep8'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
