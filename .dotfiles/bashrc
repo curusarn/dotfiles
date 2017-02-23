@@ -1,11 +1,14 @@
 
+# aliases main - important ones
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias v='vim'
-export EDITOR=vim
 
+# variables
 PATH=$PATH:~/bin
+EDITOR=/usr/bin/vim
 
-# does this even work?
+
+# aliases extra - colors & stuff
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
