@@ -1,0 +1,16 @@
+#!/bin/bash
+
+layout="$(setxkbmap -query | grep layout | cut -d' ' -f6 | tr /a-z/ /A-Z/)"
+
+[[ "$1" == "i3blocks" && "$BLOCK_BUTTON" == "" ]] && echo "$layout" && exit 0
+
+case $layout in
+    "US")
+        setxkbmap -layout cz -variant qwerty
+        echo "CZ"
+        ;;
+    *)
+        setxkbmap us
+        echo "US"
+        ;;
+esac
