@@ -41,7 +41,8 @@ augroup END
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " let &colorcolumn=join(range(81,81),",")
 
-
+" predefine whitespace chars for :set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 
 
