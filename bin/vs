@@ -12,7 +12,7 @@ if [[ $# -lt 1  ||  $1 == "?" ]]; then
     [[ ${#files[@]} -lt 1 ]] && err "Directory ~/.vim/sessions/ is empty!"
      
     if [[ $1 == "?" ]]; then
-        ls -t ~/.vim/sessions 
+        ls -t ~/.vim/sessions | sort 
         exit 0
     fi
     session=`ls -t ~/.vim/sessions | head -1`
