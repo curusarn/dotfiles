@@ -1,11 +1,12 @@
 # dotfiles
 
 ## TODO
-- vim sessions saving (typing ~/.vim/sessions is dumb)
+- vim sessions saving (typing `:mks! ~/.vim/sessions/` is dumb)
 - include i3 configs (i3, i3blocks, rofi/dmenu-recency)
-- setle with one termainal emulator and include color setting
+- auto check & install dependencies (i3blocks stuff, ...)
+- settle with one termainal emulator and include color setting
 - debian & antergos version (distro lookup in `init.sh`, debian as headless by default)
-- headless OPTION in ~/.dotfiles/headless (1 = yes, 0 = no)
+- headless OPTION in ~/.dotfiles/headless (1 = yes, 0 = no) -> don't install gui stuff on headless machines
 
 ## Setup
 ```bash
@@ -18,7 +19,7 @@ dotfiles remote add origin git@github.com:curusarn/dotfiles.git
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dotfiles config status.showUntrackedFiles no
 ```
-**This is done by** `init.sh` 
+*this is done by* `init.sh`  
 
 ## Usage
 ```bash
