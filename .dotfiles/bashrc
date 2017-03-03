@@ -2,6 +2,7 @@
 # aliases main - important ones
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias v='vim'
+alias cd..='cd ..'
 
 # variables
 PATH=~/stbin:$PATH:~/bin
