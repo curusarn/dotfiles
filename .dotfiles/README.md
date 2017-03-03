@@ -4,9 +4,14 @@
 - vim sessions saving (typing `:mks! ~/.vim/sessions/` is dumb)
 - include i3 configs (i3, i3blocks, rofi/dmenu-recency)
 - auto check & install dependencies (i3blocks stuff, ...)
-- settle with one termainal emulator and include color setting
 - debian & antergos version (distro lookup in `init.sh`, debian as headless by default)
 - headless OPTION in ~/.dotfiles/headless (1 = yes, 0 = no) -> don't install gui stuff on headless machines
+- start using zsh, include configs
+
+## NOTES
+
+### Termite - my terminal emulator of choice
+intended for tiling managers, lightweight, mouse support, run-time font size changing, one simple config file, no DE specific dependencies.
 
 ## Setup
 ```bash
