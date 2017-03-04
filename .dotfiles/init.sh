@@ -27,7 +27,7 @@ addInclude () {
     # if not already included
     if ! echo `cat "$includeTo"` | grep -q "$grepStr"; then
         # backup with timestamp
-        cp -f "$includeTo" ".dotfiles/bak/${backupTo}"_`date "+%F_%T"`
+        cp "$includeTo" ".dotfiles/bak/${backupTo}"_`date "+%F_%T"`
         config=`cat "$includeTo"`
         echo -e "${addStr}\n${config}" > "$includeTo"
     fi
