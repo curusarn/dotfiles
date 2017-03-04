@@ -1,12 +1,17 @@
+#
+# ~/.dotfile/bashrc
+#
+
+# most important alias - add ugly options because dotfiles is a bare repo
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # aliases main - important ones
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias v='vim'
-alias cd..='cd ..'
 
 # variables
 PATH=~/stbin:$PATH:~/bin
 EDITOR=/usr/bin/vim
+#BROWSER=/something/something/chromium[-browser] TODO
 
 
 # aliases extra - colors & stuff
@@ -17,6 +22,9 @@ alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --colo
 alias grep='grep --color=tty -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
+
+# alaises typos
+alias cd..='cd ..'
 
 
 # don't put duplicate lines or lines starting with space in the history.

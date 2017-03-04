@@ -1,41 +1,70 @@
 #!/bin/bash
 
+err () {
+    printf "%s [ERROR]: %s\n" "$0" "$1" >&2
+    exit 1
+}
+
+# adds include $4 to config file $1 if $3 is not present
+addInclude () {
+    includeTo="$1"
+    backupTo="$2"
+    grepStr="$3"
+    addStr="$4"
+
+    [[ $# -lt 4 ]] && err "not enough arguments for addInclude() function."
+
+    if [[ ! -d .dotfiles/bak ]]; then
+        printf "directory <.dotfiles/bak> does not exist - creating\n"
+        mkdir .dotfiles/bak
+    fi
+
+    if [[ ! -f "$includeTo" ]]; then
+        printf "file <%s> does not exist - creating\n" "$includeTo"
+        touch "$includeTo"
+    fi
+
+    # if not already included
+    if ! echo `cat "$includeTo"` | grep -q "$grepStr"; then
+        # backup with timestamp
+        cp -f "$includeTo" ".dotfiles/bak/${backupTo}"_`date "+%F_%T"`
+        config=`cat "$includeTo"`
+        echo -e "${addStr}\n${config}" > "$includeTo"
+    fi
+}
+
+# bash_profile
 cd ~
 
 ## git
 # setup repo
 if [[ -d dotfiles-tmp ]]; then
-    echo "setup repo"
+    echo "setting up repo"
     rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
     rm --recursive dotfiles-tmp
 fi
 
 # dotfiles repo config
+# hide untracked files + ugly options because dotfiles is bare repo
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME\
                                 config status.showUntrackedFiles no
+
 ## config includes
 # git global config
-if [[ ! -f .gitconfig ]]; then
-    touch .gitconfig
-fi
-if ! echo `cat .gitconfig` | grep -q '\[include\][^\[\]]*path = .dotfiles/gitconfig'; then # if not already in gitconfig
-    cp -f .gitconfig .dotfiles/global_gitconfig.old
-    gitconfig=`cat .gitconfig`
-    echo -e "[include]\n    path = .dotfiles/gitconfig\n${gitconfig}" > .gitconfig
-fi
+addInclude '.gitconfig' 'gitconfig' \
+           '\[include\][^\[\]]*path = .dotfiles/gitconfig' \
+           '[include]\n    path = .dotfiles/gitconfig'
 
 # bashrc
-if [[ ! -f .bashrc ]]; then
-    touch .bashrc
-fi
-if ! echo `cat .bashrc` | grep -q 'source ~/.dotfiles/bashrc'; then # if not already in bashrc
-    cp -f .bashrc .dotfiles/bashrc.old
-    bashrc=`cat .bashrc`
-    echo -e "# added by .dotfiles/init.sh\nsource ~/.dotfiles/bashrc\n${bashrc}" > .bashrc
-fi
+addInclude '.bashrc' 'bashrc' 'source ~/.dotfiles/bashrc' \
+           '# added by .dotfiles/init.sh\nsource ~/.dotfiles/bashrc'
+
+# bash_profile
+addInclude '.bash_profile' 'bash_profile' 'source ~/.dotfiles/bash_profile' \
+           '# added by .dotfiles/init.sh\nsource ~/.dotfiles/bash_profile'
 
 ## vim
-# clone vundle
+# clone vundle because it could be broken
 mkdir -p ~/.vim/bundle 2>/dev/null
 cd ~/.vim/bundle
 rm -rf Vundle.vim
