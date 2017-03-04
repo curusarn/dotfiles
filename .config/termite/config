@@ -19,22 +19,28 @@ color1  = #f44336
 color9  = #f44336
 
 # green
+# vim class names ??
 color2  = #4caf50
 color10 = #4caf50
 
 # orange
+# vim line numbers
+# vim main keywords: if, else
 color3  = #FB8C00
 color11 = #FB8C00
 
 # light blue
-color4  = #03a9f4
-color12 = #03a9f4
+# vim secondary keywords: class, def
+color4  = #29B6F6
+color12 = #29B6F6
 
 # indigo
+# vim values: "string", true
 color5  = #6c71c4
 color13 = #6c71c4
 
 # dark blue 
+# vim comments
 color6  = #1e88e5
 color14 = #1e88e5
 
