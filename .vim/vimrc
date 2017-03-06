@@ -41,6 +41,38 @@ augroup END
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " let &colorcolumn=join(range(81,81),",")
 
+
+" mks! ~/.vim/sessions/ ... secified or current session
+" wqa - optionally
+" current session is set by ~/bin/vs (or alternativelly by this function)
+function! s:MksFunc(quit, ...)
+    if a:0 == 0
+        if !empty($CURRENT_VIM_SESSION)
+            mks! ~/.vim/sessions/$CURRENT_VIM_SESSION
+        else
+            echom "ERR: No active session!"
+        endif
+    elseif a:0 == 1
+        execute 'mks! ~/.vim/sessions/' . a:1 
+        execute '!export CURRENT_VIM_SESSION=' . a:1 
+    else
+        echom "ERR: Too many args"
+    endif
+    
+    if a:quit == "quit"
+        wqa
+        execute '!unset CURRENT_VIM_SESSION'
+    endif 
+endfunction
+
+" save session to specified of current session
+command! -nargs=* Mks call s:MksFunc("-",<f-args>) 
+
+" save session to specified of current session and quit and save all files
+command! -nargs=* Mksq call s:MksFunc("quit",<f-args>) 
+
+
+
 " predefine whitespace chars for :set list
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
