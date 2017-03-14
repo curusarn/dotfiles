@@ -6,24 +6,26 @@
 - auto check & install dependencies (i3blocks stuff, ...)
 - debian & antergos version (distro lookup in `init.sh`, debian as headless by default)
 - headless OPTION in ~/.dotfiles/headless (1 = yes, 0 = no) -> don't install gui stuff on headless machines
-- start using zsh, include configs
+- start using zsh, include configs  
 
 ## Software
-Incomplete list of software I like and use.
+Incomplete list of software I like and use.  
 
 ### vim
 one and only true editor.  
 
 ### i3wm
-best tiling manager AFAIK. 
+best tiling manager AFAIK.  
 
 ### feh
-simple image viewer and backgroud setter 
-set background: `feh --bg-scale image.img`
-set last used background: `~/.fehbg`
+simple image viewer and backgroud setter  
+  
+set background: `feh --bg-scale image.img`  
+set last used background: `~/.fehbg`  
 
 ### termite
 my terminal emulator of choice  
+  
 intended for tiling managers, lightweight, mouse support, run-time font size changing, one simple config file, no DE specific dependencies.
 
 ## Setup
