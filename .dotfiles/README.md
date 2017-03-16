@@ -1,6 +1,7 @@
 # dotfiles
 
 ## TODO
+- `vs ?` should be launchable on top of another open vim session
 - make `vim` file autocomplete better (bash-like)
 - make `vim` highlights changed lines (against git)
 - map capslock to escape on `i3` start
