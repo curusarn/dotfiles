@@ -1,6 +1,7 @@
 # dotfiles
 
 ## TODO
+- `vim` `!grep -rni CURRENT_WORD` shortcut
 - `vim` create function for `:set scrollbind` for all splits in current tab
 - `vs ?` should be launchable on top of another open vim session
 - make `vim` file autocomplete better (bash-like)
