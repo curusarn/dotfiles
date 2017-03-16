@@ -1,12 +1,13 @@
 # dotfiles
 
 ## TODO
+- map capslock to escape on `startx`
 - Alt+Tab should loop trought desktops
-- include i3 configs (i3, i3blocks, rofi/dmenu-recency)
-- auto check & install dependencies (i3blocks stuff, ...)
+- include `i3` configs (`i3`, `i3blocks`, `rofi`/`dmenu-recency`)
+- auto check & install dependencies (`i3blocks` stuff, ...)
 - debian & antergos version (distro lookup in `init.sh`, debian as headless by default)
-- headless OPTION in ~/.dotfiles/headless (1 = yes, 0 = no) -> don't install gui stuff on headless machines
-- start using zsh, include configs  
+- headless OPTION in `~/.dotfiles/headless` (1 = yes, 0 = no) -> don't install gui stuff on headless machines
+- start using `zsh`, include configs  
 
 ## Software
 Incomplete list of software I like and use.  
