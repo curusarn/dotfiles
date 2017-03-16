@@ -1,7 +1,8 @@
 # dotfiles
 
 ## TODO
-- make vim highlights changed lines (against git)
+- make `vim` file autocomplete better (bash-like)
+- make `vim` highlights changed lines (against git)
 - map capslock to escape on `i3` start
 - Alt+Tab should loop trought desktops
 - include `i3` configs (`i3`, `i3blocks`, `rofi`/`dmenu-recency`)
