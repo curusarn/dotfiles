@@ -1,7 +1,8 @@
 # dotfiles
 
 ## TODO
-- map capslock to escape on `startx`
+- make vim highlights changed lines (against git)
+- map capslock to escape on `i3` start
 - Alt+Tab should loop trought desktops
 - include `i3` configs (`i3`, `i3blocks`, `rofi`/`dmenu-recency`)
 - auto check & install dependencies (`i3blocks` stuff, ...)
