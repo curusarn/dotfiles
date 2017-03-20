@@ -1,6 +1,7 @@
 # dotfiles
 
 ## TODO
+- how to handle `bash` history, not syncing looses data, syncing slows down workflow, maybe `zsh` sloves this.
 - `vim` `!grep -rni CURRENT_WORD` shortcut
 - `vim` create function for `:set scrollbind` for all splits in current tab
 - `vs ?` should be launchable on top of another open vim session
