@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Build project
+# `bl PROJECT` searches history for last command containing #bl $PROJECT [$DIR]$
+#              runs `cd $DIR` and the found command 
+# `bl` searches history for last command containing #bl $ANYPROJECT [$DIR]
+#              runs `cd $DIR` and the found command 
+#
+# NOTE: spaces in $DIR are not supported!
+
+err () {
+    printf "%s [ERROR]: %s\n" "$0" "$1" >&2
+    exit 1
+}
+
+if [[ $# -ge 1 ]]; then
+    cmd=`cat ~/.bash_history | grep '#bl '"$1"' \S*$' | tail -n 1`
+else
+    cmd=`cat ~/.bash_history | grep '#bl \S\+ \S*$' | tail -n 1`
+fi
+
+dir=`echo $cmd | rev | cut -d'#' -f1 | rev | cut -d' ' -f3` 
+
+echo "Press any key to continue or Ctrl-C to abort"
+echo "cd $dir" 
+echo "$cmd"
+
+read x
+
+cd "$dir"
+eval $cmd
+
