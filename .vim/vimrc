@@ -66,10 +66,10 @@ function! s:MksFunc(quit, ...)
 endfunction
 
 " save session to specified of current session
-command! -nargs=* Mks call s:MksFunc("-",<f-args>) 
+command! -nargs=* M call s:MksFunc("-",<f-args>) 
 
 " save session to specified of current session and quit and save all files
-command! -nargs=* Mksq call s:MksFunc("quit",<f-args>) 
+command! -nargs=* Mq call s:MksFunc("quit",<f-args>) 
 
 
 
