@@ -27,8 +27,11 @@ echo "$cmd"
 
 read x
 
-echo "$cmd" >> .bl_history
+echo "$cmd" >> ~/.bl_history
+
+echo "cd $dir" >> ~/.bash_history
+echo "$cmd" >> ~/.bash_history
 
 cd "$dir"
-eval "$cmd"
+eval $cmd
 
