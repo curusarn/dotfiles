@@ -6,6 +6,7 @@
 - `vim` `!grep -rni CURRENT_WORD` shortcut
 - `vim` create function for `:set scrollbind` for all splits in current tab
 - `vs ?` should be launchable on top of another open vim session
+- `vs ?` should sort sessions by the time they were used last time
 - make `vim` file autocomplete better (bash-like)
 - make `vim` highlights changed lines (against git)
 - map capslock to escape on `i3` start
