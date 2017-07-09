@@ -20,5 +20,6 @@ install_package_group xserver
 install_package_group i3
 
 echo "Copying files"
-cp -v $base_path/files/* ~/
+cp -v $base_path/files/.* ~/
+#cp -v $base_path/files/* ~/
 
