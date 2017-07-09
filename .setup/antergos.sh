@@ -1,6 +1,6 @@
 #!/bin/bash
 
-base_path=~/.setup/packages
+base_path=~/.setup
 
 function install_package_group {
     path="$1"
