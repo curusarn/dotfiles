@@ -1,15 +1,16 @@
 #!/bin/bash
 
+function install_package_group {
+    pkg_path="~/.setup/packages"
+    path="$1"
+    pkgs=`cat $pkg_path/$path | tr '\n' ' '`
+    sudo pacman -S "$pkgs"
+}
+
+
 echo "Updating system"
 sudo pacman -Syu
 
 echo "Installing packages"
-sudo pacman -S\
-    git\
-    vim\
-    i3wm\
-    rofi\
-    feh\
-    i3blocks
-
+install_package_group essential
 
