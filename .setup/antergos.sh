@@ -6,7 +6,7 @@ function install_package_group {
     pkgs=`cat $pkg_path/$path | tr '\n' ' '`
     echo "Installing group <$path>"
     echo "$pkgs"
-    sudo pacman -S "$pkgs"
+    sudo pacman -S $pkgs
 }
 
 
