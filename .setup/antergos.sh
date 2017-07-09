@@ -1,9 +1,11 @@
 #!/bin/bash
 
 function install_package_group {
-    pkg_path="~/.setup/packages"
+    pkg_path=~/.setup/packages
     path="$1"
     pkgs=`cat $pkg_path/$path | tr '\n' ' '`
+    echo "Installing group <$path>"
+    echo "$pkgs"
     sudo pacman -S "$pkgs"
 }
 
