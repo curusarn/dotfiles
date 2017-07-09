@@ -15,4 +15,6 @@ sudo pacman -Syu
 
 echo "Installing packages"
 install_package_group essential
+install_package_group xserver
+install_package_group i3
 
