@@ -16,7 +16,9 @@
 - auto check & install dependencies (`i3blocks` stuff, ...)
 - debian & antergos version (distro lookup in `init.sh`, debian as headless by default)
 - headless OPTION in `~/.dotfiles/headless` (1 = yes, 0 = no) -> don't install gui stuff on headless machines
-- start using `zsh`, include configs  
+- start using `zsh`, include configs 
+- add `feh` to .setup
+- track vim sessions using `/tmp` rather than using shell variable - can't be set from within `vim`
 
 ## Software
 Incomplete list of software I like and use.  
