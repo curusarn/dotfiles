@@ -6,11 +6,11 @@ layout="$(setxkbmap -query | grep layout | cut -d' ' -f6 | tr /a-z/ /A-Z/)"
 
 case $layout in
     "US")
-        setxkbmap -layout cz -variant qwerty
+        setxkbmap -layout cz -variant qwerty -option caps:escape
         echo "CZ"
         ;;
     *)
-        setxkbmap us
+        setxkbmap us -option caps:escape
         echo "US"
         ;;
 esac
