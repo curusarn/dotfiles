@@ -42,9 +42,13 @@ augroup END
 " let &colorcolumn=join(range(81,81),",")
 
 
-" mks! ~/.vim/sessions/ ... secified or current session
+
+" mks! ~/.vim/sessions/ ... specfified or current session
 " wqa - optionally
 " current session is set by ~/bin/vs (or alternativelly by this function)
+
+" KNOWN BUG - session cannot be set from within vim because '!...' spawns a
+" new shell -> TODO track active sessions using /tmp directory and tty id
 function! s:MksFunc(quit, ...)
     if a:0 == 0
         if !empty($CURRENT_VIM_SESSION)
@@ -71,6 +75,8 @@ command! -nargs=* M call s:MksFunc("-",<f-args>)
 " save session to specified of current session and quit and save all files
 command! -nargs=* Mq call s:MksFunc("quit",<f-args>) 
 
+
+" vimdiff syntax hotfix
 
 
 " predefine whitespace chars for :set list
