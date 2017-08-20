@@ -47,7 +47,7 @@ do
         -h|--help|help)
         help "Printing help" 0
         ;;
-        load|install)
+        load)
         ACTION="install"
         ;;
         save|add)
@@ -56,7 +56,7 @@ do
         rm|del)
         ACTION="del"
         ;;
-        list|status)
+        list)
         ACTION="status"
         ;;
         *)
@@ -86,10 +86,6 @@ done
 if [[ -z ${ACTION-} ]]; then
     help "ERR: No ACTION specified." 1
 fi
-
-echo $ACTION
-echo ${GROUP-}
-echo ${PACKAGES-}
 
 case $ACTION in
     install)
