@@ -1,0 +1,136 @@
+#!/bin/bash
+
+set -e
+set -u
+PACKAGES=""
+base_path=~/.pacsave
+
+function help {
+    echo $1
+    echo "USAGE:"
+    echo "   package-saviour ACTION [OPTIONS]"
+    echo "   "
+    echo "ACTIONS:"
+    echo "   #TODO"
+    echo "   "
+    echo "NOTES:"
+    echo "   I'm too lazy to implement lock for this so be careful."
+    exit $2
+}
+
+
+function install_package_group {
+    path="$1"
+    pkgs=`cat $base_path/packages/$path | tr '\n' ' '`
+    echo "Installing group <$path>"
+    echo "$pkgs"
+    sudo pacman -S $pkgs
+}
+
+function package_exists {
+    pacman -Qi $1 > /dev/null
+    return $? 
+}
+
+function sort_file {
+    path=$1
+    tmp=`mktemp`
+    cat $path | sort > $tmp
+    cat $tmp > $path
+}
+
+
+while [[ $# -gt 0 ]]
+do
+    key="$1"
+    case $key in
+        -h|--help|help)
+        help "Printing help" 0
+        ;;
+        load|install)
+        ACTION="install"
+        ;;
+        save|add)
+        ACTION="add"
+        ;;
+        rm|del)
+        ACTION="del"
+        ;;
+        list|status)
+        ACTION="status"
+        ;;
+        *)
+        if [[ -z ${ACTION-} ]]; then
+            # unknown option
+            echo "ERR: Unknown option"
+            help
+            exit 1
+        else
+            if [[ -z ${GROUP-} ]]; then
+                # first argument is group
+                GROUP="$key"
+            else
+                # rest of the arguments are packages
+                if [[ -z ${PACKAGES} ]]; then
+                    PACKAGES="$key"
+                else
+                    PACKAGES="$PACKAGES $key"
+                fi
+            fi
+        fi
+        ;;
+    esac
+    shift # past argument or val
+done
+
+if [[ -z ${ACTION-} ]]; then
+    help "ERR: No ACTION specified." 1
+fi
+
+echo $ACTION
+echo ${GROUP-}
+echo ${PACKAGES-}
+
+case $ACTION in
+    install)
+        if [[ -z ${GROUP-} ]]; then
+            GROUP="install"
+        fi
+        install_package_group $GROUP 
+    ;;
+    add)
+        if package_exists "bash $PACKAGES"; then
+            path="$base_path/packages/$GROUP"
+            echo $PACKAGES | tr " " "\n" >> "$path"
+            sort_file "$path"
+            echo "Packages probably added successfuly."
+        else
+            help "ERR: Specified package(s) is not installed." 2
+        fi
+    ;;
+    del)
+        if package_exists "bash $PACKAGES"; then
+            path="$base_path/packages/$GROUP"
+            tmp=`mktemp`
+            echo $PACKAGES | tr " " "\n" > $tmp
+            while read line; do
+                sed -i '/^'$line'$/d' "$path"
+            done < $tmp
+            echo "Packages probably deleted successfuly."
+        else
+            help "ERR: Specified package(s) is not installed." 2
+        fi
+    ;;
+    status)
+        tmp_installed=`mktemp`
+        tmp_saved=`mktemp`
+        pacman -Q | cut -d' ' -f1 | sort > $tmp_installed
+        groups="$base_path/packages/"*
+        cat $groups | sort > $tmp_saved
+        comm $tmp_installed $tmp_saved -23
+    ;;
+    *)
+            # unknown option
+    ;;
+esac
+
