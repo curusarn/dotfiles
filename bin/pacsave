@@ -24,11 +24,11 @@ function install_package_group {
     pkgs=`cat $base_path/packages/$path | tr '\n' ' '`
     echo "Installing group <$path>"
     echo "$pkgs"
-    sudo pacman -S $pkgs
+    yaourt -S $pkgs
 }
 
 function package_exists {
-    pacman -Qi $1 > /dev/null
+    yaourt -Qi $1 > /dev/null
     return $? 
 }
 
@@ -48,16 +48,16 @@ do
         help "Printing help" 0
         ;;
         load)
-        ACTION="install"
+        ACTION="load"
         ;;
         save|add)
-        ACTION="add"
+        ACTION="save"
         ;;
         rm|del)
         ACTION="del"
         ;;
         list)
-        ACTION="status"
+        ACTION="list"
         ;;
         *)
         if [[ -z ${ACTION-} ]]; then
@@ -88,13 +88,13 @@ if [[ -z ${ACTION-} ]]; then
 fi
 
 case $ACTION in
-    install)
+    load)
         if [[ -z ${GROUP-} ]]; then
-            GROUP="install"
+            GROUP="core"
         fi
         install_package_group $GROUP 
     ;;
-    add)
+    save)
         if package_exists "bash $PACKAGES"; then
             path="$base_path/packages/$GROUP"
             echo $PACKAGES | tr " " "\n" >> "$path"
@@ -117,10 +117,10 @@ case $ACTION in
             help "ERR: Specified package(s) is not installed." 2
         fi
     ;;
-    status)
+    list)
         tmp_installed=`mktemp`
         tmp_saved=`mktemp`
-        pacman -Q | cut -d' ' -f1 | sort > $tmp_installed
+        yaourt -Q | cut -d' ' -f1 | cut -d'/' -f2 | sort > $tmp_installed
         groups="$base_path/packages/"*
         cat $groups | sort > $tmp_saved
         comm $tmp_installed $tmp_saved -23
