@@ -8,6 +8,7 @@ alsa-utils
 antergos-alerts
 antergos-keyring
 antergos-mirrorlist
+arandr
 archlinux-keyring
 atk
 at-spi2-atk
@@ -85,6 +86,7 @@ gawk
 gc
 gcc
 gcc-libs
+gcr
 gdbm
 gdk-pixbuf2
 geoip
@@ -110,6 +112,7 @@ grub2-theme-antergos
 gsettings-desktop-schemas
 gsfonts
 gssproxy
+gtk2
 gtk3
 gtk-update-icon-cache
 guile
@@ -136,6 +139,7 @@ iptables
 iputils
 ipw2100-fw
 ipw2200-fw
+iso-codes
 iw
 jansson
 jasper
@@ -203,6 +207,7 @@ libexif
 libffi
 libfontenc
 libgcrypt
+libglade
 libglvnd
 libgpg-error
 libgudev
@@ -313,6 +318,7 @@ mdadm
 mesa
 mkinitcpio
 mkinitcpio-busybox
+mobile-broadband-provider-info
 modemmanager
 mpfr
 mtdev
@@ -323,9 +329,11 @@ net-snmp
 nettle
 net-tools
 networkmanager
+network-manager-applet
 nfsidmap
 nfs-utils
 nilfs-utils
+nm-connection-editor
 npth
 nspr
 nss
@@ -367,10 +375,14 @@ popt
 ppp
 procps-ng
 psmisc
+pygobject2-devel
 pygobject-devel
+pygtk
 pyqt5-common
 python
 python2
+python2-cairo
+python2-gobject2
 python-dbus
 python-dbus-common
 python-gobject
@@ -464,6 +476,7 @@ xorg-xauth
 xorg-xinit
 xorg-xkbcomp
 xorg-xmodmap
+xorg-xrandr
 xorg-xrdb
 xproto
 xz
