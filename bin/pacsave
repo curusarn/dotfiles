@@ -95,7 +95,10 @@ case $ACTION in
         if [[ -z ${GROUP-} ]]; then
             GROUP="core"
         fi
-        install_package_group $GROUP 
+        for g in $GROUP; do
+            echo "Loading/installing GROUP: $g"
+            install_package_group $g 
+        done
     ;;
     save)
         if package_exists "bash $PACKAGES"; then

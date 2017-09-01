@@ -14,13 +14,8 @@ function install_package_group {
 echo "Updating system"
 sudo pacman -Syu
 
-echo "Installing packages"
-install_package_group essential
-install_package_group xserver
-install_package_group i3
+sudo pacsave load core chrome 
 
 echo "Copying files"
-cp -vr $base_path/files/.xinitrc ~/
-cp -vr $base_path/files/.config ~/
-#cp -v $base_path/files/.* ~/
+cp -vr $base_path/files/.??* ~/
 
