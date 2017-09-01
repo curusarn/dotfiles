@@ -31,6 +31,7 @@ bindsym $mod+comma border none
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Cantarell 9
+#font pango:DejaVu Sans Mono 10
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -245,19 +246,6 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e mode "$mode_exit"
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-set $mode_exit (e)xit i3 and end your X session?
-mode "$mode_exit" {
-    bindsym e exec i3-msg exit, mode "default"
-    
-    #cancel
-    bindsym Space mode "default"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
 # Set shut down, restart and locking features
 bindsym XF86PowerOff mode "$mode_system"
 bindcode $mod+19 mode "$mode_system"
@@ -278,6 +266,7 @@ mode "$mode_system" {
 
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
+
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
         # Pressing left will shrink the window’s width.
@@ -310,9 +299,26 @@ bar {
         separator_symbol "  "
 }
 
-## Autostart applications
-exec --no-startup-id clipster -d
+###############################################################################
+############################## START UP COMMANDS ##############################
+###############################################################################
+
+# wallpaper
+exec --no-startup-id ~/.fehbg
+
+# clipboard manager
+exec --no-startup-id /usr/bin/clipster -d
+
+# red screen at night
+exec --no-startup-id /usr/bin/redshift
+
+# capslock -> escape (because vim)
+exec --no-startup-id "/usr/bin/setxkbmap -option caps:escape"
+
+# NetworkMamager applet
 exec --no-startup-id nm-applet
+
+## Autostart applications
 #exec --no-startup-id nitrogen --restore
 #exec --no-startup-id fix_xcursor # edit to fix cursor
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
