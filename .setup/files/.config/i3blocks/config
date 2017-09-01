@@ -1,0 +1,40 @@
+separator_block_width=14
+
+
+[layout]
+label= 
+command=/home/curusarn/bin/layout-switcher i3blocks
+interval=60
+color=#03A9F4
+
+[disk-home]
+label= 
+command=/usr/lib/i3blocks/disk $HOME
+interval=30
+color=#00BCD4
+
+[ip]
+label= 
+command=ip addr show | grep 'inet ' | grep -v '127.0.0.1' | cut -d' ' -f6
+interval=10
+color=#4CAF50
+
+[load]
+label= 
+command=/usr/lib/i3blocks/load_average
+interval=10
+color=#009688
+
+[volume]
+label= 
+command=/usr/lib/i3blocks/volume 3%
+interval=2
+signal=10
+color=#F44336
+
+[time]
+label= 
+command=date '+%a %d-%m-%y %H:%M '
+interval=5
+color=#FF9800
+
