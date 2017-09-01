@@ -7,8 +7,13 @@ font = Inconsolata 12
 # special
 foreground      = #eceff1
 foreground_bold = #B0BEC5
-cursor          = #78909C
-background      = #002b36
+# no cursor color -> cursor swaps fg and bg color
+#cursor          = #78909C
+
+# green
+#background      = #002b36
+# ink
+background      = #17182B
 
 # black
 color0  = #002b36
