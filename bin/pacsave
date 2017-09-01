@@ -53,6 +53,9 @@ do
         save|add)
         ACTION="save"
         ;;
+        save-all|add-all)
+        ACTION="save-all"
+        ;;
         rm|del)
         ACTION="del"
         ;;
@@ -99,10 +102,16 @@ case $ACTION in
             path="$base_path/packages/$GROUP"
             echo $PACKAGES | tr " " "\n" >> "$path"
             sort_file "$path"
-            echo "Packages probably added successfuly."
+            echo "Packages added successfuly."
         else
             help "ERR: Specified package(s) is not installed." 2
         fi
+    ;;
+    save-all)
+        path="$base_path/packages/$GROUP"
+        echo `pacsave list` | tr " " "\n" >> "$path"
+        sort_file "$path"
+        echo "Packages added successfuly."
     ;;
     del)
         if package_exists "bash $PACKAGES"; then
@@ -112,18 +121,25 @@ case $ACTION in
             while read line; do
                 sed -i '/^'$line'$/d' "$path"
             done < $tmp
-            echo "Packages probably deleted successfuly."
+            echo "Packages deleted successfuly."
         else
             help "ERR: Specified package(s) is not installed." 2
         fi
     ;;
     list)
-        tmp_installed=`mktemp`
-        tmp_saved=`mktemp`
-        yaourt -Q | cut -d' ' -f1 | cut -d'/' -f2 | sort > $tmp_installed
-        groups="$base_path/packages/"*
-        cat $groups | sort > $tmp_saved
-        comm $tmp_installed $tmp_saved -23
+        if [[ ! -z ${GROUP-} ]] ; then
+            for g in $GROUP; do
+                echo "GROUP: $g"
+                cat "$base_path/packages/$g"
+            done
+        else
+            tmp_installed=`mktemp`
+            tmp_saved=`mktemp`
+            yaourt -Q | cut -d' ' -f1 | cut -d'/' -f2 | sort > $tmp_installed
+            groups="$base_path/packages/"*
+            cat $groups | sort > $tmp_saved
+            comm $tmp_installed $tmp_saved -23
+        fi
     ;;
     *)
             # unknown option
