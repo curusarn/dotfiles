@@ -304,30 +304,9 @@ mode "resize" {
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	status_command i3status
+	status_command i3blocks
 	position top
-	bindsym button4 nop
-	bindsym button5 nop
-	font pango:Cantarell,Icons 9
-    separator_symbol "     "
-	colors {
-        # Material
-        background #000000
-        separator  #e0f2f1
-        statusline #e0f2f1
-        focused_workspace  #009688 #009688 #000000
-        active_workspace   #252525 #252525 #dadada
-        inactive_workspace #252525 #252525 #dadada
-        urgent_workspace   #ef5350 #ef5350 #000000
-        # Manjaro 
-		#separator #2ECC71
-		#background #000000
-		#statusline #DDDDDD
-		#focused_workspace #FFFFFF #2ECC71 #000000
-		#active_workspace #000000 #A4A28D #FFFFFF
-		#inactive_workspace #A4A28D #000000 #DDDDDD
-		#urgent_workspace #2ECC71 #900000 #FFFFFF
-	}
+        separator_symbol "  "
 }
 
 ## Autostart applications
