@@ -19,3 +19,5 @@ sudo pacsave load core chrome
 echo "Copying files"
 cp -vr $base_path/files/.??* ~/
 
+echo "Enable NetworkManager.service"
+sudo systemctl enable NetworkManager.service
