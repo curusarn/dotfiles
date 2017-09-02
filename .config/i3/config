@@ -208,7 +208,7 @@ bindsym XF86PowerOff mode "$mode_system"
 exec --no-startup-id ~/.fehbg
 
 # clipboard manager
-exec --no-startup-id /usr/bin/clipster -d
+exec --no-startup-id /usr/bin/parcellite
 
 # red screen at night
 exec --no-startup-id /usr/bin/redshift
@@ -222,6 +222,4 @@ exec --no-startup-id nm-applet
 # notifications
 exec --no-startup-id dunst
 
-# clipboard manager
-#exec --no-startup-id /usr/bin/parcellite
 
