@@ -63,6 +63,7 @@ dmraid
 dnssec-anchors
 dosfstools
 double-conversion
+dunst
 e2fsprogs
 efibootmgr
 efivar
@@ -358,6 +359,7 @@ pacman-mirrorlist
 pam
 pambase
 pango
+parcellite
 patch
 pciutils
 pcmciautils
@@ -411,6 +413,7 @@ rofi
 rpcbind
 rsync
 run-parts
+scrot
 sed
 shadow
 shared-mime-info
