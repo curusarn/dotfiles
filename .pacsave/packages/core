@@ -1,4 +1,5 @@
 
+
 acl
 acl
 acpid
@@ -468,6 +469,7 @@ xcb-util-keysyms
 xcb-util-renderutil
 xcb-util-wm
 xcb-util-xrm
+xdotool
 xextproto
 xf86-input-libinput
 xf86-video-intel
