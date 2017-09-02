@@ -11,17 +11,19 @@ color_off() { echo -ne '\033[0m'; }
 if [[ -d ~/git ]]; then
     echo "##### Checking all repositories in ~/git"
     cd ~/git
-    for repo in *; do
-        cd $repo
-        if [[ -d .git ]]; then
-            echo "### Repository: $repo"
-            if ! git diff-index --quiet HEAD; then
-                git status --short
+    if [[ `ls` != "" ]]; then
+        for repo in *; do
+            cd $repo
+            if [[ -d .git ]]; then
+                echo "### Repository: $repo"
+                if ! git diff-index --quiet HEAD; then
+                    git status --short
+                fi
+                git cherry -v
             fi
-            git cherry -v
-        fi
-        cd - >/dev/null 
-    done
+            cd - >/dev/null 
+        done
+    fi
 fi
 
 echo "##### Dotfiles"
