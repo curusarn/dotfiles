@@ -25,6 +25,7 @@ if [[ -d ~/git ]]; then
 fi
 
 echo "##### Dotfiles"
+cd
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status --short
 red_on
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME cherry -v
@@ -32,9 +33,11 @@ color_off
 
 echo "##### Pacsave"
 pl=`pacsave list`
-plx=`echo "$pl" | wc -l`
-echo -n "Unsaved packages: "
-[[ "$plx" -gt 0 ]] && red "$plx" || echo "$plx"
-echo "$pl" | head
+if [[ "$pl" != "" ]]; then 
+    red "Unsaved packages: "`echo "$pl" | wc -l` 
+    echo "$pl" | head
+else
+    echo "No unsaved packages"
+fi
 
 
