@@ -41,6 +41,7 @@ compositeproto
 coreutils
 cracklib
 crda
+cronie
 cryptsetup
 cups
 cups-filters
@@ -337,6 +338,7 @@ network-manager-applet
 nfsidmap
 nfs-utils
 nilfs-utils
+nmap
 nm-connection-editor
 npth
 nspr
@@ -384,9 +386,11 @@ pygobject-devel
 pygtk
 pyqt5-common
 python
+python
 python2
 python2-cairo
 python2-gobject2
+python2-pip
 python-dbus
 python-dbus-common
 python-gobject
