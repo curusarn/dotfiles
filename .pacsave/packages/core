@@ -46,6 +46,7 @@ cups
 cups-filters
 cups-pk-helper
 curl
+curl
 damageproto
 db
 dbus
@@ -89,6 +90,7 @@ gcc-libs
 gcr
 gdbm
 gdk-pixbuf2
+geoclue2
 geoip
 geoip-database
 gettext
@@ -122,8 +124,10 @@ haveged
 hdparm
 hicolor-icon-theme
 hplip
+htop
 hwids
 i3blocks
+i3lock
 i3-wm
 iana-etc
 icu
@@ -392,8 +396,10 @@ python-termcolor
 qpdf
 qt5-base
 randrproto
+ranger
 readline
 recordproto
+redshift
 reiserfsprogs
 renderproto
 rfkill
