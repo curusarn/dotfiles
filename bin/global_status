@@ -1,0 +1,40 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+red() { echo -e '\033[0;31m'"$1"'\033[0m'; }
+red_on() { echo -ne  '\033[0;31m'; }
+color_off() { echo -ne '\033[0m'; }
+
+
+if [[ -d ~/git ]]; then
+    echo "##### Checking all repositories in ~/git"
+    cd ~/git
+    for repo in *; do
+        cd $repo
+        if [[ -d .git ]]; then
+            echo "### Repository: $repo"
+            if ! git diff-index --quiet HEAD; then
+                git status --short
+            fi
+            git cherry -v
+        fi
+        cd - >/dev/null 
+    done
+fi
+
+echo "##### Dotfiles"
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status --short
+red_on
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME cherry -v
+color_off
+
+echo "##### Pacsave"
+pl=`pacsave list`
+plx=`echo "$pl" | wc -l`
+echo -n "Unsaved packages: "
+[[ "$plx" -gt 0 ]] && red "$plx" || echo "$plx"
+echo "$pl" | head
+
+
