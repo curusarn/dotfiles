@@ -1,15 +1,15 @@
 #!/bin/bash
 
 
-URL="http://img.myconfinedspace.com/wp-content/uploads/2014/09/welcome-back-commander.png"
+img_url="http://img.myconfinedspace.com/wp-content/uploads/2014/09/welcome-back-commander.png"
 
-DIR=~/pics/wall
-IMG="welcome-back-commander.png"
-PATH="$DIR/$IMG"
+img_dir=~/pics/wall
+img_name="welcome-back-commander.png"
+img_path="$img_dir/$img_name"
 
-mkdir -p $DIR 2>/dev/null
+mkdir -p $img_dir 
 
-curl -o "$PATH" "$URL" 
+/usr/bin/curl -o "$img_path" "$img_url" 
 
-feg --bg-scale "$PATH"
+feh --bg-scale "$img_path"
 
