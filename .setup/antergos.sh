@@ -6,7 +6,7 @@ echo "Updating system"
 sudo pacman -Syu
 
 wcho "Install packages"
-sudo pacsave load chromium core	pcmanfm spotify utils video
+sudo pacsave load core pcmanfm spotify utils video
 
 echo "Copying files"
 cp -vr $base_path/files/.??* ~/
