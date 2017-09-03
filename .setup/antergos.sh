@@ -5,6 +5,7 @@ base_path=~/.setup
 echo "Updating system"
 sudo pacman -Syu
 
+wcho "Install packages"
 sudo pacsave load chromium core	pcmanfm spotify utils video
 
 echo "Copying files"
