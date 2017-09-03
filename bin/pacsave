@@ -24,7 +24,7 @@ function install_package_group {
     pkgs=`cat $base_path/packages/$path | tr '\n' ' '`
     echo "Installing group <$path>"
     echo "$pkgs"
-    yaourt -S $pkgs
+    yaourt -S --needed $pkgs
 }
 
 function package_exists {
