@@ -2,22 +2,16 @@
 
 base_path=~/.setup
 
-function install_package_group {
-    path="$1"
-    pkgs=`cat $base_path/packages/$path | tr '\n' ' '`
-    echo "Installing group <$path>"
-    echo "$pkgs"
-    sudo pacman -S $pkgs
-}
-
-
 echo "Updating system"
 sudo pacman -Syu
 
-sudo pacsave load core chrome 
+sudo pacsave load chromium core	pcmanfm spotify utils video
 
 echo "Copying files"
 cp -vr $base_path/files/.??* ~/
+
+echo "Bg image"
+~/.setup/bg_image.sh
 
 echo "Enable NetworkManager.service"
 sudo systemctl enable NetworkManager.service
