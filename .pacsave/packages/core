@@ -400,6 +400,7 @@ python-gobject
 python-pyqt5
 python-sip
 python-termcolor
+qiv
 qpdf
 qt5-base
 randrproto
