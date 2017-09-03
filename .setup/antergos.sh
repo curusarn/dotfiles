@@ -5,8 +5,8 @@ base_path=~/.setup
 echo "Updating system"
 sudo pacman -Syu
 
-wcho "Install packages"
-sudo pacsave load core pcmanfm spotify utils video
+echo "Install packages"
+bin/pacsave load core pcmanfm spotify utils video
 
 echo "Copying files"
 cp -vr $base_path/files/.??* ~/
