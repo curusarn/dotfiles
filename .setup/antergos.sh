@@ -16,3 +16,6 @@ echo "Bg image"
 
 echo "Enable NetworkManager.service"
 sudo systemctl enable NetworkManager.service
+
+echo "Initialize dotfiles"
+.dotfiles/init.sh
