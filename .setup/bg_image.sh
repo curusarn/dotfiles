@@ -1,10 +1,11 @@
 #!/bin/bash
 
 
-img_url="http://img.myconfinedspace.com/wp-content/uploads/2014/09/welcome-back-commander.png"
+img_url="https://imgur.com/download/QlMbZ4B"
 
 img_dir=~/pics/wall
-img_name="welcome-back-commander.png"
+img_name="simplistic-galaxy-planets.jpg"
+#img_name="welcome-back-commander.png"
 img_path="$img_dir/$img_name"
 
 mkdir -p $img_dir 
