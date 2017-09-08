@@ -110,7 +110,6 @@ function action_status {
     
     new=`comm $tmp_local $tmp_remote_all -23`
     missing=`comm $tmp_local $tmp_remote_smart -13`
-    comm $tmp_local $tmp_remote_smart 
 
     if [[ "$new" != "" ]]; then
         lc=`echo "$new" | wc -l`
@@ -215,7 +214,7 @@ function action_add {
     get_local_packages > $tmp_local
 
     if [[ "${2-}" != "" ]]; then
-        echo "$2" | tr ' ' '\n' > $tmp_specified 
+        echo "$2" | tr ' ' '\n' | sort > $tmp_specified 
         path="$base_path/packages/$GROUP"
         add=`comm $tmp_local $tmp_specified -12`
         # packages exist?
@@ -261,7 +260,6 @@ fi
 ACTION=$1
 shift
 
-echo "case1"
 
 case $ACTION in
     status | st | s)
@@ -276,7 +274,6 @@ case $ACTION in
     *)
         GROUP="$@"
 
-        echo "case2"
         case $ACTION in
             install | i)
                 action_install $GROUP
