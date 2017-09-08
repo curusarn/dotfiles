@@ -9,9 +9,7 @@
 - `vs ?` should sort sessions by the time they were used last time
 - make `vim` file autocomplete better (bash-like)
 - make `vim` highlights changed lines (against git)
-- map capslock to escape on `i3` start
 - vim Ctrl+w split switching is way too hard to press #isThisEmacs
-- Alt+Tab should loop trought desktops
 - include `i3` configs (`i3`, `i3blocks`, `rofi`/`dmenu-recency`)
 - auto check & install dependencies (`i3blocks` stuff, ...)
 - debian & antergos version (distro lookup in `init.sh`, debian as headless by default)
