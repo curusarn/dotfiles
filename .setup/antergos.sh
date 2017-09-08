@@ -6,6 +6,8 @@ echo "Updating system"
 sudo pacman -Syu
 
 echo "Install packages"
+sudo pacman -S yaourt
+cp -r ~/dotfiles-tmp/.pacsync ~
 ~/dotfiles-tmp/bin/pacsync install
 
 echo "Copying files"

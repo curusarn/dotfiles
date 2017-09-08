@@ -33,7 +33,7 @@ color_off() { echo -ne '\033[0m'; }
 # PACKAGE QUERIES 
 
 function get_local_packages {
-    yaourt -Qet | cut -d' ' -f1 | cut -d'/' -f2
+    yaourt -Qet | cut -d' ' -f1 | cut -d'/' -f2 | sort
 }
 
 function get_packages {
@@ -242,7 +242,7 @@ function action_sync {
         help "ERR: Specified packages - maybe use add?" 3
     else
         path="$base_path/packages/$GROUP"
-        add=`comm $tmp_local $tmp_remote -13`
+        add=`comm $tmp_local $tmp_remote -23`
             
         echo "$add" >> "$path"
         sort_file "$path"
@@ -281,10 +281,10 @@ case $ACTION in
             uninstall | u)
                 action_uninstall $GROUP
             ;;
-#            sync | sy)
-#                action_sync $GROUP
-#            ;;
-            list | l)
+            sync | sy)
+                action_sync $GROUP
+            ;;
+           list | l)
                 action_list $GROUP
             ;;
             *)
