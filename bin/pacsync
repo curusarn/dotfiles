@@ -1,0 +1,300 @@
+#!/bin/bash
+
+# Fuck past me for writing this in bash instead of python
+
+set -eu
+PACKAGES=""
+base_path=~/.pacsync
+
+function help {
+    echo $1
+    echo "USAGE:"
+    echo "   pacsync ACTION [OPTIONS]"
+    echo "   "
+    echo "ACTIONS:"
+    echo "   status"
+    echo "   install [GROUPS]"
+    echo "   uninstall [GROUPS]"
+    echo "   sync [GROUPS]"
+    echo "   add [GROUP] [PACKAGES]"
+    echo "   list [GROUPS]"
+    echo "   "
+    echo "NOTES:"
+    echo "   I'm too lazy to implement lock for this so be careful."
+    exit $2
+}
+
+echo_red() { echo -e '\033[0;31m'"$1"'\033[0m'; }
+echo_green() { echo -e '\033[0;32m'"$1"'\033[0m'; }
+green_on() { echo -ne  '\033[0;32m'; }
+red_on() { echo -ne  '\033[0;31m'; }
+color_off() { echo -ne '\033[0m'; }
+
+# PACKAGE QUERIES 
+
+function get_local_packages {
+    yaourt -Qet | cut -d' ' -f1 | cut -d'/' -f2
+}
+
+function get_packages {
+    cd $base_path/packages
+    pkgs=`cat $1 | tr ' ' '\n'`
+    cd - >/dev/null
+    echo "$pkgs" | sort
+}
+
+function get_optional_packages {
+    cd $base_path/packages
+    groups=`echo * | tr ' ' '\n' | grep -v -- '-optional' | tr '\n' ' ' || true`
+    pkgs=`cat $groups | tr ' ' '\n' || true`
+    cd - >/dev/null
+    echo "$pkgs" | sort
+}
+
+function get_non_optional_packages {
+    cd $base_path/packages
+    groups=`echo * | tr ' ' '\n' | grep -v -- '-optional' | tr '\n' ' ' || true`
+    pkgs=`cat $groups | tr ' ' '\n' || true`
+    cd - >/dev/null
+    echo "$pkgs" | sort
+}
+
+function get_all_packages {
+    cd $base_path/packages
+    pkgs=`cat * | tr ' ' '\n'`
+    cd - >/dev/null
+    echo "$pkgs" | sort
+}
+
+# smart function - hardoded stuff 
+function get_packages_smart {
+    cd $base_path/packages
+    groups=`echo * | tr ' ' '\n' | grep -v -- '-optional' | tr '\n' ' ' || true`
+    pkgs=`cat $groups | tr ' ' '\n' || true`
+
+    # nvidia - if there is nvidia device include nvidia-optional
+    if lspci | grep -i "nvidia" >/dev/null; then 
+        nvidia=`cat nvidia-optional`
+        pkgs="$pkgs\n$nvidia"
+    fi
+
+    cd - >/dev/null
+    echo -e "$pkgs" | sort
+}
+
+# HELPER FUNCTIONS
+
+function package_exists {
+    yaourt -Qi $1 > /dev/null
+    return $? 
+}
+
+function sort_file {
+    path=$1
+    tmp=`mktemp`
+    cat $path | sort | uniq  > $tmp
+    cat $tmp > $path
+}
+
+# ACTION FUNCTIONS
+
+function action_status {
+    tmp_local=`mktemp`
+    tmp_remote_all=`mktemp`
+    tmp_remote_smart=`mktemp`
+
+    get_local_packages > $tmp_local
+    get_all_packages > $tmp_remote_all
+    get_packages_smart > $tmp_remote_smart
+
+    
+    new=`comm $tmp_local $tmp_remote_all -23`
+    missing=`comm $tmp_local $tmp_remote_smart -13`
+    comm $tmp_local $tmp_remote_smart 
+
+    if [[ "$new" != "" ]]; then
+        lc=`echo "$new" | wc -l`
+        echo "New packages ($lc):"
+        echo_green "$new"
+    else
+        echo "No new packages"
+    fi
+
+    if [[ "$missing" != "" ]]; then
+        lc=`echo "$missing" | wc -l`
+        echo "Missing packages ($lc):"
+        echo_red "$missing"
+    else
+        echo "No missing packages"
+    fi
+}
+
+function action_install {
+    tmp_local=`mktemp`
+    tmp_remote=`mktemp`
+
+    get_local_packages > $tmp_local
+    if [[ "${1-}" != "" ]]; then
+        get_packages $1 > $tmp_remote
+    else
+        get_packages_smart > $tmp_remote
+    fi
+     
+    missing=`comm $tmp_local $tmp_remote -13`
+
+    if [[ "$missing" != "" ]]; then
+        lc=`echo "$missing" | wc -l`
+        echo "Missing packages ($lc):"
+        echo_red "$missing"
+        missing=`echo $missing`
+        yaourt -S $missing
+    else
+        echo "No missing packages - no packages to install"
+    fi
+}
+
+function action_list {
+    tmp_local=`mktemp`
+    tmp_remote=`mktemp`
+
+    get_local_packages > $tmp_local
+    if [[ "${1-}" != "" ]]; then
+        get_packages $1 > $tmp_remote
+    else
+        get_packages_smart > $tmp_remote
+    fi
+         
+    missing=`comm $tmp_local $tmp_remote -13`
+
+    echo "Listing packages:"
+    cat $tmp_remote
+    if [[ "$missing" != "" ]]; then
+        lc=`echo "$missing" | wc -l`
+        echo "Missing packages ($lc):"
+        echo_red "$missing"
+    else
+        echo "No missing packages"
+    fi
+}
+
+function action_uninstall {
+    tmp_local=`mktemp`
+    tmp_remote=`mktemp`
+
+    if [[ "${1-}" != "" ]]; then
+        get_packages $1 > $tmp_remote
+    else
+        help "no group" 2
+    fi
+
+    get_local_packages > $tmp_local
+         
+    uninstall=`comm $tmp_local $tmp_remote -12`
+
+    if [[ "$uninstall" != "" ]]; then
+        lc=`echo "$uninstall" | wc -l`
+        echo "Packages to uninstall ($lc):"
+        echo_red "$uninstall"
+        echo "Are you sure? (any key = Y, Ctrl+C = N)"
+        read y
+        uninstal=`echo $uninstall`
+        yaourt -R $uninstall
+    else
+        echo "No packages to unistall"
+    fi
+}
+
+function action_add {
+    if [[ "${1-}" == "" ]]; then
+        help "No group" 2
+    fi
+
+    tmp_local=`mktemp`
+    tmp_specified=`mktemp`
+
+    get_local_packages > $tmp_local
+
+    if [[ "${2-}" != "" ]]; then
+        echo "$2" | tr ' ' '\n' > $tmp_specified 
+        path="$base_path/packages/$GROUP"
+        add=`comm $tmp_local $tmp_specified -12`
+        # packages exist?
+            
+        echo "$add" >> "$path"
+        sort_file "$path"
+        echo "Packages added successfuly."
+    else
+        help "ERR: NO packages" 3
+    fi
+}
+
+function action_sync {
+    if [[ "${1-}" == "" ]]; then
+        help "No group" 2
+    fi
+
+    tmp_local=`mktemp`
+    tmp_remote=`mktemp`
+
+    get_local_packages > $tmp_local
+    get_packages_smart > $tmp_remote
+
+    if [[ "${2-}" != "" ]]; then
+        help "ERR: Specified packages - maybe use add?" 3
+    else
+        path="$base_path/packages/$GROUP"
+        add=`comm $tmp_local $tmp_remote -13`
+            
+        echo "$add" >> "$path"
+        sort_file "$path"
+        echo "Packages added successfuly."
+    fi
+}
+
+# MAIN
+
+if [[ $# -eq 0 ]]; then
+    help "ERR: No arguments passed" 1
+    # print list of actions
+fi
+
+ACTION=$1
+shift
+
+echo "case1"
+
+case $ACTION in
+    status | st | s)
+        action_status
+    ;;
+    add | a)
+        GROUP="$1"
+        shift
+        PACKAGES="$@"
+        action_add "$GROUP" "$PACKAGES"
+    ;;
+    *)
+        GROUP="$@"
+
+        echo "case2"
+        case $ACTION in
+            install | i)
+                action_install $GROUP
+            ;;
+            uninstall | u)
+                action_uninstall $GROUP
+            ;;
+#            sync | sy)
+#                action_sync $GROUP
+#            ;;
+            list | l)
+                action_list $GROUP
+            ;;
+            *)
+                help "Unknown ACTION" 2
+            ;;
+        esac
+    ;;
+
+esac
+
