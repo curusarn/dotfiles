@@ -83,6 +83,7 @@ whois
 wireless_tools
 xf86-video-vesa
 xfsprogs
+xorg-server
 xorg-xinit
 yaourt
 zd1211-firmware
