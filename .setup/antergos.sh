@@ -6,9 +6,15 @@ echo "Updating system"
 sudo pacman -Syu
 
 echo "Install packages"
+# dependencies and data for pacsync
 sudo pacman -S yaourt
 cp -r ~/dotfiles-tmp/.pacsync ~
+# pacsync
 ~/dotfiles-tmp/bin/pacsync install
+
+echo "Initialize dotfiles"
+# moves dotfiles-tmp contents to ~
+.dotfiles/init.sh
 
 echo "Copying files"
 cp -vr $base_path/files/.??* ~/
@@ -16,9 +22,7 @@ cp -vr $base_path/files/.??* ~/
 echo "Enable NetworkManager.service"
 sudo systemctl enable NetworkManager.service
 
-echo "Initialize dotfiles"
-.dotfiles/init.sh
-
 echo "Bg image"
-~/.setup/bg_image.sh
+# X server has to be running for this to work
+#~/.setup/bg_image.sh
 

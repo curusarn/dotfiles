@@ -22,6 +22,7 @@ fakeroot
 feh
 flex
 gcc
+gparted
 grub2-theme-antergos
 gsfonts
 haveged
@@ -62,6 +63,7 @@ procps-ng
 qiv
 ranger
 redshift
+reflector
 reiserfsprogs
 rofi
 scrot

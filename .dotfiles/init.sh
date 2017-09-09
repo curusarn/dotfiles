@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 err () {
     printf "%s [ERROR]: %s\n" "$0" "$1" >&2
     exit 1
@@ -33,14 +34,15 @@ addInclude () {
     fi
 }
 
-# bash_profile
+
 cd ~
 
 ## git
 # setup repo
 if [[ -d dotfiles-tmp ]]; then
     echo "setting up repo"
-    rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
+    # --links = copy symlinks as symlinks (don't follow, just copy)
+    rsync --recursive --links --verbose --exclude '.git' dotfiles-tmp/ $HOME/
     rm --recursive dotfiles-tmp
 fi
 
