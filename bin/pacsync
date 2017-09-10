@@ -33,7 +33,7 @@ color_off() { echo -ne '\033[0m'; }
 # PACKAGE QUERIES 
 
 function get_local_packages {
-    yaourt -Qet | cut -d' ' -f1 | cut -d'/' -f2 | sort
+    yaourt -Qe | cut -d' ' -f1 | cut -d'/' -f2 | sort
 }
 
 function get_packages {
