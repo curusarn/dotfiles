@@ -75,4 +75,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 # install plugins
 vim +PluginInstall +qall
 
-
+# detect distro and setup distro_paths
+cd ~/.distro_paths
+distro=`~/bin/detect-distro.sh`
+echo "Distro detected: $distro"
+ln -s "$distro" "DISTRO" 
