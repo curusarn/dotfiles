@@ -2,16 +2,18 @@
 
 These are my dotfiles, they are not very nice but they are mine.  
 My dotfiles include variety of scripts and config files I have created and collected.  
-Despite that I try to keep my dotfiles as simple as possible. 
+Despite that I try to keep my dotfiles as simple as possible.  
 My primary OS is Antergos (Arch) and I also use Debian-based distributions.  
 I use i3 window manager.  
 
-This readme should be much longer. I will gladly explain anything about about my dotfiles. Feel free to contact me or create an issue.
+This readme should be much longer.  
+I will gladly explain anything about about my dotfiles.  
+Feel free to contact me or create an issue.
 
 
 ## Bare repository
 
-I use bare git repository in my home directory for dotfiles synchronization.
+I use bare git repository in my home directory for dotfiles synchronization.  
 This means I don't have to symlink all synchronized config files because they are in my home directory.
 
 ### Usage
@@ -27,7 +29,7 @@ dotfiles push
 
 This is how I setup my dotfiles on new machine.
 
-#### Clone the repo
+#### 1. Clone the repo
 ```bash
 git clone --separate-git-dir=$HOME/.dotfiles git@github.com:curusarn/dotfiles.git dotfiles-tmp
 ```
@@ -36,10 +38,10 @@ OR
 git clone --separate-git-dir=$HOME/.dotfiles https://github.com/curusarn/dotfiles.git dotfiles-tmp
 ```
 
-#### Setup repo
+#### 2. Setup repo
 
 This is the script I run every time I pull major dotfiles changes from git.  
-It creates includes in `.bashrc`, `.gitconfig`, installs vim plugins, detects installed distro and more. 
+This script creates includes in `.bashrc`, `.gitconfig`, installs vim plugins, detects installed distro and more. 
 
 ```bash
 dotfiles-tmp/.dotfiles/init.sh
@@ -50,13 +52,13 @@ dotfiles-tmp/.dotfiles/init.sh
 This is how you can create your own bare repo.  
 Or you can fork mine and customize it.
 
-#### Create
+#### 1. Create
 ```bash
 git init --bare $HOME/.dotfiles
 dotfiles remote add origin git@github.com:YOUR_LOGIN/dotfiles.git
 ```
 
-#### Configure 
+#### 2. Configure 
 ```bash
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dotfiles config status.showUntrackedFiles no
