@@ -31,6 +31,12 @@ command=$HOME/.distro_paths/DISTRO/i3blocks/load_average
 interval=10
 color=#009688
 
+[brightness]
+label=
+command=$HOME/bin/i3blocks/brightness
+interval=10
+color=#90A4AE
+
 [volume]
 label= 
 command=$HOME/.distro_paths/DISTRO/i3blocks/volume 3%

@@ -149,6 +149,7 @@ wpa_actiond
 xf86-video-vesa
 xfsprogs
 xorg-server
+xorg-xbacklight
 xorg-xinit
 xz
 yaourt
