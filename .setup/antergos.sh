@@ -23,6 +23,10 @@ echo "Enable NetworkManager.service"
 sudo systemctl enable NetworkManager.service
 
 echo "Bg image"
+echo "Please run ~/.setup/bg_image.sh after you start xserver"
 # X server has to be running for this to work
 #~/.setup/bg_image.sh
+
+echo "Fix geoclue for redshift"
+~/.setup/fix_geoclue.sh
 

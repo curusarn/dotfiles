@@ -80,3 +80,6 @@ cd ~/.distro_paths
 distro=`~/bin/detect-distro.sh`
 echo "Distro detected: $distro"
 ln --force --symbolic "$distro" "DISTRO" 
+
+
+
