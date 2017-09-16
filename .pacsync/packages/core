@@ -74,6 +74,7 @@ libva-intel-driver
 licenses
 linux
 logrotate
+lsb-release
 lvm2
 m4
 make

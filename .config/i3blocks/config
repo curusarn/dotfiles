@@ -13,6 +13,12 @@ command=$HOME/.distro_paths/DISTRO/i3blocks/disk $HOME
 interval=30
 color=#00BCD4
 
+[battery]
+label=
+command=$HOME/.distro_paths/DISTRO/i3blocks/battery
+interval=10
+color=#90A4AE
+
 [ip]
 label= 
 command=ip addr show | grep 'inet ' | grep -v '127.0.0.1' | cut -d' ' -f6

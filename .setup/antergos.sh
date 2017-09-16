@@ -7,7 +7,7 @@ sudo pacman -Syu
 
 echo "Install packages"
 # dependencies and data for pacsync
-sudo pacman -S yaourt
+sudo pacman -S yaourt lsb-release
 cp -r ~/dotfiles-tmp/.pacsync ~
 # pacsync
 ~/dotfiles-tmp/bin/pacsync install

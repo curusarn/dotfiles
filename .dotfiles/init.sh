@@ -79,4 +79,4 @@ vim +PluginInstall +qall
 cd ~/.distro_paths
 distro=`~/bin/detect-distro.sh`
 echo "Distro detected: $distro"
-ln -s "$distro" "DISTRO" 
+ln --force --symbolic "$distro" "DISTRO" 
