@@ -11,8 +11,7 @@ alias v='vim'
 # variables
 PATH=~/stbin:$PATH:~/bin
 EDITOR=/usr/bin/vim
-BROWSER=/usr/bin/chromium # antergos
-#BROWSER=/usr/bin/chromium-browser # ubuntu
+BROWSER=~/.distro_paths/DISTRO/chromium
 
 
 # aliases extra - colors & stuff
