@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -euo pipefail
+
+remote=`git remote -v | grep origin | tr ' ' '\t' | cut -f2 | head -n 1`
+
+echo "remote: $remote"
+if [[ "$remote" == *"@"* ]]; then
+    echo "ssh -> https"
+    
+    host_repo=`echo "$remote" | cut -d'@' -f2`
+    host=`echo "$host_repo" | cut -d':' -f1`
+    repo=`echo "$host_repo" | cut -d':' -f2`
+
+    new_remote="https://$host/$repo"
+else
+    echo "https -> ssh"
+    
+    host=`echo "$remote" | cut -d'/' -f3`
+    repo=`echo "$remote" | cut -d'/' -f4-`
+
+    new_remote="git@$host:$repo"
+fi
+
+echo "confirm new remote (Y=any_key/n=Ctrl+C): $new_remote"
+read x
+git remote set-url origin "$new_remote"
+git remote -v
+
