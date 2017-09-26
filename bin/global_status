@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -uo pipefail
 IFS=$'\n\t'
 
 red() { echo -e '\033[0;31m'"$1"'\033[0m'; }
