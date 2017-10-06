@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# Find which is your current branch
+if currentBranch=$(git symbolic-ref --short -q HEAD)
+then
+  echo On branch $currentBranch
+  echo Pushing updates from the current branch to remote branch $currentBranch
+
+  # Stash current changes
+  git stash
+  
+  # If remote branch exist, rebase the changes. 
+  remoteOrigin=$(git config --get remote.origin.url)
+  echo Remote is $remoteOrigin
+
+  if [ $(git ls-remote --heads $remoteOrigin $currentBranch + | wc -l) == "1" ]
+  then
+    echo Remote branch exits. Pull changes from remote before pushing the changes.
+    git pull --rebase origin $currentBranch
+  else
+    echo Remote branch doesn not exists. Push current changes to remote.
+  fi
+
+  # Push the changes to remote branch with current name
+  # If specified a param, check if it was -f to force push.
+  if [ -z "$1" ]
+  then
+    echo "No argument supplied. Continue executing the script normally."
+    git push origin $currentBranch
+  elif [ $1 == "-f" ] || [ $1 == "--force" ]
+  then
+    echo "Force push requested."
+    git push -f origin $currentBranch
+  else
+    echo "ERROR: Not a valid argument. Exiting."
+    exit 1
+  fi
+
+  # Apply the stashed changes
+  git stash apply
+
+  echo Successfully pushed the updates to remote!
+else
+  echo ERROR: Cannot find the current branch!
+fi
