@@ -228,4 +228,6 @@ exec --no-startup-id nm-applet
 # notifications
 exec --no-startup-id dunst
 
+# run "~/.screenlayout/default.sh" if exists
+exec --no-startup-id default_arand.sh 
 
