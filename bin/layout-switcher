@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# swaps US and CZ layout (both qwerty, both with capslock working as escape)
+# it can be used as i3block 
+#     - swaps layouts on click (and outputs layout)
+#     - outputs current layout when invoked by i3blocks w/o "button event"
+
 layout="$(setxkbmap -query | grep layout | cut -d' ' -f6 | tr /a-z/ /A-Z/)"
 
 [[ "$1" == "i3blocks" && "$BLOCK_BUTTON" == "" ]] && echo "$layout" && exit 0
