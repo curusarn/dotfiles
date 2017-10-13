@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# converts (1st) remote connection method from https to ssh (and vice versa)
+#   script asks for confirmation because it was not tested properly
+
 set -euo pipefail
 
 remote=`git remote -v | grep origin | tr ' ' '\t' | cut -f2 | head -n 1`
