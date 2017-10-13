@@ -210,6 +210,9 @@ bindsym XF86PowerOff mode "$mode_system"
 ############################## START UP COMMANDS ##############################
 ###############################################################################
 
+# set default arand profile if set (run "~/.screenlayout/default.sh" if exists)
+exec --no-startup-id ~/bin/default_arandr.sh
+
 # wallpaper
 exec --no-startup-id ~/.fehbg
 
@@ -227,7 +230,4 @@ exec --no-startup-id nm-applet
 
 # notifications
 exec --no-startup-id dunst
-
-# run "~/.screenlayout/default.sh" if exists
-exec --no-startup-id default_arand.sh 
 
