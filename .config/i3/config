@@ -206,6 +206,8 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness 
 
 bindsym XF86PowerOff mode "$mode_system"
 
+# bindsym <insert key combination here> exec "~/bin/layout-switcher"
+
 ###############################################################################
 ############################## START UP COMMANDS ##############################
 ###############################################################################
@@ -222,8 +224,8 @@ exec --no-startup-id /usr/bin/parcellite
 # red screen at night
 exec --no-startup-id /usr/bin/redshift
 
-# capslock -> escape (because vim)
-exec --no-startup-id "/usr/bin/setxkbmap -option caps:escape"
+# set us layout, +option capslock -> escape 
+exec --no-startup-id "/usr/bin/setxkbmap us -option caps:escape"
 
 # NetworkMamager applet
 exec --no-startup-id nm-applet
