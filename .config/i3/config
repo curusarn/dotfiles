@@ -215,9 +215,6 @@ bindsym XF86PowerOff mode "$mode_system"
 # set default arand profile if set (run "~/.screenlayout/default.sh" if exists)
 exec --no-startup-id ~/bin/default_arandr.sh
 
-# wallpaper
-exec --no-startup-id ~/.fehbg
-
 # clipboard manager
 exec --no-startup-id /usr/bin/parcellite
 
@@ -226,6 +223,9 @@ exec --no-startup-id /usr/bin/redshift
 
 # set us layout, +option capslock -> escape 
 exec --no-startup-id "/usr/bin/setxkbmap us -option caps:escape"
+
+# wallpaper
+exec --no-startup-id "~/.fehbg && sleep 1 && ~/.fehbg"
 
 # NetworkMamager applet
 exec --no-startup-id nm-applet
