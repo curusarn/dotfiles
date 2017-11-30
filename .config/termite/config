@@ -1,6 +1,7 @@
 [options]
 #font = Droid Sans Mono 11
 font = Inconsolata 12
+scrollback_lines = 10000
 
 [colors]
 
