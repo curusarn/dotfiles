@@ -141,11 +141,17 @@ bindcode $mod+Shift+16 move container to workspace number 7; workspace 7
 bindcode $mod+Shift+17 move container to workspace number 8; workspace 8
 bindcode $mod+Shift+18 move container to workspace number 9; workspace 9
 
+# enable *some* support for classic "alt-tabbing"
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+Tab workspace prev 
 bindsym $mod2+Tab workspace next
 bindsym $mod2+Shift+Tab workspace prev 
 
+# move contained one screen to right/left
+bindsym $mod+Shift+greater move container to output right
+bindsym $mod+Shift+less move container to output left
+
+# experimental - watching/pocast/video mode
 bindsym $mod+y fullscreen disable; floating enable; resize set 600 400; sticky enable; move window to position 1940 54
 
 # reload the configuration file
