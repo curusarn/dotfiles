@@ -8,10 +8,9 @@
 - make `vim` file autocomplete better (bash-like)
 - make `vim` highlights changed lines (against git)
 - vim Ctrl+w split switching is way too hard to press #isThisEmacs
-- auto check & install dependencies (`i3blocks` stuff, ...)
-- headless OPTION in `~/.dotfiles/headless` (1 = yes, 0 = no) -> don't install gui stuff on headless machines
 - start using `zsh`, include configs 
 - track vim sessions using `/tmp` rather than using shell variable - can't be set from within `vim`
 - update `README` to describe all parts of dotfiles (dotfiles, pacsync, distro_paths) 
 
+- Start using issues instead of this
 
