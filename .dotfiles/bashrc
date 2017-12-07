@@ -22,6 +22,7 @@ alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --colo
 alias grep='grep --color=tty -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
+alias cath='tail -vn +1'                  # cat with filenames as headers
 
 # alaises typos
 alias cd..='cd ..'
