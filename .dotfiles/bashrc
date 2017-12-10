@@ -23,6 +23,7 @@ alias grep='grep --color=tty -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias cath='tail -vn +1'                  # cat with filenames as headers
+alias scrot='scrot -e "mv \$f ~/shots/"'
 
 # alaises typos
 alias cd..='cd ..'
