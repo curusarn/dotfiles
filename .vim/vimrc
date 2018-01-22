@@ -98,10 +98,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'vim-airline/vim-airline'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 " Plugin 'scrooloose/syntastic'
 Plugin 'Robitx/vim-yapf-autopep8'
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -116,7 +117,7 @@ Plugin 'L9'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 "Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'NLKNguyen/papercolor-theme'
+"Plugin 'NLKNguyen/papercolor-theme'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -141,6 +142,6 @@ let g:syntastic_python_checkers = ['flake8']
 " let g:autopep8_ignore="E226,E24,W6,E309"
 "
 
-set t_Co=256   " This is may or may not needed.
-set background=light
+"set t_Co=256   " This is may or may not needed.
+"set background=light
 " colorscheme PaperColor

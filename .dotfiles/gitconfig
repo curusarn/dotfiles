@@ -25,7 +25,7 @@
     c = commit -m                   # Commit with message.
     ca = commit -am                 # Commit all with message.
     ci = commit                     # Commit.
-    amend = commit --amend          # Amend last commit.
+    amend = commit --amend -m       # Amend last commit.
 
     # `git checkout` aliases.
     co = checkout                   # Checkout.
