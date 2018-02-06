@@ -1,0 +1,6 @@
+# add this line to .dotfiles/init.sh when you update to OpenSSL 7.3
+# fucking ubuntu uses 7.2
+Include .dotfiles/ssh_config
+
+HashKnownHosts no
+ForwardAgent yes
