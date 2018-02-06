@@ -1,0 +1,13 @@
+
+bash_completion_dir=~/.bash_completion.d
+
+# source user completion directory definitions
+# taken from /usr/share/bash-completion/bash_completion
+if [[ -d $bash_completion_dir && -r $bash_completion_dir && \
+    -x $bash_completion_dir ]]; then
+    for i in $(LC_ALL=C command ls "$bash_completion_dir"); do
+        i=$bash_completion_dir/$i
+        [[ ${i##*/} != @($_backup_glob|Makefile*|$_blacklist_glob) \
+            && -f $i && -r $i ]] && . "$i"
+    done
+fi
