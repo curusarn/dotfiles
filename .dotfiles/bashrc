@@ -24,7 +24,8 @@ alias grep='grep --color=tty -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias cath='tail -vn +1'                  # cat with filenames as headers
-alias scrot='scrot -e "mv \$f ~/shots/"'
+alias scrot='scrot -e "[ -e ~/shots ] || mkdir ~/shots && mv \$f ~/shots/ 2>&1 | grep -v \"are the same file\" >&2"'  # save shots to ~/shots
+alias ranger='source ranger'              # stay in directory after exiting 
 
 # alaises typos
 alias cd..='cd ..'
