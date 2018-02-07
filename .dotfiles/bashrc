@@ -53,3 +53,10 @@ if ! shopt -oq posix; then
 fi
 
 
+function nonzero_return() {
+        RETVAL=$?
+        [ $RETVAL -ne 0 ] && echo "$RETVAL"
+}
+
+export PS1="\[\e[34m\]\u\[\e[m\]@\[\e[31m\]\h\[\e[m\]:\[\e[33m\]\W\[\e[m\]\`__git_ps1\` $\[\e[31m\]\`nonzero_return\`\[\e[m\] "
+
