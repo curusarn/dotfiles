@@ -85,6 +85,7 @@ mesa
 mlocate
 modemmanager
 nano
+ncdu
 netctl
 net-tools
 networkmanager
@@ -111,6 +112,7 @@ python-gobject
 python-pyqt5
 qiv
 ranger
+rclone
 redshift
 reflector
 reiserfsprogs
@@ -120,6 +122,7 @@ scrot
 sed
 shadow
 sharutils
+smplayer
 s-nail
 splix
 sudo
@@ -138,6 +141,7 @@ usb_modeswitch
 usbutils
 util-linux
 uudeview
+valgrind
 vi
 vifm
 vim
