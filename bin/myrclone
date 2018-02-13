@@ -35,7 +35,7 @@ case $action in
         src_path=mnt/pics
         dst_path=pics
 
-        rclone sync "$remote:$src_path" "$dst_remote:$dst_path" $@
+        rclone sync "$remote:$src_path" "$dst_remote:$dst_path" -vv $@
         exit $?
         ;;
     *)
