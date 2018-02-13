@@ -86,8 +86,15 @@ my terminal emulator of choice
   
 intended for tiling managers, lightweight, mouse support, run-time font size changing, one simple config file, no DE specific dependencies.
 
+### ranger
+cli file browser with vi-like keybindings
 
+To stay in last directory after exiting ranger: `alias='source ranger'`
 
+### pcmanfm
+lightweigth gui file browser
 
+### ncdu
+ncurses tool that helps you figure out why is your disk space gone
 
 
