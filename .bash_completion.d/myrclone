@@ -1,0 +1,6 @@
+_myrclone()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "mount-gdrive sync-dropbox" -- $cur) )
+}
+complete -F _myrclone myrclone

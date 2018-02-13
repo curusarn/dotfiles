@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+if [ $# -lt 1 ]; then
+    echo "Not enough args"
+    echo "USAGE: myrclone mount-gdrive|sync-dropbox [rclone options]"
+    exit 1
+fi
+
+remote=gdrive
+remote_path=mnt
+
+action="$1"
+shift
+
+case $action in
+    mount-gdrive)
+        mnt_path=~/gdrive
+        mnt_opts="--vfs-cache-mode full -v"
+
+        log_path=~/.rclone_mount.log
+
+        if [ ! -d "$mnt_path" ]; then
+            if ! mkdir -p "$mnt_path"; then
+                echo "Could not create dir <$mnt_path> - exiting!"
+                exit 2
+            fi
+        fi
+
+        rclone mount "$remote:$remote_path" "$mnt_path" $opts $@ 2>> "$log_path" &
+        exit $?
+        ;;
+    sync-dropbox)
+        dst_remote=dropbox
+
+        src_path=mnt/pics
+        dst_path=pics
+
+        rclone sync "$remote:$src_path" "$dst_remote:$dst_path" $@
+        exit $?
+        ;;
+    *)
+        echo "Unknown option <$action>"
+        echo "USAGE: myrclone mount-gdrive|sync-dropbox"
+        exit 2
+        ;;
+esac
+
+
+
+

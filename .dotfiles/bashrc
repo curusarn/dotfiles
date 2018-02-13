@@ -26,6 +26,7 @@ alias df='df -h'                          # human-readable sizes
 alias cath='tail -vn +1'                  # cat with filenames as headers
 alias scrot='scrot -e "[ -e ~/shots ] || mkdir ~/shots && mv \$f ~/shots/ 2>&1 | grep -v \"are the same file\" >&2"'  # save shots to ~/shots
 alias ranger='source ranger'              # stay in directory after exiting 
+alias ncdu='ncdu -x'                      # do not cross filesystems - I want to free up space on one specific medium
 
 # alaises typos
 alias cd..='cd ..'
