@@ -1,5 +1,6 @@
 set editing-mode vi
 set show-mode-in-prompt on
+"\e.":yank-last-arg
 
 set show-all-if-ambiguous on
 
