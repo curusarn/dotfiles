@@ -1,0 +1,12 @@
+#!/bin/bash
+# prints DAYS since last system update
+
+# pacman log
+log='/var/log/pacman.log'
+
+date_then=`grep '\[PACMAN\] starting full system upgrade' "$log" | tail -n 1 | cut -d']' -f1 | cut -d'[' -f2`
+secs_then=`date --date "$date_then" +%s`
+secs_now=`date +%s`
+
+echo $(( ($secs_now - $secs_then) / 36000)) 
+

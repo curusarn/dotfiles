@@ -13,6 +13,12 @@ command=$HOME/.distro_paths/DISTRO/i3blocks/disk $HOME
 interval=30
 color=#00BCD4
 
+[system-update]
+label= 
+command=$HOME/.distro_paths/DISTRO/last_system_update
+interval=120
+color=#AB47BC
+
 [battery]
 label=
 command=$HOME/.distro_paths/DISTRO/i3blocks/battery
