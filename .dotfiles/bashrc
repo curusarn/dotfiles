@@ -1,6 +1,7 @@
 #
-# ~/.dotfile/bashrc
+# ~/.dotfiles/bashrc
 #
+source ~/.shellrc
 
 # most important alias - add ugly options because dotfiles is a bare repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

@@ -1,0 +1,5 @@
+#
+# ~/.dotfiles/zshrc
+#
+source ~/.shellrc
+

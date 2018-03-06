@@ -72,16 +72,6 @@ addInclude '.zshrc' 'zshrc' 'source ~/.dotfiles/zshrc' \
 addInclude '.shellrc' 'shellrc' 'source ~/.dotfiles/shellrc' \
            '# added by .dotfiles/init.sh\nsource ~/.dotfiles/shellrc'
 
-## UNIVERSAL SHELL DOTFILES
-## shell specific files include it's universal variants
-# bashrc -> shellrc
-addInclude '.bashrc' 'bashrc' 'source ~/.shellrc' \
-           '# added by .dotfiles/init.sh\nsource ~/.shellrc'
-
-# zshrc -> shellrc
-addInclude '.zshrc' 'zshrc' 'source ~/.shellrc' \
-           '# added by .dotfiles/init.sh\nsource ~/.shellrc'
-
 
 ## vim
 # clone vundle because it could be broken
