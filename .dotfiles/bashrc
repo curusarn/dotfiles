@@ -28,6 +28,16 @@ alias scrot='scrot -e "[ -e ~/shots ] || mkdir ~/shots && mv \$f ~/shots/ 2>&1 |
 alias ranger='source ranger'              # stay in directory after exiting 
 alias ncdu='ncdu -x'                      # do not cross filesystems - I want to free up space on one specific medium
 
+wim () { 
+    # open executable files in path easily
+    if [ $# -eq 1 ]; then 
+        vim `which "$1"`
+    else
+        vim $@
+    fi
+}
+
+
 # alaises typos
 alias cd..='cd ..'
 
@@ -54,6 +64,11 @@ if ! shopt -oq posix; then
     fi
 fi
 
+if ! shopt -oq posix; then
+    if [ -f ~/.bash_completion ]; then
+        . ~/.bash_completion
+    fi
+fi
 
 function nonzero_return() {
     RETVAL=$?
