@@ -64,6 +64,17 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dotfiles config status.showUntrackedFiles no
 ```
 
+## Shell startup files
+Features:
+- Support local changes
+- Include `./bashrc` in login shells
+- Effortless synchronization
+- Work out-of-the-box
+- Support `bash` and `zsh`
+
+Running `.dotfiles/init.sh` sets up and fixes all the includes and creates files if necessary.
+No configuration needed.
+
 ## Software
 Incomplete list of software I like and use.  
 
