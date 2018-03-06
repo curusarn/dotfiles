@@ -51,19 +51,58 @@ fi
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME\
                                 config status.showUntrackedFiles no
 
-## config includes
+### CONFIG INCLUDES
 # git global config
 addInclude '.gitconfig' 'gitconfig' \
            '\[include\][^\[\]]*path = .dotfiles/gitconfig' \
            '[include]\n    path = .dotfiles/gitconfig'
 
-# bashrc
+
+## REMOTE SYNCED DOTFILES
+## every file includes it's remote version
+# bashrc -> remote
 addInclude '.bashrc' 'bashrc' 'source ~/.dotfiles/bashrc' \
            '# added by .dotfiles/init.sh\nsource ~/.dotfiles/bashrc'
 
-# bash_profile
+# bash_profile -> remote
 addInclude '.bash_profile' 'bash_profile' 'source ~/.dotfiles/bash_profile' \
            '# added by .dotfiles/init.sh\nsource ~/.dotfiles/bash_profile'
+
+# zshrc -> remote
+addInclude '.zshrc' 'zshrc' 'source ~/.dotfiles/zshrc' \
+           '# added by .dotfiles/init.sh\nsource ~/.dotfiles/zshrc'
+
+# zprofile -> remote
+addInclude '.zprofile' 'zprofile' 'source ~/.dotfiles/zprofile' \
+           '# added by .dotfiles/init.sh\nsource ~/.dotfiles/zprofile'
+
+# shellrc -> remote
+addInclude '.shellrc' 'shellrc' 'source ~/.dotfiles/shellrc' \
+           '# added by .dotfiles/init.sh\nsource ~/.dotfiles/shellrc'
+
+# shell_profile -> remote
+addInclude '.shell_profile' 'shell_profile' 'source ~/.dotfiles/shell_profile' \
+           '# added by .dotfiles/init.sh\nsource ~/.dotfiles/shell_profile'
+
+
+## UNIVERSAL SHELL DOTFILES
+## shell specific files include it's universal variants
+# bashrc -> shellrc
+addInclude '.bashrc' 'bashrc' 'source ~/.shellrc' \
+           '# added by .dotfiles/init.sh\nsource ~/.shellrc'
+
+# bash_profile -> shell_profile
+addInclude '.bash_profile' 'bash_profile' 'source ~/.shell_profile' \
+           '# added by .dotfiles/init.sh\nsource ~/.shell_profile'
+
+# zshrc -> shellrc
+addInclude '.zshrc' 'zshrc' 'source ~/.shellrc' \
+           '# added by .dotfiles/init.sh\nsource ~/.shellrc'
+
+# zprofile -> shell_profile
+addInclude '.zprofile' 'zprofile' 'source ~/.shell_profile' \
+           '# added by .dotfiles/init.sh\nsource ~/.shell_profile'
+
 
 ## vim
 # clone vundle because it could be broken
