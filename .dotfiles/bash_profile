@@ -1,8 +1,0 @@
-#
-# ~/.dotfiles/bash_profile
-#
-
-# ubuntu does not know termite - remove this when you finally ditch ubuntu
-export TERM=xterm-256color
-
-[[ -f ~/.bashrc ]] && . ~/.bashrc

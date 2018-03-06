@@ -1,0 +1,3 @@
+# added by .dotfiles/init.sh
+source ~/.dotfiles/shell_profile
+
