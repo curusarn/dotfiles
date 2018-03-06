@@ -7,5 +7,5 @@ log='/var/log/pacman.log'
 secs_then=`stat  /var/lib/apt/lists --printf="%Y"`
 secs_now=`date +%s`
 
-echo $(( ($secs_now - $secs_then) / 36000)) 
+echo $(( ($secs_now - $secs_then) / 86400)) 
 
