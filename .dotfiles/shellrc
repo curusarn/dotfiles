@@ -2,3 +2,36 @@
 # ~/.dotfiles/shellrc
 #
 export TERM="xterm-256color"
+
+# most important alias - add ugly options because dotfiles is a bare repo
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# variables
+PATH=~/stbin:$PATH:~/bin
+EDITOR=/usr/bin/vim
+BROWSER=~/.distro_paths/DISTRO/chromium
+
+
+# Alias definitions.
+# aliases extra - colors & stuff
+alias ls='ls -CF --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+alias ll='ls -alF --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+alias la='ls -A --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+
+alias grep='grep --color=tty -d skip'
+alias cp="cp -i"                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias cath='tail -vn +1'                  # cat with filenames as headers
+alias scrot='scrot -e "[ -e ~/shots ] || mkdir ~/shots && mv \$f ~/shots/ 2>&1 | grep -v \"are the same file\" >&2"'  # save shots to ~/shots
+alias ranger='source ranger'              # stay in directory after exiting 
+alias ncdu='ncdu -x'                      # do not cross filesystems - I want to free up space on one specific medium
+
+wim () { 
+    # open executable files in path easily
+    if [ $# -eq 1 ]; then 
+        vim `which "$1"`
+    else
+        vim $@
+    fi
+}
+

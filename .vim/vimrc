@@ -19,6 +19,9 @@ set scrolloff=15
 " increase limit for max number of files to open in tabs with `vim -p`
 set tabpagemax=256
 
+" shorter timeout after ESC O
+set ttimeoutlen=100
+
 " move up and down inside of wrapped lines
 noremap j gj
 noremap k gk
