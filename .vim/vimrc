@@ -30,11 +30,17 @@ noremap k gk
 nnoremap <space>i gt
 nnoremap <space>u gT
 
-" use <space> to switch between splits
+" use <space>hjkl to switch between splits
 nnoremap <space>h <C-w>h
 nnoremap <space>j <C-w>j
 nnoremap <space>k <C-w>k
 nnoremap <space>l <C-w>l
+
+" use <space>HJKL to move splits
+nnoremap <space>H <C-w>H
+nnoremap <space>J <C-w>J
+nnoremap <space>K <C-w>K
+nnoremap <space>L <C-w>L
 
 " Let's save undo info!
 if !isdirectory($HOME."/.vim")
