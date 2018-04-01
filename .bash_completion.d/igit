@@ -1,0 +1,40 @@
+_igit()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    local first=${COMP_WORDS[1]}
+    local second=${COMP_WORDS[2]}
+
+    case $COMP_CWORD in
+        1)
+            actions=`igit meta actions`
+            COMPREPLY=( $(compgen -W "meta $actions" -- $cur) )
+            return
+            ;;
+        2)
+            case $first in
+                meta)
+                    meta_actions=`igit meta meta_actions`
+                    COMPREPLY=( $(compgen -W "$meta_actions" -- $cur) )
+                    return
+                    ;;
+                *)
+                    devices=`igit meta devices`
+                    COMPREPLY=( $(compgen -W "$devices" -- $cur) )
+                    return
+                    ;;
+            esac
+            ;;    
+        3)
+            if [[ "$first" == diff ]]; then
+                diffs=`igit meta diffs "$second"`
+                [[ "$diffs" == "" ]] && return
+                COMPREPLY=( $(compgen -W "$diffs" -- $cur) )
+                return
+            fi
+            ;;
+        *)
+            return
+            ;;
+    esac
+}
+complete -F _igit igit
