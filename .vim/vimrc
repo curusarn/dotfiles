@@ -42,6 +42,9 @@ nnoremap <space>J <C-w>J
 nnoremap <space>K <C-w>K
 nnoremap <space>L <C-w>L
 
+" use <space>; as alternative for : 
+nnoremap <space>; :
+
 " Let's save undo info!
 if !isdirectory($HOME."/.vim")
     call mkdir($HOME."/.vim", "", 0770)
