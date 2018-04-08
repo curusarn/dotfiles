@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-~/git/rgit data session-exit
+~/git/remote-git/rgit.py data session-exit
 
