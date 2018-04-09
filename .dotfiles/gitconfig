@@ -1,5 +1,7 @@
 [core]
     editor = vim
+    autocrlf = input
+    excludesfile = ~/.dotfiles/gitignore
 
 [push]
     default = simple
