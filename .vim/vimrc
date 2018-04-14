@@ -1,3 +1,6 @@
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" BASIC CONFIG
+
 syntax on
 set number
 set autoindent
@@ -20,13 +23,20 @@ set scrolloff=15
 set tabpagemax=256
 
 " shorter timeout after ESC O
+" never wait again for openning a new line
 set ttimeoutlen=100
 
-" move up and down inside of wrapped lines
-noremap j gj
-noremap k gk
+" predefine whitespace chars for :set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
-" use <space> to switch tabs
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" KEYMAPPINGS 
+
+" move up and down inside of wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+" use <space>ui to switch tabs
 nnoremap <space>i gt
 nnoremap <space>u gT
 
@@ -42,6 +52,9 @@ nnoremap <space>J <C-w>J
 nnoremap <space>K <C-w>K
 nnoremap <space>L <C-w>L
 
+" """"""""""""""""""""""""""""""""""""
+" experimental KEYMAPPINGS
+
 " use <space>; as alternative for : 
 nnoremap <space>; :
 
@@ -49,6 +62,11 @@ nnoremap <space>; :
 nnoremap <space>w :w<return>
 nnoremap <space>wq :wq<return>
 nnoremap <space>wqa :wqa<return>
+
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UNDOFILE
+" persistent undo history
 
 " Let's save undo info!
 if !isdirectory($HOME."/.vim")
@@ -60,11 +78,17 @@ endif
 set undodir=~/.vim/undo-dir
 set undofile
 
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" HIGHLIGHT 81st CHARACTER
+
 " highlight long lines
 augroup vimrc_autocmds
     autocmd BufEnter * highlight OverLength ctermbg=darkred ctermfg=white
     autocmd BufEnter * match OverLength /\%81v./
 augroup END
+
+
 
 " highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 " match OverLength /\%81v.*/
@@ -73,6 +97,8 @@ augroup END
 " let &colorcolumn=join(range(81,81),",")
 
 
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MAKE SESSION - deprecated
 
 " mks! ~/.vim/sessions/ ... specfified or current session
 " wqa - optionally
@@ -106,15 +132,8 @@ command! -nargs=* M call s:MksFunc("-",<f-args>)
 " save session to specified of current session and quit and save all files
 command! -nargs=* Mq call s:MksFunc("quit",<f-args>) 
 
-
-" vimdiff syntax hotfix
-
-
-" predefine whitespace chars for :set list
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-
-
-
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VUNDLE
 
 " Vundle START
 set nocompatible              " be iMproved, required
@@ -123,22 +142,27 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'scrooloose/syntastic'
-Plugin 'Robitx/vim-yapf-autopep8'
+
+" Tpope goodies
+" Auto session tracker
+Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-eunuch'
+
+" Drag selected block
+Plugin 'shinokada/dragvisuals.vim'
+
+
+Plugin 'scrooloose/syntastic'
+
+" Plugin 'Robitx/vim-yapf-autopep8'
 " plugin from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
+" Plugin 'L9'
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
@@ -154,6 +178,32 @@ Plugin 'L9'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CONFIG Plugin 'scrooloose/syntastic'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_checkers = ['flake8']
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CONFIG Plugin 'shinokada/dragvisuals.vim'
+
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
+
+" Remove any introduced trailing whitespace after moving...
+let g:DVB_TrimWS = 1
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EOF
+
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -166,9 +216,10 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-let g:syntastic_check_on_open = 1
-let g:flake8_show_quickfix=1
-let g:syntastic_python_checkers = ['flake8']
+
+"let g:syntastic_check_on_open = 1
+"let g:flake8_show_quickfix=1
+"let g:syntastic_python_checkers = ['flake8']
 " let g:autopep8_disable_show_diff=1
 " "
 " let g:autopep8_ignore="E226,E24,W6,E309"
