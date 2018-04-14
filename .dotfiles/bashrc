@@ -11,7 +11,7 @@ alias cd..='cd ..'
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoredups:erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -20,6 +20,8 @@ shopt -s histappend
 HISTSIZE=100000
 HISTFILESIZE=100000
 
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
