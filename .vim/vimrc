@@ -36,8 +36,6 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 " KEYMAPPINGS 
 
 
-map! jj <ESC>
-
 " move up and down inside of wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -68,7 +66,6 @@ nnoremap <space>; :
 nnoremap <space>w :w<return>
 nnoremap <space>wq :wq<return>
 nnoremap <space>wqa :wqa<return>
-
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UNDOFILE
@@ -104,14 +101,17 @@ augroup END
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EDIT OUTPUT OF LAST CMD 
 
+" executes last command from bash history 
 function ReadPrevCmd()
     execute 'r! eval `cat ~/.bash_history | tail -n 1`'
 endfunction
 
+" executes current line and prints output
 function ReadCurrentLine()
     execute '%! x=`xargs` && eval "$x"'
 endfunction
 
+" enable Alt-; 
 execute "set <M-;>=\e;"
 nnoremap <M-;> :call ReadCurrentLine()<CR>
 
