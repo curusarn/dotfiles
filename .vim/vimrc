@@ -152,13 +152,22 @@ Plugin 'airblade/vim-gitgutter'
 " Tpope goodies
 " Auto session tracker
 Plugin 'tpope/vim-obsession'
+" Subvert command (shell expansion for replacing)
+Plugin 'tpope/vim-abolish'
+" SudoWrite and more useful commands
 Plugin 'tpope/vim-eunuch'
 
 " Drag selected block
 Plugin 'shinokada/dragvisuals.vim'
 
-
+" Scrooloose
+" Syntax checking
 Plugin 'scrooloose/syntastic'
+" NERDTree 
+Plugin 'scrooloose/nerdtree'
+
+" Use tab for completion
+Plugin 'ervandew/supertab'
 
 " Plugin 'Robitx/vim-yapf-autopep8'
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -200,6 +209,13 @@ vmap  <expr>  D        DVB_Duplicate()
 
 " Remove any introduced trailing whitespace after moving...
 let g:DVB_TrimWS = 1
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CONFIG Plugin 'scrooloose/nerdtree'
+
+" Show NERDTree if no files were specified 
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EOF
