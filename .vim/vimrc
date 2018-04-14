@@ -7,6 +7,9 @@ set autoindent
 set ignorecase
 set smartcase
 
+" highlight as I search
+set incsearch 
+
 " no .swp files
 set noswapfile
 
@@ -31,6 +34,9 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEYMAPPINGS 
+
+
+map! jj <ESC>
 
 " move up and down inside of wrapped lines
 nnoremap j gj
@@ -89,12 +95,25 @@ augroup vimrc_autocmds
 augroup END
 
 
-
 " highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 " match OverLength /\%81v.*/
 
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " let &colorcolumn=join(range(81,81),",")
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EDIT OUTPUT OF LAST CMD 
+
+function ReadPrevCmd()
+    execute 'r! eval `cat ~/.bash_history | tail -n 1`'
+endfunction
+
+function ReadCurrentLine()
+    execute '%! x=`xargs` && eval "$x"'
+endfunction
+
+execute "set <M-;>=\e;"
+nnoremap <M-;> :call ReadCurrentLine()<CR>
 
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
