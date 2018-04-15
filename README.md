@@ -44,7 +44,7 @@ This is the script I run every time I pull major dotfiles changes from git.
 This script creates includes in `.bashrc`, `.gitconfig`, installs vim plugins, detects installed distro and more. 
 
 ```bash
-dotfiles-tmp/.dotfiles/init.sh
+dotfiles-tmp/.dotfiles/setup.sh
 ```
 
 ### Create your own bare repo
