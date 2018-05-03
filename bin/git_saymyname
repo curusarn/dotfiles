@@ -1,5 +1,9 @@
 #!/bin/bash
 
-git config --global user.email "simon.a.let@gmail.com"
+echo "Welcome Simon Let."
+echo "Type your email please:"
+read email
+
+git config --global user.email "$email"
 git config --global user.name "Simon Let"
 
