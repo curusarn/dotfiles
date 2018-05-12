@@ -179,15 +179,21 @@ Plugin 'tpope/vim-eunuch'
 " Drag selected block
 Plugin 'shinokada/dragvisuals.vim'
 
+" Syntax checking
+Plugin 'w0rp/ale'
+
 " Scrooloose
 " Syntax checking
-Plugin 'scrooloose/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 " NERDTree 
 Plugin 'scrooloose/nerdtree'
 
 " Use tab for completion
 Plugin 'ervandew/supertab'
 
+" Edit stuff in new buffer
+"Plugin 'chrisbra/NrrwRgn'
+"
 " Plugin 'Robitx/vim-yapf-autopep8'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -209,13 +215,17 @@ filetype plugin indent on    " required
 
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CONFIG Plugin 'scrooloose/syntastic'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" CONFIG Plugin 'w0rp/ale'
+let g:ale_sign_error = '!'
+let g:ale_sign_warning = '?'
 
-let g:syntastic_python_checkers = ['flake8']
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_open_list = 1
+" Set this if you want to.
+" This can be useful if you are combining ALE with
+" some other plugin which sets quickfix errors, etc.
+"let g:ale_keep_list_window_open = 1
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CONFIG Plugin 'shinokada/dragvisuals.vim'
