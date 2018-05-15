@@ -64,8 +64,8 @@ nnoremap <space>; :
 
 " use <space>w as alternative for :w<return>
 nnoremap <space>w :w<return>
-nnoremap <space>wq :wq<return>
-nnoremap <space>wqa :wqa<return>
+nnoremap <space>q :wq<return>
+nnoremap <space>a :wqa<return>
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UNDOFILE
