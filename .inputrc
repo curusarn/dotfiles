@@ -12,6 +12,16 @@ set visible-stats on
 set page-completions off
 set skip-completed-text on
 
+# up/down arrow, searches history
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# j/k also searches history
+set keymap vi-command
+    "k":history-search-backward
+    "j":history-search-forward
+
+
 # A-; -> arrow up (gets last command), open editor
 "\e;":"\e[A\ev"
 
