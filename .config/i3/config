@@ -231,7 +231,7 @@ exec --no-startup-id /usr/bin/redshift
 exec --no-startup-id "/usr/bin/setxkbmap us -option caps:escape"
 
 # make modifier keys sticky 
-exec --no-startup-id "/usr/bin/xkbset sticky -twokey -latchlock"
+#exec --no-startup-id "/usr/bin/xkbset sticky -twokey -latchlock"
 
 # wallpaper
 exec --no-startup-id "~/.fehbg && sleep 1 && ~/.fehbg"

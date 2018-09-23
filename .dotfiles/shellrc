@@ -1,7 +1,6 @@
 #
 # ~/.dotfiles/shellrc
 #
-export TERM="xterm-256color"
 
 # most important alias - add ugly options because dotfiles is a bare repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
