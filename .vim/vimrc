@@ -99,6 +99,11 @@ augroup END
 " let &colorcolumn=join(range(81,81),",")
 
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" WHEN WINDOW IS RESIZED => RESIZE SPLITS TO BE EQUAL
+
+autocmd VimResized * wincmd =
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EDIT OUTPUT OF LAST CMD 
 
 " executes last command from bash history 
