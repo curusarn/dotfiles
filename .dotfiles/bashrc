@@ -1,7 +1,6 @@
 #
 # ~/.dotfiles/bashrc
 #
-source ~/.shellrc
 
 # aliases main - important ones
 alias v='vim'
@@ -80,6 +79,9 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# load git completion
+. /usr/share/bash-completion/completions/git
+# use git completion for dotfiles
 eval "$(complete -p git) dotfiles"
 
 function nonzero_return() {
