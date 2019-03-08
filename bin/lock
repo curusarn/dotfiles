@@ -1,3 +1,21 @@
 #!/bin/bash
 
-i3lock -c 000000
+color=000000
+
+if acpi | grep -q "Discharging" 2>/dev/null; then
+    # dont show fancy screensaver when not pluged-in
+    i3lock -c $color 
+fi
+
+if ! xscreensaver-command -v; then
+    # xscreensaver is not installed
+    i3lock -c $color 
+fi
+
+if [[ ! -d /opt/ATV4 ]]; then
+    # fancy screensaver is not installed
+    i3lock -c $color 
+fi
+
+# show fancy screensaver
+xscreensaver-command -lock

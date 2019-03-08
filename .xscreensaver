@@ -1,8 +1,8 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.42 for curusarn on Fri Mar  8 14:32:15 2019.
+# Written by xscreensaver-demo 5.42 for curusarn on Fri Mar  8 16:33:31 2019.
 # https://www.jwz.org/xscreensaver/
 
-timeout:	0:10:00
+timeout:	12:00:00
 cycle:		0:10:00
 lock:		False
 lockTimeout:	0:00:00
@@ -17,19 +17,19 @@ demoCommand:	xscreensaver-demo
 prefsCommand:	xscreensaver-demo -prefs
 nice:		10
 memoryLimit:	0
-fade:		False
+fade:		True
 unfade:		False
-fadeSeconds:	0:00:01
+fadeSeconds:	0:00:02
 fadeTicks:	20
 captureStderr:	True
 ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
-dpmsEnabled:	True
+dpmsEnabled:	False
 dpmsQuickOff:	False
 dpmsStandby:	0:10:00
 dpmsSuspend:	0:30:00
 dpmsOff:	4:00:00
-grabDesktopImages:  True
+grabDesktopImages:  False
 grabVideoFrames:    False
 chooseRandomImages: False
 imageDirectory:	
