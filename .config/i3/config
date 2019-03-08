@@ -161,7 +161,7 @@ bindsym $mod+Shift+r restart
 
 set $mode_system (l)ock, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec lock, mode "default"
+    bindsym l exec ~/bin/lock, mode "default"
     bindsym r exec "session-exit; systemctl reboot", mode "default"
     bindsym Shift+s exec "session-exit; systemctl poweroff", mode "default"
 

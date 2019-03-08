@@ -2,19 +2,19 @@
 
 color=000000
 
-if acpi | grep -q "Discharging" 2>/dev/null; then
+if acpi 2>/dev/null | grep -q "Discharging"; then
     # dont show fancy screensaver when not pluged-in
     i3lock -c $color 
     exit 0
 fi
 
-if ! xscreensaver-text >/dev/null; then
+if ! xscreensaver-text &>/dev/null; then
     # xscreensaver is not installed
     i3lock -c $color 
     exit 0
 fi
 
-if ! xscreensaver-command -v >/dev/null; then
+if ! xscreensaver-command -v &>/dev/null; then
     # xscreensaver is not running
     i3lock -c $color 
     exit 0
@@ -27,4 +27,4 @@ if [[ ! -d /opt/ATV4 ]]; then
 fi
 
 # show fancy screensaver
-xscreensaver-command -lock
+xscreensaver-command -lock 
