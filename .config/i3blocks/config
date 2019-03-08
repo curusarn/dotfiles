@@ -7,6 +7,13 @@ command=$HOME/bin/layout-switcher i3blocks
 interval=60
 color=#03A9F4
 
+# Spotify icon \uF1BC
+[spotify]
+label=
+command=$HOME/bin/i3blocks/spotify
+interval=5
+color=#81b71a
+
 [disk-home]
 label= 
 command=$HOME/.distro_paths/DISTRO/i3blocks/disk $HOME
