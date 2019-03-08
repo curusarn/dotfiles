@@ -8,8 +8,14 @@ if acpi | grep -q "Discharging" 2>/dev/null; then
     exit 0
 fi
 
-if ! xscreensaver-command -v; then
+if ! xscreensaver-text >/dev/null; then
     # xscreensaver is not installed
+    i3lock -c $color 
+    exit 0
+fi
+
+if ! xscreensaver-command -v >/dev/null; then
+    # xscreensaver is not running
     i3lock -c $color 
     exit 0
 fi

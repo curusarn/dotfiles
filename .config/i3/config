@@ -242,6 +242,9 @@ exec --no-startup-id nm-applet
 # notifications
 exec --no-startup-id dunst
 
+# notifications
+exec --no-startup-id xscreensaver
+
 # rclone
 exec --no-startup-id "~/bin/myrclone mount-gdrive"
 
