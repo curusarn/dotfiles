@@ -9,11 +9,44 @@ alias v='vim'
 # alaises typos
 alias cd..='cd ..'
 
+# most important alias - add ugly options because dotfiles is a bare repo
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-if [[ $TERM == xterm-termite ]]; then
-	. /etc/profile.d/vte.sh
-	__vte_prompt_command
-fi
+# variables
+PATH=~/stbin:$PATH:~/bin
+GOPATH=`go env GOPATH`
+PATH=$PATH:$GOPATH/bin
+EDITOR=/usr/bin/vim
+BROWSER=~/.distro_paths/DISTRO/chromium
+
+# Alias definitions.
+# aliases extra - colors & stuff
+alias ls='ls -CF --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+alias ll='ls -alF --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+alias la='ls -A --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+
+alias grep='grep --color=tty -d skip'
+alias cp="cp -i"                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias cath='tail -vn +1'                  # cat with filenames as headers
+alias scrot='scrot -e "[ -e ~/shots ] || mkdir ~/shots && mv \$f ~/shots/ 2>&1 | grep -v \"are the same file\" >&2"'  # save shots to ~/shots
+alias ranger='source ranger'              # stay in directory after exiting 
+alias ncdu='ncdu -x'                      # do not cross filesystems - I want to free up space on one specific medium
+
+wim () { 
+    # open executable files in path easily
+    if [ $# -eq 1 ]; then 
+        vim `which "$1"`
+    else
+        vim $@
+    fi
+}
+
+
+# if [[ $TERM == xterm-termite ]]; then
+# 	. /etc/profile.d/vte.sh
+# 	__vte_prompt_command
+# fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -47,6 +80,7 @@ if ! shopt -oq posix; then
     fi
 fi
 
+eval "$(complete -p git) dotfiles"
 
 function nonzero_return() {
     RETVAL=$?
