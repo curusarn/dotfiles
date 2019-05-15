@@ -31,3 +31,25 @@ set keymap vi-command
 #set keymap vi-command
 #set vi-cmd-mode-string "\1\e[1;31m\2:\1\e[0m\2"
 #set vi-ins-mode-string \1\e[6 q\2
+
+
+# from sensible https://github.com/mrzool/bash-sensible/blob/master/sensible.bash
+# Enable history expansion with space
+# E.g. typing !!<space> will replace the !! with your last command
+Space:magic-space
+ 
+# from sensible https://github.com/mrzool/bash-sensible/blob/master/sensible.bash
+## SMARTER TAB-COMPLETION (Readline bindings) ##
+
+# Perform file completion in a case insensitive fashion
+set completion-ignore-case on
+
+# Treat hyphens and underscores as equivalent
+set completion-map-case on
+
+# Immediately add a trailing slash when autocompleting symlinks to directories
+set mark-symlinked-directories on
+
+"\e[C": forward-char
+"\e[D": backward-char
+

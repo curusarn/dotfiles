@@ -224,9 +224,6 @@ exec --no-startup-id ~/bin/default_arandr.sh
 # clipboard manager
 exec --no-startup-id /usr/bin/parcellite
 
-# red screen at night
-exec --no-startup-id /usr/bin/redshift
-
 # set us layout, +option capslock -> escape 
 exec --no-startup-id "/usr/bin/setxkbmap us -option caps:escape"
 
@@ -242,9 +239,12 @@ exec --no-startup-id nm-applet
 # notifications
 exec --no-startup-id dunst
 
-# xscreensaver
-exec --no-startup-id "xscreensaver -nosplash"
+# notifications
+exec --no-startup-id "xscreensaver -no-splash"
 
 # rclone
 exec --no-startup-id "~/bin/myrclone mount-gdrive"
+
+# redshift - assume Prague
+exec --no-startup-id "redshift -l 50:14.4"
 

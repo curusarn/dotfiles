@@ -2,6 +2,9 @@
 # ~/.dotfiles/bashrc
 #
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 # aliases main - important ones
 alias v='vim'
 
@@ -13,7 +16,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # variables
 PATH=~/stbin:$PATH:~/bin
-GOPATH=`go env GOPATH`
+GOPATH=$(go env GOPATH)
 PATH=$PATH:$GOPATH/bin
 EDITOR=/usr/bin/vim
 BROWSER=~/.distro_paths/DISTRO/chromium
@@ -35,7 +38,7 @@ alias ncdu='ncdu -x'                      # do not cross filesystems - I want to
 wim () { 
     # open executable files in path easily
     if [ $# -eq 1 ]; then 
-        vim `which "$1"`
+        vim $(which "$1")
     else
         vim $@
     fi
@@ -47,6 +50,25 @@ TERM="xterm-color"
 # 	__vte_prompt_command
 # fi
 
+# from sensible https://github.com/mrzool/bash-sensible/blob/master/sensible.bash
+## GENERAL OPTIONS ##
+
+# Prevent file overwrite on stdout redirection
+# Use `>|` to force redirection to an existing file
+#set -o noclobber
+
+# Update window size after every command
+shopt -s checkwinsize
+
+# Automatically trim long paths in the prompt (requires Bash 4.x)
+PROMPT_DIRTRIM=2
+
+# Turn on recursive globbing (enables ** to recurse all directories)
+shopt -s globstar 2> /dev/null
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth:erasedups
@@ -54,13 +76,43 @@ HISTCONTROL=ignoreboth:erasedups
 # append to the history file, don't overwrite it
 shopt -s histappend
 
+# from sensible https://github.com/mrzool/bash-sensible/blob/master/sensible.bash
+## SANE HISTORY DEFAULTS ##
+
+# Save multi-line commands as one command
+shopt -s cmdhist
+
+# Huge history. Doesn't appear to slow things down, so why not?
+#HISTSIZE=500000
+#HISTFILESIZE=100000
+
+# Don't record some commands
+#export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
+
+# Use this timestamp
+# %F equivalent to %Y-%m-%d
+# %T equivalent to %H:%M:%S (24-hours format)
+HISTTIMEFORMAT='%F %T '
+
+
+# from sensible https://github.com/mrzool/bash-sensible/blob/master/sensible.bash
+## BETTER DIRECTORY NAVIGATION ##
+
+# Prepend cd to directory names automatically
+shopt -s autocd 2> /dev/null
+# Correct spelling errors during tab-completion
+shopt -s dirspell 2> /dev/null
+# Correct spelling errors in arguments supplied to cd
+shopt -s cdspell 2> /dev/null
+
+
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-export HISTSIZE=-1
-export HISTFILESIZE=-1
+# unlimited
+HISTSIZE=-1
+HISTFILESIZE=-1
 #HISTTIMEFORMAT="%F %T [device]: "
 
-# Save and reload the history after each command finishes
-PROMPT_COMMAND="history -a;"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -80,7 +132,7 @@ if ! shopt -oq posix; then
 fi
 
 # load git completion
-. /usr/share/bash-completion/completions/git
+source /usr/share/bash-completion/completions/git
 # use git completion for dotfiles
 eval "$(complete -p git) dotfiles"
 
@@ -89,5 +141,11 @@ function nonzero_return() {
     [ $RETVAL -ne 0 ] && echo "$RETVAL"
 }
 
+# source git __git_ps1
+source /usr/share/git/git-prompt.sh
+
 export PS1="\[\e[34;1m\]\u\[\e[m\]@\[\e[31;1m\]\h\[\e[m\]:\[\e[33;1m\]\W\[\e[m\]\`__git_ps1\` $\[\e[31m\]\`nonzero_return\`\[\e[m\] "
+
+# Record each line as it gets issued
+export PROMPT_COMMAND='history -a'
 
