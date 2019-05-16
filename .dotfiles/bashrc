@@ -15,9 +15,10 @@ alias cd..='cd ..'
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # variables
-export PATH=~/stbin:$PATH:~/bin
 EDITOR=/usr/bin/vim
 BROWSER=~/.distro_paths/DISTRO/chromium
+export PATH=~/stbin:$PATH:~/bin
+export GOPATH=$HOME/go
 
 export PATH="$PATH:$HOME/npm/bin"
 export NODE_PATH="$HOME/npm/lib/node_modules"
@@ -58,7 +59,7 @@ wim () {
     fi
 }
 
-TERM="xterm-color"
+TERM="xterm-256color"
 # if [[ $TERM == xterm-termite ]]; then
 # 	. /etc/profile.d/vte.sh
 # 	__vte_prompt_command
@@ -156,7 +157,10 @@ function nonzero_return() {
 }
 
 # source git __git_ps1
-source /usr/share/git/git-prompt.sh
+if [ -r /usr/share/git/git-prompt.sh ]; then
+    source /usr/share/git/git-prompt.sh
+fi
+    
 
 PS1="\[\e[34;1m\]\u\[\e[m\]@\[\e[31;1m\]\h\[\e[m\]:\[\e[33;1m\]\W\[\e[m\]\`__git_ps1\` $\[\e[31m\]\`nonzero_return\`\[\e[m\] "
 
