@@ -15,11 +15,16 @@ alias cd..='cd ..'
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # variables
-PATH=~/stbin:$PATH:~/bin
-GOPATH=$(go env GOPATH)
-PATH=$PATH:$GOPATH/bin
+export PATH=~/stbin:$PATH:~/bin
 EDITOR=/usr/bin/vim
 BROWSER=~/.distro_paths/DISTRO/chromium
+
+export PATH="$PATH:$HOME/npm/bin"
+export NODE_PATH="$HOME/npm/lib/node_modules"
+
+# we don't need gopath - we have gomodules now
+#GOPATH=$(go env GOPATH)
+#PATH=$PATH:$GOPATH/bin
 
 # Alias definitions.
 # aliases extra - colors & stuff
