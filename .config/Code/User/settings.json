@@ -1,0 +1,16 @@
+{
+    "go.useLanguageServer": true,
+    "vim.statusBarColorControl": true,
+    "vim.useSystemClipboard": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
+    "editor.renderWhitespace": "none",
+    "breadcrumbs.enabled": true,
+    "editor.renderControlCharacters": false,
+    "files.associations": {
+        "bashrc": "shellscript"
+    }
+}
