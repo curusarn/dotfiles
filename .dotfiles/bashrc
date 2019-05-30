@@ -23,9 +23,18 @@ BROWSER=~/.distro_paths/DISTRO/chromium
 
 # Alias definitions.
 # aliases extra - colors & stuff
-alias ls='ls -CF --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
-alias ll='ls -alF --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
-alias la='ls -A --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+if exa --version >/dev/null; then
+    alias ls='exa'
+    alias ll='exa --long --git --header'
+    alias la='exa --long --git --header --all'
+    alias lt='exa --long --git --header --tree'
+    alias lt='exa --long --git --header --tree'
+else
+    alias ls='ls -CF --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+    alias ll='ls -alF --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+    alias la='ls -A --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
+    alias lt='tree'
+fi
 
 alias grep='grep --color=tty -d skip'
 alias cp="cp -i"                          # confirm before overwriting something
@@ -144,7 +153,7 @@ function nonzero_return() {
 # source git __git_ps1
 source /usr/share/git/git-prompt.sh
 
-export PS1="\[\e[34;1m\]\u\[\e[m\]@\[\e[31;1m\]\h\[\e[m\]:\[\e[33;1m\]\W\[\e[m\]\`__git_ps1\` $\[\e[31m\]\`nonzero_return\`\[\e[m\] "
+PS1="\[\e[34;1m\]\u\[\e[m\]@\[\e[31;1m\]\h\[\e[m\]:\[\e[33;1m\]\W\[\e[m\]\`__git_ps1\` $\[\e[31m\]\`nonzero_return\`\[\e[m\] "
 
 # Record each line as it gets issued
 export PROMPT_COMMAND='history -a'
