@@ -1,90 +1,107 @@
 // Place your key bindings in this file to override the defaults
 [
+    // use capslock as escape in editor in vim
     {
         "key": "capslock",
         "command": "extension.vim_escape",
         "when": "editorTextFocus && vim.active && !inDebugRepl"
     },
+    // WARN: capslock + ? chords - don't mess the "when" conditions - you need the capslock to work in insert mode
+    // move around with capslock + hjkl
     {
-        "key": "space h",
-        "command": "workbench.action.navigateLeft"
+        "key": "capslock h",
+        "command": "workbench.action.navigateLeft",
+        "when": "vim.active && vim.mode != 'Insert'"
     },
     {
-        "key": "space l",
-        "command": "workbench.action.navigateRight"
+        "key": "capslock l",
+        "command": "workbench.action.navigateRight",
+        "when": "vim.active && vim.mode != 'Insert'"
     },
     {
-        "key": "space j",
-        "command": "workbench.action.navigateDown"
+        "key": "capslock j",
+        "command": "workbench.action.navigateDown",
+        "when": "vim.active && vim.mode != 'Insert'"
     },
     {
-        "key": "space k",
-        "command": "workbench.action.navigateUp"
+        "key": "capslock k",
+        "command": "workbench.action.navigateUp",
+        "when": "vim.active && vim.mode != 'Insert'"
+    },
+    // navigate tabs with capslock + ui and capslock + y
+    {
+        "key": "capslock u",
+        "command": "workbench.action.previousEditor",
+        "when": "vim.active && vim.mode != 'Insert'"
     },
     {
-        "key": "space u",
-        "command": "workbench.action.previousEditor"
+        "key": "capslock i",
+        "command": "workbench.action.nextEditor",
+        "when": "vim.active && vim.mode != 'Insert'"
     },
+    {
+        "key": "capslock y",
+        "command": "workbench.action.openNextRecentlyUsedEditorInGroup",
+        "when": "vim.active && vim.mode != 'Insert'"
+    },
+    // view stuff in the menu on the left with capslock + efgdx
+    {
+        "key": "capslock e",
+        "command": "workbench.view.explorer",
+        "when": "vim.active && vim.mode != 'Insert'"
+    },
+    {
+        "key": "capslock f",
+        "command": "workbench.view.search",
+        "when": "!searchViewletVisible && vim.active && vim.mode != 'Insert'"
+    },
+    {
+        "key": "capslock g",
+        "command": "workbench.view.scm",
+        "when": "vim.active && vim.mode != 'Insert'"
+    },
+    {
+        "key": "capslock d",
+        "command": "workbench.view.debug",
+        "when": "vim.active && vim.mode != 'Insert'"
+    },
+    {
+        "key": "capslock x",
+        "command": "workbench.view.extensions",
+        "when": "vim.active && vim.mode != 'Insert'"
+    },
+    // original keybindings
     {
         "key": "ctrl+pageup",
         "command": "-workbench.action.previousEditor"
-    },
-    {
-        "key": "space i",
-        "command": "workbench.action.nextEditor"
     },
     {
         "key": "ctrl+pagedown",
         "command": "-workbench.action.nextEditor"
     },
     {
-        "key": "space y",
-        "command": "workbench.action.openNextRecentlyUsedEditorInGroup"
-    },
-    {
         "key": "ctrl+tab",
         "command": "-workbench.action.openNextRecentlyUsedEditorInGroup"
-    },
-    {
-        "key": "space e",
-        "command": "workbench.view.explorer"
     },
     {
         "key": "ctrl+shift+e",
         "command": "-workbench.view.explorer"
     },
     {
-        "key": "space d",
-        "command": "workbench.view.debug"
-    },
-    {
-        "key": "ctrl+shift+d",
-        "command": "-workbench.view.debug"
-    },
-    {
-        "key": "space x",
-        "command": "workbench.view.extensions"
-    },
-    {
-        "key": "ctrl+shift+x",
-        "command": "-workbench.view.extensions"
-    },
-    {
-        "key": "space g",
-        "command": "workbench.view.scm"
+        "key": "ctrl+shift+f",
+        "command": "-workbench.view.search",
+        "when": "!searchViewletVisible"
     },
     {
         "key": "ctrl+shift+g",
         "command": "-workbench.view.scm"
     },
     {
-        "key": "space f",
-        "command": "workbench.view.search",
-        "when": "!searchViewletVisible"
+        "key": "ctrl+shift+d",
+        "command": "-workbench.view.debug"
     },
     {
-        "key": "ctrl+shift+f",
-        "command": "-workbench.view.search",
-        "when": "!searchViewletVisible"
+        "key": "ctrl+shift+x",
+        "command": "-workbench.view.extensions"
     }
 ]
