@@ -12,6 +12,7 @@
         "bashrc": "shellscript"
     },
 
+    "zenMode.hideStatusBar": false,
     "vim.useSystemClipboard": true,
     "vim.statusBarColorControl": true,
     "vim.leader": "<space>",
@@ -34,6 +35,30 @@
         {
             "before": ["<leader>", "g"],
             "commands": ["workbench.view.scm"]
+        },
+        {
+            "before": ["<leader>", "h"],
+            "commands": ["workbench.action.navigateLeft"]
+        },
+        {
+            "before": ["<leader>", "l"],
+            "commands": ["workbench.action.navigateRight"]
+        },
+        {
+            "before": ["<leader>", "i"],
+            "commands": ["workbench.action.nextEditor"]
+        },
+        {
+            "before": ["<leader>", "u"],
+            "commands": ["workbench.action.previousEditor"]
+        },
+        {
+            "before": ["<leader>", "p"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["<leader>", "z"],
+            "commands": ["workbench.action.toggleZenMode"]
         },
         {
             "before": ["<C-n>"],

@@ -6,6 +6,11 @@
         "command": "extension.vim_escape",
         "when": "editorTextFocus && vim.active && !inDebugRepl"
     },
+    {
+        "key": "capslock",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "!editorTextFocus && vim.active && !inDebugRepl"
+    },
     // WARN: capslock + ? chords - don't mess the "when" conditions - you need the capslock to work in insert mode
     // move around with capslock + hjkl
     // {
