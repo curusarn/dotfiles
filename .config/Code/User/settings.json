@@ -1,7 +1,5 @@
 {
     "go.useLanguageServer": true,
-    "vim.statusBarColorControl": true,
-    "vim.useSystemClipboard": true,
     "workbench.colorCustomizations": {
         "statusBar.background": "#005f5f",
         "statusBar.noFolderBackground": "#005f5f",
@@ -12,5 +10,69 @@
     "editor.renderControlCharacters": false,
     "files.associations": {
         "bashrc": "shellscript"
-    }
+    },
+
+    "vim.useSystemClipboard": true,
+    "vim.statusBarColorControl": true,
+    "vim.leader": "<space>",
+    //"vim.easymotion": true,
+    //"vim.sneak": true,
+    //"vim.incsearch": true,
+    //"vim.useCtrlKeys": false,
+    //"vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [";", ";"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "e"],
+            "commands": ["workbench.view.explorer"]
+        },
+        {
+            "before": ["<leader>", "g"],
+            "commands": ["workbench.view.scm"]
+        },
+        {
+            "before": ["<C-n>"],
+            "commands": [":nohl"]
+        },
+        // {
+        //     "before": [ ">" ],
+        //     "commands": [ "editor.action.indentLines" ]
+        // },
+        // {
+        //     "before": [ "<" ],
+        //     "commands": [ "editor.action.outdentLines" ]
+        // },
+    ],
+    "vim.handleKeys": {
+        "<C-v>": true,
+        "<C-a>": false,
+        "<C-f>": false
+    },
+//    "vim.normalModeKeyBindingsNonRecursive": [ {
+//            "before": ["u"],
+//            "after": [],
+//            "commands": [
+//                {
+//                    "command": "undo",
+//                    "args": []
+//                }
+//
+//            ]
+//        },
+//        {
+//            "before": ["<C-r>"],
+//            "after": [],
+//            "commands": [
+//                {
+//                    "command": "redo",
+//                    "args": []
+//                }
+//            ]
+//        }
+//    ]
 }

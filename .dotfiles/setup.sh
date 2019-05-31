@@ -73,21 +73,8 @@ addInclude '.shellrc' 'shellrc' 'source ~/.dotfiles/shellrc' \
            '# added by .dotfiles/init.sh\nsource ~/.dotfiles/shellrc'
 
 
-## vim
-# clone vundle because it could be broken
-mkdir -p ~/.vim/bundle 2>/dev/null
-cd ~/.vim/bundle
-rm -rf Vundle.vim
-git clone https://github.com/VundleVim/Vundle.vim.git
-
-# install plugins
-vim +PluginInstall +qall
-
 # detect distro and setup distro_paths
 cd ~/.distro_paths
 distro=`~/bin/detect-distro.sh`
 echo "Distro detected: $distro"
 ln --force --symbolic "$distro" "DISTRO" 
-
-
-
