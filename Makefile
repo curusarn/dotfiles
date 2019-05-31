@@ -24,5 +24,5 @@ code_extensions:
 	cat ${VSCODE_EXTENSIONS} | while read ex; do code --install-extension $$ex; done
 	# update dotfiles
 	code --list-extensions > ${VSCODE_EXTENSIONS_TMP}
-	cat ${VSCODE_EXTENSIONS} >> ${VSCODE_EXTENSIONS_TMP} \
+	cat ${VSCODE_EXTENSIONS} >> ${VSCODE_EXTENSIONS_TMP}
 	cat ${VSCODE_EXTENSIONS_TMP} | uniq > ${VSCODE_EXTENSIONS}
