@@ -1,80 +1,93 @@
 // Place your key bindings in this file to override the defaults
 [
-    // use capslock as escape in editor in vim
+    // use alt as escape in editor in vim
+    //{
+    //    "key": "meta+space",
+    //    "command": "extension.vim_escape"
+    //},
+    // move around with alt + hjkl
     {
-        "key": "capslock",
-        "command": "extension.vim_escape",
-        "when": "editorTextFocus && vim.active && !inDebugRepl"
+        "key": "alt+h",
+        "command": "workbench.action.navigateLeft",
     },
     {
-        "key": "capslock",
-        "command": "workbench.action.focusFirstEditorGroup",
-        "when": "!editorTextFocus && vim.active && !inDebugRepl"
+        "key": "alt+l",
+        "command": "workbench.action.navigateRight",
     },
-    // WARN: capslock + ? chords - don't mess the "when" conditions - you need the capslock to work in insert mode
-    // move around with capslock + hjkl
-    // {
-    //     "key": "capslock h",
-    //     "command": "workbench.action.navigateLeft",
-    //     "when": "vim.active && vim.mode != 'Insert'"
-    // },
-    // {
-    //     "key": "capslock l",
-    //     "command": "workbench.action.navigateRight",
-    //     "when": "vim.active && vim.mode != 'Insert'"
-    // },
-    // {
-    //     "key": "capslock j",
-    //     "command": "workbench.action.navigateDown",
-    //     "when": "vim.active && vim.mode != 'Insert'"
-    // },
-    // {
-    //     "key": "capslock k",
-    //     "command": "workbench.action.navigateUp",
-    //     "when": "vim.active && vim.mode != 'Insert'"
-    // },
-    // // navigate tabs with capslock + ui and capslock + y
-    // {
-    //     "key": "capslock u",
-    //     "command": "workbench.action.previousEditor",
-    //     "when": "vim.active && vim.mode != 'Insert'"
-    // },
-    // {
-    //     "key": "capslock i",
-    //     "command": "workbench.action.nextEditor",
-    //     "when": "vim.active && vim.mode != 'Insert'"
-    // },
-    // {
-    //     "key": "capslock y",
-    //     "command": "workbench.action.openNextRecentlyUsedEditorInGroup",
-    //     "when": "vim.active && vim.mode != 'Insert'"
-    // },
-    // // view stuff in the menu on the left with capslock + efgdx
-    // {
-    //     "key": "capslock e",
-    //     "command": "workbench.view.explorer",
-    //     "when": "vim.active && vim.mode != 'Insert'"
-    // },
-    // {
-    //     "key": "capslock f",
-    //     "command": "workbench.view.search",
-    //     "when": "!searchViewletVisible && vim.active && vim.mode != 'Insert'"
-    // },
-    // {
-    //     "key": "capslock g",
-    //     "command": "workbench.view.scm",
-    //     "when": "vim.active && vim.mode != 'Insert'"
-    // },
-    // {
-    //     "key": "capslock d",
-    //     "command": "workbench.view.debug",
-    //     "when": "vim.active && vim.mode != 'Insert'"
-    // },
-    // {
-    //     "key": "capslock x",
-    //     "command": "workbench.view.extensions",
-    //     "when": "vim.active && vim.mode != 'Insert'"
-    // },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.navigateUp",
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.navigateDown",
+        "when": "activePanel != 'workbench.panel.markers'"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.focusPanel",
+        "when": "activePanel == 'workbench.panel.markers'"
+    },
+    // cycle tabs with alt + ui when in editor
+    {
+        "key": "alt+u",
+        "command": "workbench.action.previousEditor",
+        "when": "!sideBarFocus"
+    },
+    {
+        "key": "alt+i",
+        "command": "workbench.action.nextEditor",
+        "when": "!sideBarFocus"
+    },
+    // cycle items in menu with alt + ui
+    {
+        "key": "alt+u",
+        "command": "workbench.action.previousSideBarView",
+        "when": "sideBarFocus"
+    },
+    {
+        "key": "alt+i",
+        "command": "workbench.action.nextSideBarView",
+        "when": "sideBarFocus"
+    },
+    // for some reason expolorer -> extension didn't work out of the box
+    {
+        "key": "alt+u",
+        "command": "workbench.view.extensions",
+        "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+    },
+    // cycle tabs in panel with alt + ui
+    {
+        "key": "alt+u",
+        "command": "workbench.action.previousPanelView",
+        "when": "panelFocus"
+    },
+    {
+        "key": "alt+i",
+        "command": "workbench.action.nextPanelView",
+        "when": "panelFocus"
+    },
+    // view stuff in the menu on the left with alt++ efgdx
+    {
+        "key": "alt+e",
+        "command": "workbench.view.explorer",
+    },
+    {
+        "key": "alt+f",
+        "command": "workbench.view.search",
+    },
+    {
+        "key": "alt+g",
+        "command": "workbench.view.scm",
+    },
+    {
+        "key": "alt+d",
+        "command": "workbench.view.debug",
+    },
+    {
+        "key": "alt+x",
+        "command": "workbench.view.extensions",
+    },
     // original keybindings
     {
         "key": "ctrl+pageup",
@@ -108,5 +121,41 @@
     {
         "key": "ctrl+shift+x",
         "command": "-workbench.view.extensions"
-    }
+    },
+    {
+        "key": "alt+m",
+        "command": "workbench.action.togglePanel"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+    },
+    {
+        "key": "alt+n",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "alt+,",
+        "command": "workbench.action.toggleZenMode"
+    },
+    {
+        "key": "ctrl+k z",
+        "command": "-workbench.action.toggleZenMode"
+    },
+    {
+        "key": "alt+o",
+        "command": "workbench.action.splitEditorRight"
+    },
+    {
+        "key": "alt+q",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
 ]

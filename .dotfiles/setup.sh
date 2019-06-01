@@ -78,3 +78,6 @@ cd ~/.distro_paths
 distro=`~/bin/detect-distro.sh`
 echo "Distro detected: $distro"
 ln --force --symbolic "$distro" "DISTRO" 
+
+# set system layout to us caps:super using systemd 
+sudo localectl set-x11-keymap us caps:super
