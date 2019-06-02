@@ -34,4 +34,4 @@ code_extensions:
 	# update dotfiles
 	code --list-extensions > ${VSCODE_EXTENSIONS_TMP}
 	cat ${VSCODE_EXTENSIONS} >> ${VSCODE_EXTENSIONS_TMP}
-	cat ${VSCODE_EXTENSIONS_TMP} | uniq > ${VSCODE_EXTENSIONS}
+	cat ${VSCODE_EXTENSIONS_TMP} | sort -u > ${VSCODE_EXTENSIONS}
