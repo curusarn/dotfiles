@@ -4,6 +4,7 @@ VSCODE_EXTENSIONS_TMP=/tmp/vscode_extensions.txt
 
 all:
 	make setup
+	make keyboard_layouts
 	make code_extensions
 	make vim_extensions
 
@@ -16,6 +17,7 @@ keyboard_layouts:
 	sudo cp -f ~/.dotfiles/udev-99-xkb-keyboard-layout-reload.rules /etc/udev/rules.d/99-xkb-keyboard-layout-reload.rules
 	sudo udevadm control --reload
 	# run script to set default layout (with sudo to test if it works)
+	# YOU WILL NEED TO INSTALL XCAPE https://github.com/alols/xcape
 	sudo /home/${USER}/bin/layout-reload
 
 vim_extensions:
