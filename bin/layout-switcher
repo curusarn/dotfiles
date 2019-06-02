@@ -11,11 +11,11 @@ layout="$(setxkbmap -query | grep layout | cut -d' ' -f6 | tr /a-z/ /A-Z/)"
 
 case $layout in
     "US")
-        setxkbmap -layout cz -variant qwerty -option caps:escape
+        ~/bin/layout-cz-qwerty-capssuper-xcape_superesc
         echo "CZ"
         ;;
     *)
-        setxkbmap us -option caps:escape
+        ~/bin/layout-us-capssuper-xcape_superesc
         echo "US"
         ;;
 esac

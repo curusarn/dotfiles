@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# set layout to us
+# caps works as super/meta
+setxkbmap cz -variant qwerty -option caps:super
+# single press of super/meta/caps works as escape
+killall xcape 2>/dev/null; xcape -e 'Super_L=Escape'

@@ -1,0 +1,2 @@
+SUBSYSTEM=="input", ACTION=="add", RUN+="/usr/local/bin/xkb-keyboard-layout-reload.sh"
+SUBSYSTEM=="input", ACTION=="remove", RUN+="/usr/local/bin/xkb-keyboard-layout-reload.sh"

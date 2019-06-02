@@ -224,11 +224,8 @@ exec --no-startup-id ~/bin/default_arandr.sh
 # clipboard manager
 exec --no-startup-id /usr/bin/parcellite
 
-# set us layout, +option capslock -> escape 
-exec --no-startup-id "/usr/bin/setxkbmap us -option caps:escape"
-
-# make modifier keys sticky 
-#exec --no-startup-id "/usr/bin/xkbset sticky -twokey -latchlock"
+# set layout 
+exec --no-startup-id ~/bin/layout-reload
 
 # wallpaper
 exec --no-startup-id "~/.fehbg && sleep 1 && ~/.fehbg"
@@ -243,7 +240,7 @@ exec --no-startup-id dunst
 exec --no-startup-id "xscreensaver -no-splash"
 
 # rclone
-exec --no-startup-id "~/bin/myrclone mount-gdrive"
+# exec --no-startup-id "~/bin/myrclone mount-gdrive"
 
 # redshift - assume Prague
 exec --no-startup-id "redshift -l 50:14.4"

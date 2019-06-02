@@ -10,6 +10,14 @@ all:
 setup:
 	.dotfiles/setup.sh
 
+keyboard_layouts:
+	# setup udev rule that reloads keyboard layout when input device is (dis)connected
+	sudo echo -e "#!/usr/bin/env bash\n/home/${USER}/bin/layout-reload &" | sudo tee /usr/local/bin/xkb-keyboard-layout-reload.sh >/dev/null
+	sudo cp -f ~/.dotfiles/udev-99-xkb-keyboard-layout-reload.rules /etc/udev/rules.d/99-xkb-keyboard-layout-reload.rules
+	sudo udevadm control --reload
+	# run script to set default layout (with sudo to test if it works)
+	sudo /home/${USER}/bin/layout-reload
+
 vim_extensions:
 	# clone vundle because it could be broken
 	mkdir -p ~/.vim/bundle 2>/dev/null

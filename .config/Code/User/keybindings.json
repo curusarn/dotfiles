@@ -158,4 +158,8 @@
         "key": "ctrl+w",
         "command": "-workbench.action.closeActiveEditor"
     },
+    {
+        "key": "alt+/",
+        "command": "notifications.clearAll"
+    },
 ]
