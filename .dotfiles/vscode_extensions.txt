@@ -4,3 +4,10 @@ ms-vscode.Go
 shakram02.bash-beautify
 shd101wyy.markdown-preview-enhanced
 vscodevim.vim
+zhuangtongfa.Material-theme
+mads-hartmann.bash-ide-vscode
+ms-python.python
+ms-vscode.Go
+shakram02.bash-beautify
+shd101wyy.markdown-preview-enhanced
+vscodevim.vim

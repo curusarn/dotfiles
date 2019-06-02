@@ -58,10 +58,11 @@
         "<C-a>": false,
         "<C-f>": false
     },
-    "window.menuBarVisibility": "hidden",
     "workbench.editor.tabSizing": "shrink",
     "zenMode.hideLineNumbers": false,
     "debug.inlineValues": true,
+    "window.titleBarStyle": "custom",
+    "workbench.colorTheme": "One Dark Pro Bold",
 //    "vim.normalModeKeyBindingsNonRecursive": [ {
 //            "before": ["u"],
 //            "after": [],
