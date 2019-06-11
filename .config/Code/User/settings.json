@@ -19,7 +19,7 @@
     //"vim.easymotion": true,
     //"vim.sneak": true,
     //"vim.incsearch": true,
-    //"vim.useCtrlKeys": false,
+    "vim.useCtrlKeys": true,
     //"vim.hlsearch": true,
     "vim.insertModeKeyBindings": [
         {
@@ -63,6 +63,7 @@
     "debug.inlineValues": true,
     "window.titleBarStyle": "custom",
     "workbench.colorTheme": "One Dark Pro Bold",
+    "editor.autoClosingBrackets": "never",
 //    "vim.normalModeKeyBindingsNonRecursive": [ {
 //            "before": ["u"],
 //            "after": [],
