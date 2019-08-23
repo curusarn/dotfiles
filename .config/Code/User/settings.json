@@ -14,12 +14,7 @@
 
     "zenMode.hideStatusBar": false,
     "vim.useSystemClipboard": true,
-    "vim.statusBarColorControl": true,
     "vim.leader": "\\",
-    //"vim.easymotion": true,
-    //"vim.sneak": true,
-    //"vim.incsearch": true,
-    "vim.useCtrlKeys": true,
     //"vim.hlsearch": true,
     "vim.insertModeKeyBindings": [
         {
