@@ -57,7 +57,7 @@
     "zenMode.hideLineNumbers": false,
     "debug.inlineValues": true,
     "window.titleBarStyle": "custom",
-    "workbench.colorTheme": "One Dark Pro Bold",
+    "workbench.colorTheme": "One Dark Pro",
     "editor.autoClosingBrackets": "never",
 //    "vim.normalModeKeyBindingsNonRecursive": [ {
 //            "before": ["u"],
