@@ -59,6 +59,8 @@
 
     # `git push` aliases.
     ps = push                       # Push.
+    pst = push --tags                     # Push.
+    psu = push --set-upstream origin HEAD # Push with set upstream to origin / current branch
     #phm = push heroku master        # Push to Heroku.
 
     ## `git rebase` aliases.
