@@ -101,6 +101,9 @@ alias scrot='scrot -e "[ -e ~/shots ] || mkdir ~/shots && mv \$f ~/shots/ 2>&1 |
 # most important alias - add ugly options because dotfiles is a bare repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# you dont want to know why this is here (hint: caps->escape, hint2: !!)
+# alias OA='fc -e : -1'
+
 # pure prompt
 fpath+=("$HOME/.zsh/pure")
 autoload -U promptinit; promptinit
