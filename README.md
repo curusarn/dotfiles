@@ -109,3 +109,17 @@ lightweigth gui file browser
 ncurses tool that helps you figure out why is your disk space gone
 
 
+## Setup step-by-step
+
+### Chrome
+
+1. Install Chrome
+1. Log into 1Password website
+1. Log into Chrome
+1. Log into 1Password
+1. Get SSH keys, set file permissions for keys to 600
+
+### Dotfiles
+
+1. Install git and yadm
+1. 
