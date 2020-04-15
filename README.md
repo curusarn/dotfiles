@@ -109,3 +109,71 @@ lightweigth gui file browser
 ncurses tool that helps you figure out why is your disk space gone
 
 
+## Setup step-by-step
+
+### Setup
+
+1. Update
+1. Reboot
+
+### Manjaro hello
+
+1. Check default apps
+    - Install all fonts
+    - Uninstall contact app
+1. Set Layout to Gnome (via Manjaro Hello)
+1. Do not launch manjaro hello on start
+
+### Nvidia - this is why we can't have nice things
+
+1. Check display settings 
+1. install xorg-xdpyinfo
+1. mess around with displays
+1. give up 
+
+### Gnome settings
+
+1. Naturall scrolling
+
+### Yay
+
+1. Install all base-devel: `pacman -S base-devel` 
+1. Install yay
+    - `git clone https://aur.archlinux.org/yay.git`
+    - `cd yay`
+    - `makepkg -si`
+
+### Chrome
+
+1. Install Chrome
+    - `yay -S google-chrome`
+1. Log into 1Password website
+1. Log into Chrome
+1. Log into 1Password
+1. Log into all 100 extensions
+1. Download wallpaper and avatar
+1. Get SSH keys
+
+### SSH
+
+1. Set file permissions for SSH keys to 600
+
+### 
+
+### Gnome tweaks
+
+1. Do nothing when the lid is closed
+    - General
+1. Dark theme (Matcha-dark-sea / whatever-is-default-dark)
+    - Appearance
+1. Set wallpaper
+    - Appearance
+1. Make Capslock additional Super
+    - Keyboard & Mouse > Additional Layout Options
+1. ??? 8 Static workspaces
+    - Workspaces
+
+### Dotfiles
+
+1. Install git and yadm
+1. 
