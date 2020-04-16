@@ -5,7 +5,7 @@
 #
 
 ### ENV
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
 export GIT_EDITOR="$EDITOR"
 export USE_EDITOR="$EDITOR"
 

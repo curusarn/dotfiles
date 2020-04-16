@@ -2,6 +2,7 @@
 # ~/dotfiles/bashrc
 #
 
+. ~/dotfiles/shell-common
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
