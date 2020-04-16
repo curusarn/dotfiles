@@ -1,8 +1,12 @@
+#
+# ~/dotfiles/zshrc
+# 
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/curusarn/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -105,8 +109,11 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # alias OA='fc -e : -1'
 
 # pure prompt
-fpath+=("$HOME/.zsh/pure")
+fpath+=("$HOME/dotfiles/submodules/pure")
 autoload -U promptinit; promptinit
 prompt pure
+
+# disable fuzzy tab completion
+zstyle ":completion:*" matcher-list ''
 
 [ -f ~/.resh/shellrc ] && source ~/.resh/shellrc # this line was added by RESH (Rich Enchanced Shell History)

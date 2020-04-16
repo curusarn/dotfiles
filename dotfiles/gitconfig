@@ -10,41 +10,36 @@
         
 [alias]
 
-    ## simple aliases
-    #co = checkout
-    #br = branch
-    #ci = commit
-    #st = status
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 
     # stolen aliases from github.com/rdegges/dot-git
 
     # `git add` aliases.
     a = add                         # Add.
-    aa = add --all                  # Stage all files recursively.
-    ap = add --patch                # Stage commits by chunk.
+    #aa = add --all                  # Stage all files recursively.
+    #ap = add --patch                # Stage commits by chunk.
 
     # `git branch` aliases.
-    b = branch -v                   # Verbose branch.
-    br = branch -v                  # Verbose branch.
+    #b = branch -v                   # Verbose branch.
+    #br = branch -v                  # Verbose branch.
 
     # `git commit` aliases.
     c = commit -m                   # Commit with message.
     ca = commit -am                 # Commit all with message.
-    ci = commit                     # Commit.
+    #ci = commit                     # Commit.
     amend = commit --amend -m       # Amend last commit.
 
     # `git checkout` aliases.
-    co = checkout                   # Checkout.
-    nb = checkout -b                # Create a new branch, and switch to it.
+    #co = checkout                   # Checkout.
+    #nb = checkout -b                # Create a new branch, and switch to it.
 
     # `git cherry-pick` aliases.
-    cp = cherry-pick -x             # Grab a change from a branch.
+    #cp = cherry-pick -x             # Grab a change from a branch.
 
     # `git diff` aliases.
-    d = diff                        # Diff unstaged changes.
-    dc = diff --cached              # Diff staged changes.
-    last = diff HEAD^               # Diff last committed changes.
+    #d = diff                        # Diff unstaged changes.
+    #dc = diff --cached              # Diff staged changes.
+    #last = diff HEAD^               # Diff last committed changes.
 
     # `git log` aliases.
     log = log --decorate --graph --date=short
@@ -61,8 +56,7 @@
     ps = push                       # Push.
     pst = push --tags                     # Push.
     psu = push --set-upstream origin HEAD # Push with set upstream to origin / current branch
-    #phm = push heroku master        # Push to Heroku.
-
+    
     ## `git rebase` aliases.
     #rc = rebase --continue          # Continue rebase.
     #rs = rebase --skip              # Skip rebase.
@@ -87,4 +81,4 @@
     st = status                     # Status.
 
     # `git tag` aliases.
-    t = tag -n                      # Show tags with <n> lines of each tag message.
+    #t = tag -n                      # Show tags with <n> lines of each tag message.

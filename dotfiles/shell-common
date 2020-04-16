@@ -1,0 +1,41 @@
+#
+# ~/dotfiles/shell-common
+# 
+# This file is meant to be sourced from (~/dotifles/)bashrc and (~/dotifles/)zshrc
+#
+
+### ENV
+export EDITOR=/usr/bin/vim
+export GIT_EDITOR="$EDITOR"
+export USE_EDITOR="$EDITOR"
+
+export PAGER=less
+
+export MAKEFLAGS="-j $(nproc)"
+
+which google-chrome-stable &>/dev/null && export BROWSER=$(which google-chrome-stable)
+
+PATH="$PATH:$HOME/bin"
+# export GOPATH=$HOME/go
+# GOPATH=$(go env GOPATH)
+# PATH=$PATH:$GOPATH/bin
+# export PATH="$PATH:$HOME/npm/bin"
+# export NODE_PATH="$HOME/npm/lib/node_modules"
+
+
+### ALIASES
+# functional
+alias ranger='source ranger'              # stay in directory after exiting 
+alias ncdu='ncdu -x'                      # do not cross filesystems - I want to free up space on one specific medium
+
+# alias grep='grep --color=tty -d skip'
+# alias cp="cp -i"                          # confirm before overwriting something
+# alias df='df -h'                          # human-readable sizes
+# alias cath='tail -vn +1'                  # cat with filenames as headers
+# alias scrot='scrot -e "[ -e ~/shots ] || mkdir ~/shots && mv \$f ~/shots/ 2>&1 | grep -v \"are the same file\" >&2"'  # save shots to ~/shots
+
+
+# typos
+alias cd..='cd ..'
+
+

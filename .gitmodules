@@ -1,0 +1,6 @@
+[submodule "dotfiles/submodules/hyper-snazzy-gnome-terminal"]
+	path = dotfiles/submodules/hyper-snazzy-gnome-terminal
+	url = https://github.com/tobark/hyper-snazzy-gnome-terminal.git
+[submodule "dotfiles/submodules/pure"]
+	path = dotfiles/submodules/pure
+	url = https://github.com/sindresorhus/pure.git

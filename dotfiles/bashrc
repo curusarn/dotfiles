@@ -1,69 +1,11 @@
 #
-# ~/.dotfiles/bashrc
+# ~/dotfiles/bashrc
 #
+
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# aliases main - important ones
-alias v='vim'
-
-# alaises typos
-alias cd..='cd ..'
-
-# most important alias - add ugly options because dotfiles is a bare repo
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-# variables
-EDITOR=/usr/bin/vim
-BROWSER=~/.distro_paths/DISTRO/chromium
-export PATH=~/stbin:$PATH:~/bin
-export GOPATH=$HOME/go
-
-export PATH="$PATH:$HOME/npm/bin"
-export NODE_PATH="$HOME/npm/lib/node_modules"
-
-# we don't need gopath - we have gomodules now
-#GOPATH=$(go env GOPATH)
-#PATH=$PATH:$GOPATH/bin
-
-# Alias definitions.
-# aliases extra - colors & stuff
-if exa --version &>/dev/null; then
-    alias ls='exa'
-    alias ll='exa --long --git --header'
-    alias la='exa --long --git --header --all'
-    alias lt='exa --long --git --header --tree'
-    alias lt='exa --long --git --header --tree'
-else
-    alias ls='ls -CF --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
-    alias ll='ls -alF --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
-    alias la='ls -A --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto'
-    alias lt='tree'
-fi
-
-alias grep='grep --color=tty -d skip'
-alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
-alias cath='tail -vn +1'                  # cat with filenames as headers
-alias scrot='scrot -e "[ -e ~/shots ] || mkdir ~/shots && mv \$f ~/shots/ 2>&1 | grep -v \"are the same file\" >&2"'  # save shots to ~/shots
-alias ranger='source ranger'              # stay in directory after exiting 
-alias ncdu='ncdu -x'                      # do not cross filesystems - I want to free up space on one specific medium
-
-wim () { 
-    # open executable files in path easily
-    if [ $# -eq 1 ]; then 
-        vim $(which "$1")
-    else
-        vim $@
-    fi
-}
-
-TERM="xterm-256color"
-# if [[ $TERM == xterm-termite ]]; then
-# 	. /etc/profile.d/vte.sh
-# 	__vte_prompt_command
-# fi
 
 # from sensible https://github.com/mrzool/bash-sensible/blob/master/sensible.bash
 ## GENERAL OPTIONS ##
@@ -121,12 +63,14 @@ shopt -s dirspell 2> /dev/null
 shopt -s cdspell 2> /dev/null
 
 
-
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 # unlimited
 HISTSIZE=-1
 HISTFILESIZE=-1
 #HISTTIMEFORMAT="%F %T [device]: "
+
+# Record each line as it gets issued
+export PROMPT_COMMAND='$PROMPT_COMMAND; history -a'
 
 
 # enable programmable completion features (you don't need to enable
@@ -146,10 +90,11 @@ if ! shopt -oq posix; then
     fi
 fi
 
+
 # load git completion
-source /usr/share/bash-completion/completions/git
+# source /usr/share/bash-completion/completions/git
 # use git completion for dotfiles
-eval "$(complete -p git) dotfiles"
+# eval "$(complete -p git) dotfiles"
 
 function nonzero_return() {
     RETVAL=$?
@@ -157,13 +102,10 @@ function nonzero_return() {
 }
 
 # source git __git_ps1
-if [ -r /usr/share/git/git-prompt.sh ]; then
-    source /usr/share/git/git-prompt.sh
-fi
-    
+# if [ -r /usr/share/git/git-prompt.sh ]; then
+#     source /usr/share/git/git-prompt.sh
+# fi 
 
-PS1="\[\e[34;1m\]\u\[\e[m\]@\[\e[31;1m\]\h\[\e[m\]:\[\e[33;1m\]\W\[\e[m\]\`__git_ps1\` $\[\e[31m\]\`nonzero_return\`\[\e[m\] "
+# PS1="\[\e[34;1m\]\u\[\e[m\]@\[\e[31;1m\]\h\[\e[m\]:\[\e[33;1m\]\W\[\e[m\]\`__git_ps1\` $\[\e[31m\]\`nonzero_return\`\[\e[m\] "
 
-# Record each line as it gets issued
-export PROMPT_COMMAND='history -a'
 

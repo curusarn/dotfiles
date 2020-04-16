@@ -176,4 +176,14 @@ ncurses tool that helps you figure out why is your disk space gone
 ### Dotfiles
 
 1. Install git and yadm
-1. 
+1. yadm clone, yadm bootstrap
+1. make install_packages
+1. make install_oh-my-zsh
+1. make install_resh
+
+### Gnome terminal
+
+1. create a dummy profile for gnome-terminal (otherwise hyper-snazzy breaks https://github.com/tobark/hyper-snazzy-gnome-terminal/issues/3)
+1. make install_hyper-snazzy
+1. Set hyper-snazzy as default theme
+

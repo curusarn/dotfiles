@@ -1,0 +1,10 @@
+alefragnani.rtf
+DavidAnson.vscode-markdownlint
+mads-hartmann.bash-ide-vscode
+ms-python.python
+ms-vscode.cpptools
+ms-vscode.Go
+shakram02.bash-beautify
+shd101wyy.markdown-preview-enhanced
+vscodevim.vim
+zhuangtongfa.Material-theme
