@@ -98,7 +98,13 @@ TODO: write somthing here
 1. Set avatar
     - User
 
+### Applications
 
+1. Install applications
+    - `make install_apps`
+1. Set Favourite apps
+    - `make set_gnome_favourite-apps`
+1. 
 
 
 

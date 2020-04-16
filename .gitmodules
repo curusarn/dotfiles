@@ -4,3 +4,6 @@
 [submodule "dotfiles/submodules/pure"]
 	path = dotfiles/submodules/pure
 	url = https://github.com/sindresorhus/pure.git
+[submodule ".local/share/gnome-shell/extensions/windowoverlay-icons@sustmidown.centrum.cz"]
+	path = .local/share/gnome-shell/extensions/windowoverlay-icons@sustmidown.centrum.cz
+	url = https://github.com/sustmi/gnome-shell-extension-windowoverlay-icons.git
