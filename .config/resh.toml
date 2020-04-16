@@ -1,0 +1,7 @@
+Port = 2627
+SesswatchPeriodSeconds = 120
+SesshistInitHistorySize = 1000
+Debug = false
+BindArrowKeysBash = false
+BindArrowKeysZsh = true
+BindControlR = true
