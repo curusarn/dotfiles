@@ -32,7 +32,7 @@ TODO: write somthing here
 
 ### Yay
 
-1. Install all base-devel: `pacman -S base-devel` 
+1. Install all base-devel: `sudo pacman -S base-devel` 
 1. Install yay
     - `git clone https://aur.archlinux.org/yay.git`
     - `cd yay`
