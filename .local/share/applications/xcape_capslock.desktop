@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Xcape Caps Lock
+Comment=Maps caps lock tap to escape
+Exec=xcape -t 300 -e 'Super_L=Escape'
+Type=Application

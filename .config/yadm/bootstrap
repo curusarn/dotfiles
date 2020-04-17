@@ -1,0 +1,84 @@
+#!/bin/bash
+
+err () {
+    printf "%s [ERROR]: %s\n" "$0" "$1" >&2
+    exit 1
+}
+
+# adds include $4 to config file $1 if $3 is not present
+addInclude () {
+    includeTo="$1"
+    backupTo="$2"
+    grepStr="$3"
+    addStr="$4"
+
+    [[ $# -lt 4 ]] && err "not enough arguments for addInclude() function."
+
+    printf "Checking/adding include directive to <%s>\n" "$1"
+
+    if [[ ! -d dotfiles/bak ]]; then
+        printf "directory <dotfiles/bak> does not exist - creating\n"
+        mkdir dotfiles/bak
+    fi
+
+    if [[ ! -f "$includeTo" ]]; then
+        printf "file <%s> does not exist - creating\n" "$includeTo"
+        touch "$includeTo"
+    fi
+
+    # if not already included
+    if ! echo `cat "$includeTo"` | grep -q "$grepStr"; then
+        # backup with timestamp
+        cp "$includeTo" "dotfiles/bak/${backupTo}"_`date "+%F_%T"`
+        config=`cat "$includeTo"`
+        echo -e "${addStr}\n${config}" > "$includeTo"
+    fi
+}
+
+cd
+
+echo "Updating the yadm repo origin URL ..."
+yadm remote set-url origin "git@github.com:curusarn/dotfiles.git"
+
+echo "Init submodules ..."
+yadm submodule sync --recursive 
+yadm submodule update --init --recursive
+
+
+### CONFIG INCLUDES
+
+# init gitconfig
+if [[ ! -f ".gitconfig" ]]; then
+    echo "There is no git config *** Please tell me who you are"
+    printf 'read email && git config --global user.email "$email" # "you@example.com"\n'
+    read email && git config --global user.email "$email" # "you@example.com"
+    printf 'read name && git config --global user.name "$name" # "Your Name"\n'
+    read name && git config --global user.name "$name" # "Your Name"
+fi
+
+# git global config
+addInclude '.gitconfig' 'gitconfig' \
+           '\[include\][^\[\]]*path = dotfiles/gitconfig' \
+           '[include]\n    path = dotfiles/gitconfig'
+
+
+## REMOTE SYNCED DOTFILES
+## every file includes it's remote version
+# bashrc -> remote
+addInclude '.bashrc' 'bashrc' \
+           'source ~/dotfiles/bashrc' \
+           '# added by dotfiles-bootstrap\nsource ~/dotfiles/bashrc'
+
+# zshrc -> remote
+addInclude '.zshrc' 'zshrc' \
+           'source ~/dotfiles/zshrc' \
+           '# added by dotfiles-bootstrap\nsource ~/dotfiles/zshrc'
+
+# shellrc -> remote
+# addInclude '.shellrc' 'shellrc' \
+#            'source ~/dotfiles/shellrc' \
+#            '# added by dotfiles-bootstrap\nsource ~/dotfiles/shellrc'
+
+
+# set system layout to us caps:super using systemd 
+# sudo localectl set-x11-keymap us caps:super
