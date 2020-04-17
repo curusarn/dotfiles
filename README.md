@@ -77,6 +77,11 @@ TODO: write somthing here
 1. make install_resh
 1. make install_* 
 
+### Gnome tweaks
+
+1. Run xcape on start up
+    - Startup applications > Xcape caps_escape
+
 ### Gnome terminal
 
 1. create a dummy profile for gnome-terminal (otherwise hyper-snazzy breaks https://github.com/tobark/hyper-snazzy-gnome-terminal/issues/3)
