@@ -92,8 +92,9 @@ Keyboard customizations: Capslock=Super, Short press Super/Caps -> Escape, Super
 
 ### Dotfiles
 
-1. Install git and yadm
+1. Install git
     - `sudo pacman -S git`
+1. Install yadm
     - `yay -S yadm`
 1. yadm clone, yadm bootstrap
 1. make install_packages
