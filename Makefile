@@ -11,14 +11,14 @@ all:
 
 bootstrap:
 	yadm bootstrap 
-	# .config/yadm/bootstrap
+	# runs .config/yadm/bootstrap
 
 install_packages:
 	sudo pacman -S --needed bash-completion zsh-completions
-	sudo pacman -S --needed tig
 	sudo pacman -S --needed neovim
-	sudo pacman -S --needed neofetch
 	sudo pacman -S --needed xcape
+	sudo pacman -S --needed tig fzf
+	sudo pacman -S --needed neofetch
 
 install_apps:
 	yay -S telegram-destop
