@@ -1,11 +1,29 @@
 # Dotfiles
 
-TODO: write somthing here
+These are my dotfiles.
 
+And this is an inclomplete list of what I use:
 
-COMMIT: xcape, bootstrap
+OS: Manjaro  
+DE: Gnome  
+Terminal: gnome-terminal (with desktop file patched to always open fullscreen)  
+Terminal theme: hyper-snazzy  
+Shell: zsh with oh-my-zsh  
+Prompt: pure  
+Browser: Chome  
+Password manager: 1password  
+Dotfiles manager: yadm  
+Shell history: resh  
+Editor: vscode with neovim  
+Vscode theme: One Dark Pro  
+Gnome extensions: Overlay icons, Switcher, Put windows, Sound IO Chooser, Clipboard Indicator  
+Gnome configuration: heavily customized  
+Keyboard customizations: Capslock=Super, Short press Super/Caps -> Escape, Super/Caps+space -> Gnome overlay  
+
 
 ## Setup step-by-step
+
+*This was written to be followed by me (use at your own risk)*
 
 ### Setup
 
@@ -59,7 +77,7 @@ COMMIT: xcape, bootstrap
 
 1. Do nothing when the lid is closed
     - General
-1. Dark theme (Matcha-dark-sea / whatever-is-default-dark)
+1. Dark theme (Matcha-dark-sea / whatever is default +dark)
     - Appearance
 1. Set wallpaper
     - Appearance
@@ -113,7 +131,7 @@ COMMIT: xcape, bootstrap
     - `make install_apps`
 1. Set Favourite apps
     - `make set_gnome_favourite-apps`
-1. 
+1. Log into apps
 
 ### Gnome extensions
 
@@ -122,5 +140,6 @@ COMMIT: xcape, bootstrap
 1. Enable Extensions
     - Overlay icons, Switcher, Put windows, Sound IO Chooser, Clipboard Indicator
 1. Import settings
+    - `make set_gnome_ ...`
     - `make set_gnome_extension_ ...`
 
