@@ -17,7 +17,7 @@ Shell history: resh
 Editor: vscode with neovim  
 Vscode theme: One Dark Pro  
 Gnome extensions: Overlay icons, Switcher, Put windows, Sound IO Chooser, Clipboard Indicator  
-Gnome configuration: heavily customized  
+Gnome configuration and keyboard shortcuts: heavily customized  
 Keyboard customizations: Capslock=Super, Short press Super/Caps -> Escape, Super/Caps+space -> Gnome overlay  
 
 
