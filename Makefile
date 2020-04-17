@@ -21,7 +21,7 @@ install_packages:
 	sudo pacman -S --needed xcape
 
 install_apps:
-	sudo pacman -S --needed telegram-destop
+	yay -S telegram-destop
 	yay -S spotify
 
 install_oh-my-zsh: submodules
@@ -56,9 +56,15 @@ set_gnome_favourite-apps:
 	gsettings set org.gnome.shell favorite-apps \
 	"['org.gnome.Terminal.desktop', 'google-chrome.desktop', 'visual-studio-code.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop', 'telegramdesktop.desktop']"
 
+# TODO: save_gnome_favourite-apps:
+# 	gsettings get ... > some_file
+# 	# TODO: chnage set_gnome_favourite-apps
+
 set_gnome_wm:
 	# turn off a single key overlay to free caps_lock for escape on tap
 	gsettings set org.gnome.mutter overlay-key "" 
+	# just in case they change the default
+	gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>s']"
 
 	# switch to last window effectively
 	gsettings set org.gnome.shell.window-switcher current-workspace-only false
