@@ -118,7 +118,6 @@ set_gnome_extension_put-window: ${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21
 	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-north "['']"
 	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-east "['<Super>l']"
 	
-	
 schemadir_sw := ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi/schemas
 set_gnome_extension_switcher: ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi 
 	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-switcher "['<Super>w']"
@@ -159,9 +158,10 @@ submodules:
 gnome_extensions: ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centrum.cz \
 		${GNOME_EXTENSIONS_ROOT}/sound-output-device-chooser@kgshank.net \
 		${GNOME_EXTENSIONS_ROOT}/clipboard-indicator@tudmotu.com \
-		${GNOME_EXTENSIONS_ROOT}/paperwm@hedning\:matrix.org \
 		${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi \
 		${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21.org
+	# ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning\:matrix.org \
+
 	
 	cd ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centrum.cz \
 		&& git pull \
@@ -174,7 +174,7 @@ gnome_extensions: ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centru
 	cd ${GNOME_EXTENSIONS_ROOT}/clipboard-indicator@tudmotu.com \
 		&& git pull
 	
-	cd ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning:matrix.org \
+	# cd ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning:matrix.org \
 		&& git pull
 
 	cd ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi \
@@ -197,10 +197,6 @@ ${GNOME_EXTENSIONS_ROOT}/sound-output-device-chooser@kgshank.net:
 ${GNOME_EXTENSIONS_ROOT}/clipboard-indicator@tudmotu.com:
 	git clone https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git $@
 
-${GNOME_EXTENSIONS_ROOT}/paperwm@hedning\:matrix.org:
-	git clone https://github.com/paperwm/PaperWM.git $@
-
-
 ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi:
 	git clone https://github.com/daniellandau/switcher.git $@
 
@@ -208,6 +204,9 @@ ${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21.org:
 	sudo pacman -S libwnck3
 	git clone https://github.com/negesti/gnome-shell-extensions-negesti.git $@
 	
-install_paperwm: ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning\:matrix.org
-	cd ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning:matrix.org \
-		&& ./install.sh
+# ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning\:matrix.org:
+# 	git clone https://github.com/paperwm/PaperWM.git $@
+# 
+# install_paperwm: ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning\:matrix.org
+# 	cd ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning:matrix.org \
+# 		&& ./install.sh

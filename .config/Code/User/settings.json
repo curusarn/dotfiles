@@ -1,0 +1,5 @@
+{
+    "workbench.colorTheme": "One Dark Pro",
+    "vscode-neovim.neovimPath": "/usr/bin/nvim",
+    "oneDarkPro.bold": true
+}
