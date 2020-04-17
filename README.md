@@ -39,6 +39,10 @@ Keyboard customizations: Capslock=Super, Short press Super/Caps -> Escape, Super
 1. Set Layout to Gnome (via Manjaro Hello)
 1. Do not launch manjaro hello on start
 
+### Manjaro settings
+
+1. Install GPU drivers (maybe fixes issues from the next section)
+
 ### Nvidia - this is why we can't have nice things
 
 1. Check display settings 
