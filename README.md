@@ -106,6 +106,11 @@ TODO: write somthing here
     - `make set_gnome_favourite-apps`
 1. 
 
+### Gnome extensions
 
-
+1. Install and build
+    - `make gnome_extensions`
+1. Enable Extensions
+1. Import settings
+    - `make set_gnome_extension_ ...`
 
