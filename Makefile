@@ -64,7 +64,7 @@ set_gnome_wm:
 	# turn off a single key overlay to free caps_lock for escape on tap
 	gsettings set org.gnome.mutter overlay-key "" 
 	# just in case they change the default
-	gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>s', '<Super>o']"
+	gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>s', '<Super>a','<Super>space']"
 
 	# switch to last window effectively
 	gsettings set org.gnome.shell.window-switcher current-workspace-only false
@@ -97,6 +97,18 @@ set_gnome_wm:
 	gsettings set org.gnome.desktop.wm.keybindings minimize "[]" 
 	gsettings set org.gnome.desktop.wm.keybindings maximize "[]"
 
+schemadir_sw := ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi/schemas
+set_gnome_extension_switcher: ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi 
+	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-switcher "['<Super>w', '<Super>o']"
+	# ???
+	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-launcher "['<Super>e', '<Super>p']"
+
+	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher icon-size "uint32 18"
+	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher font-size "uint32 18"
+	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher max-width-percentage "uint32 60"
+	# use numbers to activate windows
+	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher activate-by-key "uint32 2"
+
 set_gnome_terminal:
 	# disable annoying confirmation
 	gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
@@ -118,18 +130,6 @@ set_gnome_extension_put-window: ${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21
 	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-north "['']"
 	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-east "['<Super>l']"
 	
-schemadir_sw := ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi/schemas
-set_gnome_extension_switcher: ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi 
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-switcher "['<Super>w']"
-	# ???
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-launcher "['<Super>e']"
-
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher icon-size "uint32 18"
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher font-size "uint32 18"
-	# use numbers to activate windows
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher activate-by-key "uint32 2"
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher max-width-percentage "uint32 60"
-
 	
 install_resh:
 	curl -fsSL https://raw.githubusercontent.com/curusarn/resh/master/scripts/rawinstall.sh | bash
