@@ -45,6 +45,7 @@ install_patch_gnome-terminal-desktop:
 	# 	rm ~/.local/share/applications/org.gnome.Terminal.desktop
 	# 	update-desktop-database ~/.local/share/applications
 	update-desktop-database ~/.local/share/applications
+	# you might need to restart gnome using Alt+F2 > r
 	# NOTE: maybe wait for a little bit
 	# NOTE2: do not lock yourself out ;)
 
