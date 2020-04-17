@@ -4,11 +4,6 @@ VSCODE_EXTENSIONS_TMP=/tmp/vscode_extensions.txt
 GNOME_EXTENSIONS_ROOT=~/.local/share/gnome-shell/extensions
 
 
-all:
-	make bootstrap
-	make code_extensions
-	make vim_extensions
-
 bootstrap:
 	yadm bootstrap 
 	# runs .config/yadm/bootstrap
@@ -21,6 +16,7 @@ install_packages:
 	sudo pacman -S --needed neofetch
 
 install_apps:
+	yay -S visual-studio-code-bin
 	yay -S telegram-destop
 	yay -S spotify
 
