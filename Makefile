@@ -56,11 +56,19 @@ set_gnome_favourite-apps:
 # 	gsettings get ... > some_file
 # 	# TODO: chnage set_gnome_favourite-apps
 
-set_gnome_wm:
+set_gnome: set_gnome_wm set_gnome_terminal \
+	set_gnome_extension_switcher set_gnome_extension_window-overlay-icons set_gnome_extension_put-window
+
+set_gnome_wm: 
 	# turn off a single key overlay to free caps_lock for escape on tap
 	gsettings set org.gnome.mutter overlay-key "" 
 	# just in case they change the default
 	gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>s', '<Super>a','<Super>space']"
+	gsettings set org.gnome.shell.keybindings toggle-application-view "[]"
+
+	# free up <Super>space
+	gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>z', 'XF86Keyboard']"
+	gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Shift><Alt>z', '<Shift>XF86Keyboard']"
 
 	# switch to last window effectively
 	gsettings set org.gnome.shell.window-switcher current-workspace-only false
@@ -90,13 +98,12 @@ set_gnome_wm:
 	gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Super>period']"
 	gsettings set org.gnome.desktop.wm.keybindings toggle-maximized "['<Super>m', '<Super>f']"
 
-	gsettings set org.gnome.desktop.wm.keybindings minimize "[]" 
+	gsettings set org.gnome.desktop.wm.keybindings minimize "['<Super>slash']" 
 	gsettings set org.gnome.desktop.wm.keybindings maximize "[]"
 
 schemadir_sw := ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi/schemas
 set_gnome_extension_switcher: ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi 
 	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-switcher "['<Super>w', '<Super>o']"
-	# ???
 	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-launcher "['<Super>e', '<Super>p']"
 
 	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher icon-size "uint32 18"
@@ -104,10 +111,20 @@ set_gnome_extension_switcher: ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi
 	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher max-width-percentage "uint32 60"
 	# use numbers to activate windows
 	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher activate-by-key "uint32 2"
+	# order by relevance
+	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher ordering "uint32 1"
+	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher never-show-onboarding true
 
+schema_gnometerminalkeybindings := org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/
 set_gnome_terminal:
 	# disable annoying confirmation
 	gsettings set org.gnome.Terminal.Legacy.Settings confirm-close false
+	gsettings set ${schema_gnometerminalkeybindings} paste "['<Ctrl><Shift>v', '<Super>v']"
+	gsettings set ${schema_gnometerminalkeybindings} next-tab "['<Alt>i>']"
+	gsettings set ${schema_gnometerminalkeybindings} prev-tab "['<Alt>u>']"
+	# free up
+	gsettings set org.gnome.shell.keybindings focus-active-notification "['<Super>n']"
+	gsettings set org.gnome.shell.keybindings toggle-message-tray "['<Super>b']"
 
 schemadir_woi := ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centrum.cz/schemas
 set_gnome_extension_window-overlay-icons: ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centrum.cz
