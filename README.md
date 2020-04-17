@@ -120,6 +120,7 @@ COMMIT: xcape, bootstrap
 1. Install and build
     - `make gnome_extensions`
 1. Enable Extensions
+    - Overlay icons, Switcher, Put windows, Sound IO Chooser, Clipboard Indicator
 1. Import settings
     - `make set_gnome_extension_ ...`
 
