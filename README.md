@@ -69,6 +69,8 @@ TODO: write somthing here
 ### Dotfiles
 
 1. Install git and yadm
+    - `sudo pacman -S git`
+    - `yay -S yadm`
 1. yadm clone, yadm bootstrap
 1. make install_packages
 1. make install_oh-my-zsh
