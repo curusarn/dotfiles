@@ -1,0 +1,14 @@
+// Place your key bindings in this file to override the defaults
+[
+    // cycle tabs with alt + ui when in editor
+    {
+        "key": "alt+u",
+        "command": "workbench.action.previousEditor",
+        "when": "!sideBarFocus"
+    },
+    {
+        "key": "alt+i",
+        "command": "workbench.action.nextEditor",
+        "when": "!sideBarFocus"
+    }
+]

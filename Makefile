@@ -64,7 +64,7 @@ set_gnome_wm:
 	# turn off a single key overlay to free caps_lock for escape on tap
 	gsettings set org.gnome.mutter overlay-key "" 
 	# just in case they change the default
-	gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>s']"
+	gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>s', '<Super>o']"
 
 	# switch to last window effectively
 	gsettings set org.gnome.shell.window-switcher current-workspace-only false
