@@ -43,12 +43,11 @@ Keyboard customizations: Capslock=Super, Short press Super/Caps -> Escape, Super
 
 1. Install GPU drivers (maybe fixes issues from the next section)
 
-### Nvidia - this is why we can't have nice things
+### Display settings
 
-1. Check display settings 
-1. install xorg-xdpyinfo
-1. mess around with displays
-1. give up 
+1. ??? Install xorg-xdpyinfo
+1. Delete `~/.config/monitors.xml` (it sometimes gets corrupted)
+1. Setup displays
 
 ### Gnome settings
 
