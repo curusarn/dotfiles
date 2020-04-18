@@ -1,5 +1,6 @@
 {
     "workbench.colorTheme": "One Dark Pro",
     "vscode-neovim.neovimPath": "/usr/bin/nvim",
-    "oneDarkPro.bold": true
+    "oneDarkPro.bold": true,
+    "editor.fontFamily": "'Hack Regular' ,'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 }

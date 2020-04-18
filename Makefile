@@ -63,7 +63,7 @@ set_gnome: set_gnome_wm set_gnome_terminal \
 set_gnome_wm: 
 	# turn off a single key overlay to free caps_lock for escape on tap
 	gsettings set org.gnome.mutter overlay-key "" 
-	# just in case they change the default
+	# more bindings for overview
 	gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>s', '<Super>a','<Super>space']"
 	gsettings set org.gnome.shell.keybindings toggle-application-view "[]"
 
@@ -81,12 +81,12 @@ set_gnome_wm:
 	gsettings set org.gnome.desktop.wm.keybindings cycle-windows-backward "[]"
 
 	gsettings set org.gnome.desktop.wm.keybindings close "['<Super>q', '<Alt>F4']"
+	# ??? colision with in-app fullscreen (use Super+f ??? - current used for toggle maximize)
 	gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['F11']"
 
+	# MOVEMENT
 	gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-left "['<Super><Shift>h']"
 	gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-right "['<Super><Shift>l']"
-	gsettings set org.gnome.desktop.wm.keybindings lower "[]" 
-	gsettings set org.gnome.desktop.wm.keybindings raise "[]" 
 
 	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Super>k']"
 	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Super>j']"
@@ -95,12 +95,22 @@ set_gnome_wm:
 
 	gsettings set org.gnome.desktop.wm.keybindings toggle-on-all-workspaces "['<Super>semicolon']"
 
+	# RESIZE WINDOWS
 	gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super>comma']"
 	gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Super>period']"
+	# workflow: move window to another monitor with Super+Shift+h and then resize it with Super+comma (requires releasing Shift)
+	# 			these alternative binds make releasing Shift optional
+	gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super><Shift>comma']"
+	gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Super><Shift>period']"
+
 	gsettings set org.gnome.desktop.wm.keybindings toggle-maximized "['<Super>m', '<Super>f']"
 
 	gsettings set org.gnome.desktop.wm.keybindings minimize "['<Super>slash']" 
 	gsettings set org.gnome.desktop.wm.keybindings maximize "[]"
+
+	# CLEANUP
+	gsettings set org.gnome.desktop.wm.keybindings lower "[]" 
+	gsettings set org.gnome.desktop.wm.keybindings raise "[]" 
 
 schemadir_sw := ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi/schemas
 set_gnome_extension_switcher: ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi 
