@@ -3,19 +3,23 @@ VSCODE_EXTENSIONS=dotfiles/vscode_extensions.txt
 VSCODE_EXTENSIONS_TMP=/tmp/vscode_extensions.txt
 GNOME_EXTENSIONS_ROOT=~/.local/share/gnome-shell/extensions
 
+PACMAN_OPTS="--needed --noconfirm"
 
 bootstrap:
 	yadm bootstrap 
 	# runs .config/yadm/bootstrap
 
 install_packages:
+	# sudo pacman -S --needed base-devel
 	sudo pacman -S --needed bash-completion zsh-completions
+	sudo pacman -S --needed moreutils
 	sudo pacman -S --needed neovim
 	sudo pacman -S --needed xcape
 	sudo pacman -S --needed tig fzf
 	sudo pacman -S --needed neofetch
 
 install_apps:
+	# yay -S google-chrome-stable
 	yay -S visual-studio-code-bin
 	yay -S telegram-destop
 	yay -S spotify
