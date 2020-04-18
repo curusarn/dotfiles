@@ -72,6 +72,8 @@ Keyboard customizations: Capslock=Super, Short press Super/Caps -> Escape, Super
 1. Log into other extensions
 1. Download wallpaper and avatar from drive
 1. Get SSH keys
+1. Use system title bar (more consistent window focus indication)
+    - Settings > Appearance > Show system title bar and borders
 
 ### SSH
 
