@@ -27,7 +27,7 @@ Keyboard customizations: Capslock=Super, Short press Super/Caps -> Escape, Super
 
 ### Setup
 
-1. Install Manjaro Gnome
+1. Install Manjaro Gnome with disk encryption
 1. Update
 1. Reboot
 
