@@ -98,6 +98,8 @@ set_gnome_wm:
 	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Super><Shift>j']"
 
 	gsettings set org.gnome.desktop.wm.keybindings toggle-on-all-workspaces "['<Super>semicolon']"
+	gsettings set org.gnome.desktop.wm.keybindings toggle-above "['<Super>semicolon']"
+
 
 	# RESIZE WINDOWS
 	gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super>comma']"
