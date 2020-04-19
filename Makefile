@@ -102,12 +102,10 @@ set_gnome_wm:
 
 
 	# RESIZE WINDOWS
-	gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super>comma']"
-	gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Super>period']"
-	# workflow: move window to another monitor with Super+Shift+h and then resize it with Super+comma (requires releasing Shift)
+	gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super>comma', '<Super><Shift>comma']"
+	gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Super>period', '<Super><Shift>period']"
+	# ^^^ workflow: move window to another monitor with Super+Shift+h and then resize it with Super+comma (requires releasing Shift)
 	# 			these alternative binds make releasing Shift optional
-	gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super><Shift>comma']"
-	gsettings set org.gnome.mutter.keybindings toggle-tiled-right "['<Super><Shift>period']"
 
 	gsettings set org.gnome.desktop.wm.keybindings toggle-maximized "['<Super>m', '<Super>f']"
 
