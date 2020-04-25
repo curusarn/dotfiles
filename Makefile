@@ -12,10 +12,10 @@ bootstrap:
 install_packages:
 	# sudo pacman -S --needed base-devel
 	sudo pacman -S --needed bash-completion zsh-completions
-	sudo pacman -S --needed moreutils
+	sudo pacman -S --needed moreutils jq
 	sudo pacman -S --needed neovim
 	sudo pacman -S --needed xcape
-	sudo pacman -S --needed tig fzf
+	sudo pacman -S --needed tig fzf thefuck tree
 	sudo pacman -S --needed neofetch
 
 install_apps:
@@ -73,7 +73,7 @@ set_gnome_wm:
 
 	# free up <Super>space
 	gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>z', 'XF86Keyboard']"
-	gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Shift><Alt>z', '<Shift>XF86Keyboard']"
+	gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Shift><Alt>z', '<Shift>XF86Keyboard']"
 
 	# switch to last window effectively
 	gsettings set org.gnome.shell.window-switcher current-workspace-only false
@@ -89,16 +89,17 @@ set_gnome_wm:
 	gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['F11']"
 
 	# MOVEMENT
-	gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-left "['<Super><Shift>h']"
-	gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-right "['<Super><Shift>l']"
+	gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-left "['<Super><Shift>h', '<Super><Shift>left']"
+	gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-right "['<Super><Shift>l', '<Super><Shift>right']"
 
-	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Super>k']"
-	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Super>j']"
-	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Super><Shift>k']"
-	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Super><Shift>j']"
+	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Super>k', '<Super>up']"
+	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Super>j', '<Super>down']"
+	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Super><Shift>k', '<Super><Shift>up']"
+	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Super><Shift>j', '<Super><Shift>down']"
 
 	gsettings set org.gnome.desktop.wm.keybindings toggle-on-all-workspaces "['<Super>semicolon']"
-	gsettings set org.gnome.desktop.wm.keybindings toggle-above "['<Super>semicolon']"
+	# double bindings do not work :/
+	# gsettings set org.gnome.desktop.wm.keybindings toggle-above "['<Super>semicolon']" 
 
 
 	# RESIZE WINDOWS
@@ -107,10 +108,11 @@ set_gnome_wm:
 	# ^^^ workflow: move window to another monitor with Super+Shift+h and then resize it with Super+comma (requires releasing Shift)
 	# 			these alternative binds make releasing Shift optional
 
-	gsettings set org.gnome.desktop.wm.keybindings toggle-maximized "['<Super>m', '<Super>f']"
+	gsettings set org.gnome.desktop.wm.keybindings toggle-maximized "['<Super>m', '<Super><Shift>m', '<Super>f']"
 
-	gsettings set org.gnome.desktop.wm.keybindings minimize "['<Super>slash']" 
+	gsettings set org.gnome.desktop.wm.keybindings minimize "['<Super>slash', '<Super><Shift>slash']" 
 	gsettings set org.gnome.desktop.wm.keybindings maximize "[]"
+	gsettings set org.gnome.desktop.wm.keybindings unmaximize "[]"
 
 	# CLEANUP
 	gsettings set org.gnome.desktop.wm.keybindings lower "[]" 
@@ -138,8 +140,8 @@ set_gnome_terminal:
 	gsettings set ${schema_gnometerminalkeybindings} next-tab "['<Alt>i>']"
 	gsettings set ${schema_gnometerminalkeybindings} prev-tab "['<Alt>u>']"
 	# free up
-	gsettings set org.gnome.shell.keybindings focus-active-notification "['<Super>n']"
-	gsettings set org.gnome.shell.keybindings toggle-message-tray "['<Super>b']"
+	gsettings set org.gnome.shell.keybindings toggle-message-tray "['<Super>n']"
+	gsettings set org.gnome.shell.keybindings focus-active-notification "['<Super><Shift>n', '<Super>b']"
 
 schemadir_woi := ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centrum.cz/schemas
 set_gnome_extension_window-overlay-icons: ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centrum.cz
@@ -153,10 +155,10 @@ set_gnome_extension_window-overlay-icons: ${GNOME_EXTENSIONS_ROOT}/windowoverlay
 schemadir_pw := ${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21.org/schemas
 set_gnome_extension_put-window: ${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21.org
 	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-animation 0
-	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-west "['<Super>h']"
+	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-west "['<Super>h', '<Super>left']"
 	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-south "['']"
 	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-north "['']"
-	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-east "['<Super>l']"
+	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-east "['<Super>l', '<Super>right]"
 	
 	
 install_resh:
