@@ -21,6 +21,34 @@ Gnome configuration and keyboard shortcuts: heavily customized
 Keyboard customizations: Capslock=Meta, Short press Caps -> Escape, Caps+space -> Gnome overlay  
 
 
+## My workflow
+
+I used i3wm before so I don't like to be forced to use mouse.  
+But I also don't like to be forced to use the keyboard (+many other reasons) so I switched to Gnome.  
+I customized Gnome to get a more keyboard-friendly workflow.  
+
+### Keybinidngs
+
+I use vim (in vscode) so my keybindings use hjkl. 
+
+- Capslock works as Meta/Super key
+- Single press of Caps works as Escape instead of openning Gnome Overview
+- Meta+hjkl moves focus
+    - Meta+jk "moves focus" down/up between workspaces
+    - Meta+hl moves focus left/right between windows (and displays)
+        - only possible using this extension https://github.com/negesti/gnome-shell-extensions-negesti
+- Meta+Shift+hjkl moves windows (and focus)
+
+Some more keybindings to resize windows: maximize, tile left, tile right, minimize  
+Rebind Alt+Tab to Meta+ui so it's closer.  
+Meta+Enter to launch a new fullscreen terminal.  
+Meta+q to close a window.
+
+### Search open windows
+
+This extension fuzzy searches windows by title: https://github.com/daniellandau/switcher
+
+
 ## Setup step-by-step
 
 *This was written to be followed by me (use at your own risk)*
