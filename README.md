@@ -27,7 +27,7 @@ I used i3wm before so I don't like to be forced to use mouse.
 But I also don't like to be forced to use the keyboard (+many other reasons) so I switched to Gnome.  
 I customized Gnome to get a more keyboard-friendly workflow.  
 
-### Keybinidngs
+### Keybindings
 
 I use vim (in vscode) so my keybindings use hjkl. 
 
