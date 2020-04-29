@@ -158,7 +158,7 @@ set_gnome_extension_put-window: ${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21
 	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-west "['<Super>h', '<Super>left']"
 	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-south "['']"
 	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-north "['']"
-	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-east "['<Super>l', '<Super>right]"
+	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-east "['<Super>l', '<Super>right']"
 	
 	
 install_resh:
