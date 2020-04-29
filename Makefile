@@ -12,7 +12,7 @@ bootstrap:
 install_packages:
 	# sudo pacman -S --needed base-devel
 	sudo pacman -S --needed bash-completion zsh-completions
-	sudo pacman -S --needed moreutils jq
+	sudo pacman -S --needed moreutils jq net-tools
 	sudo pacman -S --needed neovim
 	sudo pacman -S --needed xcape
 	sudo pacman -S --needed tig fzf thefuck tree
