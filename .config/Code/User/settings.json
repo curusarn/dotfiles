@@ -3,4 +3,7 @@
     "vscode-neovim.neovimPath": "/usr/bin/nvim",
     "oneDarkPro.bold": true,
     "editor.fontFamily": "'Hack' ,'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "window.newWindowDimensions": "maximized",
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
 }
