@@ -114,5 +114,3 @@ unsetopt BEEP
 
 # fuck
 thefuck --version &>/dev/null && eval $(thefuck --alias)
-
-[ -f ~/.resh/shellrc ] && source ~/.resh/shellrc # this line was added by RESH (Rich Enchanced Shell History)
