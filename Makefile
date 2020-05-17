@@ -97,10 +97,9 @@ set_gnome_wm:
 	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Super><Shift>k', '<Super><Shift>up']"
 	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Super><Shift>j', '<Super><Shift>down']"
 
-	gsettings set org.gnome.desktop.wm.keybindings toggle-on-all-workspaces "['<Super>semicolon']"
-	# double bindings do not work :/
-	# gsettings set org.gnome.desktop.wm.keybindings toggle-above "['<Super>semicolon']" 
-
+	# these special states are confusing to use because the windows always look the same
+	gsettings set org.gnome.desktop.wm.keybindings toggle-on-all-workspaces "[]"
+	gsettings set org.gnome.desktop.wm.keybindings toggle-above "[]" 
 
 	# RESIZE WINDOWS
 	gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Super>comma', '<Super><Shift>comma']"
@@ -120,8 +119,8 @@ set_gnome_wm:
 
 schemadir_sw := ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi/schemas
 set_gnome_extension_switcher: ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi 
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-switcher "['<Super>w', '<Super>o']"
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-launcher "['<Super>e', '<Super>p']"
+	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-switcher "['<Super>w', '<Super>o', '<Super>p']"
+	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-launcher "['<Super>e']"
 
 	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher icon-size "uint32 18"
 	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher font-size "uint32 18"
@@ -205,7 +204,7 @@ gnome_extensions: ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centru
 		&& git pull
 	
 	# cd ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning:matrix.org \
-		&& git pull
+	#	&& git pull
 
 	cd ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi \
 		&& git pull
