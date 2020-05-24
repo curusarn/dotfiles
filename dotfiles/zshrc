@@ -112,5 +112,9 @@ zstyle ":completion:*" matcher-list ''
 # disable terminal bell
 unsetopt BEEP
 
+# yank last arg - how the fuck is this not in oh-my-zsh
+# TODO: push to upstream
+bindkey '\e.' insert-last-word
+
 # fuck
 thefuck --version &>/dev/null && eval $(thefuck --alias)
