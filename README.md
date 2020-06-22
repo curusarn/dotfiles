@@ -83,11 +83,7 @@ This extension fuzzy searches windows by title: https://github.com/daniellandau/
 
 ### Yay
 
-1. Install all base-devel: `sudo pacman -S base-devel` 
-1. Install yay
-    - `git clone https://aur.archlinux.org/yay.git`
-    - `cd yay`
-    - `makepkg -si`
+1. Install all base-devel: `sudo pacman -S base-devel yay` 
 
 ### Chrome
 
