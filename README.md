@@ -143,9 +143,9 @@ This extension fuzzy searches windows by title: https://github.com/daniellandau/
 ### Gnome settings 
 
 1. Create shortcut to launch terminal using Super+Enter
-    - Keyboard shortcuts > scrolldown > + > `gnome-teminal --window --maximize`
+    - Keyboard shortcuts > scrolldown > + > `gnome-terminal --window --maximize`
 1. ? Create shortcut to launch small terminal using Super+' 
-    - ... > `gnome-teminal --window`
+    - ... > `gnome-terminal --window`
 1. Set Search to: Terminal, Files and Calculator (in that order)
 1. Set screen lock to 30 minutes
     - Privacy > Screen Lock
