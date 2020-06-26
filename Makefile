@@ -17,11 +17,12 @@ install_packages:
 	sudo pacman -S --needed xcape
 	sudo pacman -S --needed tig fzf thefuck tree
 	sudo pacman -S --needed neofetch
+	sudo pacman -S --needed dconf
 
 install_apps:
 	# yay -S google-chrome-stable
 	yay -S visual-studio-code-bin
-	yay -S telegram-destop
+	#yay -S telegram-destop
 	yay -S spotify
 
 install_oh-my-zsh: submodules
