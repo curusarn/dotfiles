@@ -2,7 +2,7 @@
 
 These are my dotfiles.
 
-And this is an inclomplete list of what I use:
+And this is an incomplete list of what I use:
 
 OS: Manjaro  
 DE: Gnome  
