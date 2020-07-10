@@ -24,6 +24,9 @@ PATH=$PATH:$GOPATH/bin
 
 
 ### ALIASES
+# cd to git root
+cdg() { local groot=$(git rev-parse --show-toplevel) && cd "$groot" || printf "%s\n" "$groot"; }
+
 # functional
 alias ranger='source ranger'              # stay in directory after exiting 
 alias ncdu='ncdu -x'                      # do not cross filesystems - I want to free up space on one specific medium

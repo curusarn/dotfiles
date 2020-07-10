@@ -7,7 +7,10 @@
 
 [pull]
     rebase = true
-        
+
+[pager]
+    branch = false
+
 [alias]
 
     aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
@@ -56,7 +59,7 @@
     ps = push                       # Push.
     pst = push --tags                     # Push.
     psu = push --set-upstream origin HEAD # Push with set upstream to origin / current branch
-    
+
     ## `git rebase` aliases.
     #rc = rebase --continue          # Continue rebase.
     #rs = rebase --skip              # Skip rebase.
