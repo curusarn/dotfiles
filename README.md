@@ -113,8 +113,6 @@ This extension fuzzy searches windows by title: https://github.com/daniellandau/
     - Appearance
 1. Make Capslock additional Super
     - Keyboard & Mouse > Additional Layout Options
-1. 8 Static workspaces
-    - Workspaces
 
 ### Dotfiles
 
