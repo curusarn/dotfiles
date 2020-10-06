@@ -56,6 +56,7 @@ This extension fuzzy searches windows by title: https://github.com/daniellandau/
 ### Setup
 
 1. Install Manjaro Gnome with disk encryption
+1. Refresh mirrorlist `sudo pacman-mirrors -g`
 1. Update
 1. Reboot
 
