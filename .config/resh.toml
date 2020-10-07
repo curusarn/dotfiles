@@ -3,5 +3,5 @@ SesswatchPeriodSeconds = 120
 SesshistInitHistorySize = 1000
 Debug = false
 BindArrowKeysBash = false
-BindArrowKeysZsh = true
+BindArrowKeysZsh = false
 BindControlR = true

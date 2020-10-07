@@ -15,7 +15,7 @@ export MAKEFLAGS="-j $(nproc)"
 
 which google-chrome-stable &>/dev/null && export BROWSER=$(which google-chrome-stable)
 
-PATH="$PATH:$HOME/bin"
+PATH="$HOME/bin:$PATH"
 export GOPATH=$HOME/go
 # GOPATH=$(go env GOPATH)
 PATH=$PATH:$GOPATH/bin

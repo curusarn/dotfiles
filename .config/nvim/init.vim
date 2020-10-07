@@ -6,6 +6,7 @@ set number
 set autoindent
 set ignorecase
 set smartcase
+set nojoinspaces
 
 " highlight as I search
 set incsearch 
