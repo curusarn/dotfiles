@@ -19,16 +19,23 @@ install_packages:
 	sudo pacman -S --needed neofetch
 	sudo pacman -S --needed dconf
 
-install_apps:
-	# yay -S google-chrome-stable
-	yay -S visual-studio-code-bin
-	#yay -S telegram-destop
+install_spotify:
+	# import spotify keys
+	gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+	gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
 	yay -S spotify
+
+install_vscode:
+	yay -S visual-studio-code-bin
+
+install_apps: install_spotify install_vscode
+	# yay -S google-chrome-stable
+	#yay -S telegram-destop
 
 install_oh-my-zsh: submodules
 	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	# copying the original .zshrc back
-	cp ~/.zshrc.pre-oh-my-zsh ~/.zshrc
+	cp -f ~/.zshrc.pre-oh-my-zsh ~/.zshrc
 
 install_hyper-snazzy-gnome-terminal: submodules
 	# hyper-snazzy
@@ -56,11 +63,11 @@ install_patch_gnome-terminal-desktop:
 
 set_gnome_favourite-apps:
 	gsettings set org.gnome.shell favorite-apps \
-	"['org.gnome.Terminal.desktop', 'google-chrome.desktop', 'visual-studio-code.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop', 'telegramdesktop.desktop']"
+	"['org.gnome.Terminal.desktop', 'google-chrome.desktop', 'visual-studio-code.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']"
 
 # TODO: save_gnome_favourite-apps:
 # 	gsettings get ... > some_file
-# 	# TODO: chnage set_gnome_favourite-apps
+# 	# TODO: change set_gnome_favourite-apps
 
 set_gnome: set_gnome_wm set_gnome_terminal \
 	set_gnome_extension_switcher set_gnome_extension_window-overlay-icons set_gnome_extension_put-window
