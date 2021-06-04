@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/simon/.config/nvim'
+let g:netrw_dirhist_0='/home/simon/git/pf-core/kubernetes/tanka/lib/showmax-lib/generate'
+let g:netrw_dirhist_9='/home/simon/git/pf-core/kubernetes/tanka/lib/showmax-lib/genutil'
+let g:netrw_dirhist_8='/home/simon/git/latest-pf-core/kubernetes/tanka/manifests'
+let g:netrw_dirhist_7='/home/simon/git/latest-pf-core/ci/tests/docs/203-fm-formats'
+let g:netrw_dirhist_6='/home/simon/git/latest-pf-core/ci/tests/docs/202-missing-fm-title'
+let g:netrw_dirhist_5='/home/simon/git/latest-pf-core/ci/tests/docs/201-missing-front-matter'
+let g:netrw_dirhist_4='/home/simon/git/latest-pf-core/ci/tests/docs'
+let g:netrw_dirhist_3='/home/simon/git/pf-core-terra/doc/learning/best-practice/alerting'
+let g:netrw_dirhist_2='/home/simon/git/pf-core-terra/terragrunt/modules/k8s/prometheus/kube-prometheus/resources/lib/platfoo'

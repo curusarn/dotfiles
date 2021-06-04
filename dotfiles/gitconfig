@@ -27,21 +27,25 @@
     #br = branch -v                  # Verbose branch.
 
     # `git commit` aliases.
-    c = commit -m                   # Commit with message.
-    ca = commit -am                 # Commit all with message.
-    #ci = commit                     # Commit.
-    amend = commit --amend -m       # Amend last commit.
+    c = commit                       # Commit with message.
+    cm = commit -m                   # Commit with message.
+    cam = commit -am                 # Commit all with message.
+    # amend = commit --amend -m       # Amend last commit.
 
     # `git checkout` aliases.
+    sw = switch                      # Switch
     #co = checkout                   # Checkout.
     #nb = checkout -b                # Create a new branch, and switch to it.
+
+    # Switch to master or main whichever exists
+    swm = !git switch master 2>/dev/null || git switch main
 
     # `git cherry-pick` aliases.
     #cp = cherry-pick -x             # Grab a change from a branch.
 
     # `git diff` aliases.
-    #d = diff                        # Diff unstaged changes.
-    #dc = diff --cached              # Diff staged changes.
+    d = diff                        # Diff unstaged changes.
+    dc = diff --cached              # Diff staged changes.
     #last = diff HEAD^               # Diff last committed changes.
 
     # `git log` aliases.
