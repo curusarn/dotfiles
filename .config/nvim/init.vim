@@ -1,4 +1,13 @@
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EXPERIMENTAL CONFIG
+
+" don't add space when joining lines - this doesn't behave as expected
+" set nojoinspaces
+
+" use system clipboard with nvim
+set clipboard=unnamed
+
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC CONFIG
 
 syntax on
@@ -8,8 +17,13 @@ set ignorecase
 set smartcase
 set nojoinspaces
 
+" open new splits on right and below to not disrupt the position of the
+" already open splits
+set splitright
+set splitbelow
+
 " highlight as I search
-set incsearch 
+set incsearch
 
 " no .swp files
 set noswapfile
@@ -24,7 +38,7 @@ set noswapfile
 set scrolloff=15
 
 " increase limit for max number of files to open in tabs with `vim -p`
-set tabpagemax=256
+set tabpagemax=1024
 
 " shorter timeout after ESC O
 " never wait again for openning a new line
@@ -33,8 +47,11 @@ set ttimeoutlen=100
 " predefine whitespace chars for :set list
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
+" wrap text at 80 chars with 'gq'
+"set textwidth=80
+
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" KEYMAPPINGS 
+" KEYMAPPINGS
 
 
 " move up and down inside of wrapped lines
@@ -60,7 +77,7 @@ nnoremap <space>L <C-w>L
 " """"""""""""""""""""""""""""""""""""
 " experimental KEYMAPPINGS
 
-" use <space>; as alternative for : 
+" use <space>; as alternative for :
 nnoremap <space>; :
 
 " use <space>w as alternative for :w<return>
@@ -104,3 +121,14 @@ augroup END
 
 autocmd VimResized * wincmd =
 
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" My jsonnet settings
+augroup jsonnet_settings " {
+    autocmd!
+    autocmd BufNewFile,BufRead *.jsonnet set expandtab
+    autocmd BufNewFile,BufRead *.jsonnet set shiftwidth=2
+    autocmd BufNewFile,BufRead *.jsonnet set tabstop=2
+    autocmd BufNewFile,BufRead *.libsonnet set expandtab
+    autocmd BufNewFile,BufRead *.libsonnet set shiftwidth=2
+    autocmd BufNewFile,BufRead *.libsonnet set tabstop=2
+augroup END " }

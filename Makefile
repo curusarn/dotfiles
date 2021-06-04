@@ -61,6 +61,13 @@ install_patch_gnome-terminal-desktop:
 	# NOTE: maybe wait for a little bit
 	# NOTE2: do not lock yourself out ;)
 
+set_gnome-teminal_word-char-exceptions:
+	# >>> run something like this manually:
+	#
+	# gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ word-char-exceptions  '@ms ",?"'
+	#
+	# TODO: redo this to not require manual steps
+
 set_gnome_favourite-apps:
 	gsettings set org.gnome.shell favorite-apps \
 	"['org.gnome.Terminal.desktop', 'google-chrome.desktop', 'visual-studio-code.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']"
@@ -88,6 +95,9 @@ set_gnome_wm:
 
 	gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab', '<Super>i']"
 	gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Alt><Shift>Tab', '<Super>u']"
+
+	gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"
+	gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "['<Super><Shift>Tab']"
 	
 	gsettings set org.gnome.desktop.wm.keybindings cycle-windows "[]"
 	gsettings set org.gnome.desktop.wm.keybindings cycle-windows-backward "[]"
