@@ -132,3 +132,11 @@ augroup jsonnet_settings " {
     autocmd BufNewFile,BufRead *.libsonnet set shiftwidth=2
     autocmd BufNewFile,BufRead *.libsonnet set tabstop=2
 augroup END " }
+
+" My js settings
+augroup js_settings " {
+    autocmd!
+    autocmd BufNewFile,BufRead *.js set expandtab
+    autocmd BufNewFile,BufRead *.js set shiftwidth=4
+    autocmd BufNewFile,BufRead *.js set tabstop=4
+augroup END " }

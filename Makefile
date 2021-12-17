@@ -61,13 +61,6 @@ install_patch_gnome-terminal-desktop:
 	# NOTE: maybe wait for a little bit
 	# NOTE2: do not lock yourself out ;)
 
-set_gnome-teminal_word-char-exceptions:
-	# >>> run something like this manually:
-	#
-	# gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ word-char-exceptions  '@ms ",?"'
-	#
-	# TODO: redo this to not require manual steps
-
 set_gnome_favourite-apps:
 	gsettings set org.gnome.shell favorite-apps \
 	"['org.gnome.Terminal.desktop', 'google-chrome.desktop', 'visual-studio-code.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']"
@@ -77,7 +70,8 @@ set_gnome_favourite-apps:
 # 	# TODO: change set_gnome_favourite-apps
 
 set_gnome: set_gnome_wm set_gnome_terminal \
-	set_gnome_extension_switcher set_gnome_extension_window-overlay-icons set_gnome_extension_put-window
+	set_gnome_extension_put-window \
+	set_gnome_extension_vertical-overview
 
 set_gnome_wm: 
 	# turn off a single key overlay to free caps_lock for escape on tap
@@ -112,8 +106,15 @@ set_gnome_wm:
 
 	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Super>k', '<Super>up']"
 	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Super>j', '<Super>down']"
-	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Super><Shift>k', '<Super><Shift>up']"
-	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Super><Shift>j', '<Super><Shift>down']"
+	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "[]"
+	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "[]"
+	# gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Super><Shift>k', '<Super><Shift>up']"
+	# gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Super><Shift>j', '<Super><Shift>down']"
+
+	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "[]"
+	gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "[]"
+	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "[]"
+	gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "[]"
 
 	# these special states are confusing to use because the windows always look the same
 	gsettings set org.gnome.desktop.wm.keybindings toggle-on-all-workspaces "[]"
@@ -152,30 +153,18 @@ set_gnome_wm:
 	# CLEANUP
 	gsettings set org.gnome.desktop.wm.keybindings lower "[]" 
 	gsettings set org.gnome.desktop.wm.keybindings raise "[]" 
-	gsettings set org.gnome.shell.keybindings switch-to-application-1 "['']"
-	gsettings set org.gnome.shell.keybindings switch-to-application-2 "['']"
-	gsettings set org.gnome.shell.keybindings switch-to-application-3 "['']"
-	gsettings set org.gnome.shell.keybindings switch-to-application-4 "['']"
-	gsettings set org.gnome.shell.keybindings switch-to-application-5 "['']"
-	gsettings set org.gnome.shell.keybindings switch-to-application-6 "['']"
-	gsettings set org.gnome.shell.keybindings switch-to-application-7 "['']"
-	gsettings set org.gnome.shell.keybindings switch-to-application-8 "['']"
-	gsettings set org.gnome.shell.keybindings switch-to-application-9 "['']"
+	gsettings set org.gnome.shell.keybindings switch-to-application-1 "[]"
+	gsettings set org.gnome.shell.keybindings switch-to-application-2 "[]"
+	gsettings set org.gnome.shell.keybindings switch-to-application-3 "[]"
+	gsettings set org.gnome.shell.keybindings switch-to-application-4 "[]"
+	gsettings set org.gnome.shell.keybindings switch-to-application-5 "[]"
+	gsettings set org.gnome.shell.keybindings switch-to-application-6 "[]"
+	gsettings set org.gnome.shell.keybindings switch-to-application-7 "[]"
+	gsettings set org.gnome.shell.keybindings switch-to-application-8 "[]"
+	gsettings set org.gnome.shell.keybindings switch-to-application-9 "[]"
+	gsettings set org.gnome.shell.keybindings toggle-message-tray "[]"
+	gsettings set org.gnome.shell.keybindings focus-active-notification "[]"
 
-
-schemadir_sw := ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi/schemas
-set_gnome_extension_switcher: ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi 
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-switcher "['<Super>w', '<Super>o', '<Super>p']"
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher show-launcher "['<Super>e']"
-
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher icon-size "uint32 18"
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher font-size "uint32 18"
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher max-width-percentage "uint32 60"
-	# use numbers to activate windows
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher activate-by-key "uint32 2"
-	# order by relevance
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher ordering "uint32 1"
-	gsettings --schemadir ${schemadir_sw} set org.gnome.shell.extensions.switcher never-show-onboarding true
 
 schema_gnometerminalkeybindings := org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/
 set_gnome_terminal:
@@ -184,27 +173,16 @@ set_gnome_terminal:
 	gsettings set ${schema_gnometerminalkeybindings} paste "['<Ctrl><Shift>v', '<Super>v']"
 	gsettings set ${schema_gnometerminalkeybindings} next-tab "['<Alt>i>']"
 	gsettings set ${schema_gnometerminalkeybindings} prev-tab "['<Alt>u>']"
-	# free up
-	gsettings set org.gnome.shell.keybindings toggle-message-tray "['<Super>n']"
-	gsettings set org.gnome.shell.keybindings focus-active-notification "['<Super><Shift>n', '<Super>b']"
 
-schemadir_woi := ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centrum.cz/schemas
-set_gnome_extension_window-overlay-icons: ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centrum.cz
-	gsettings --schemadir ${schemadir_woi} set org.gnome.shell.extensions.windowoverlay-icons icon-horizontal-alignment right
-	gsettings --schemadir ${schemadir_woi} set org.gnome.shell.extensions.windowoverlay-icons icon-vertical-alignment bottom
-	gsettings --schemadir ${schemadir_woi} set org.gnome.shell.extensions.windowoverlay-icons icon-size-relative false
-	gsettings --schemadir ${schemadir_woi} set org.gnome.shell.extensions.windowoverlay-icons icon-opacity-focus 255
-	gsettings --schemadir ${schemadir_woi} set org.gnome.shell.extensions.windowoverlay-icons icon-opacity-blur 255
-	gsettings --schemadir ${schemadir_woi} set org.gnome.shell.extensions.windowoverlay-icons icon-size 75
+schema_mf := ${GNOME_EXTENSIONS_ROOT}/movefocus@simonlet.cz/schemas
+set_extension_movefocus:
+	gsettings --schemadir ${schema_mf} set org.gnome.shell.extensions.movefocus move-focus-left "['<Shift>h']"
+	gsettings --schemadir ${schema_mf} set org.gnome.shell.extensions.movefocus move-focus-right "['<Shift>l']"
+	gsettings --schemadir ${schema_mf} set org.gnome.shell.extensions.movefocus insert-new-workspace-down "['<Super>n']"
+	gsettings --schemadir ${schema_mf} set org.gnome.shell.extensions.movefocus move-to-new-workspace-down "['<Super><Shift>n']"
 
-schemadir_pw := ${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21.org/schemas
-set_gnome_extension_put-window: ${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21.org
-	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-animation 0
-	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-west "['<Super>h', '<Super>left']"
-	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-south "['']"
-	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-north "['']"
-	gsettings --schemadir ${schemadir_pw} set org.gnome.shell.extensions.org-lab21-putwindow move-focus-east "['<Super>l', '<Super>right']"
-	
+# schemadir_vo := ${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21.org/schemas
+# set_gnome_extension_put-window: ${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21.org
 	
 install_resh:
 	curl -fsSL https://raw.githubusercontent.com/curusarn/resh/master/scripts/rawinstall.sh | bash
@@ -230,58 +208,10 @@ submodules:
 	yadm submodule sync --recursive 
 	yadm submodule update --init --recursive
 
-gnome_extensions: ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centrum.cz \
-		${GNOME_EXTENSIONS_ROOT}/sound-output-device-chooser@kgshank.net \
-		${GNOME_EXTENSIONS_ROOT}/clipboard-indicator@tudmotu.com \
-		${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi \
-		${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21.org
-	# ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning\:matrix.org \
-
+gnome_extensions: ${GNOME_EXTENSIONS_ROOT}/vertical-overview@RensAlthuis.github.com
 	
-	cd ${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centrum.cz \
-		&& git pull \
-		&& make all 
-	# TODO: only do make all when there are changes
+${GNOME_EXTENSIONS_ROOT}/vertical-overview@RensAlthuis.github.com:
+	git clone https://github.com/RensAlthuis/vertical-overview.git
+	cd vertical-overview
+	make
 
-	cd ${GNOME_EXTENSIONS_ROOT}/gse-sound-output-device-chooser_git \
-		&& git pull
-		
-	cd ${GNOME_EXTENSIONS_ROOT}/clipboard-indicator@tudmotu.com \
-		&& git pull
-	
-	# cd ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning:matrix.org \
-	#	&& git pull
-
-	cd ${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi \
-		&& git pull
-
-	cd ${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21.org \
-		&& git pull
-
-${GNOME_EXTENSIONS_ROOT}/windowoverlay-icons@sustmidown.centrum.cz:
-	git clone https://github.com/sustmi/gnome-shell-extension-windowoverlay-icons.git $@
-	# requires build
-	cd $@ && make all
-
-${GNOME_EXTENSIONS_ROOT}/sound-output-device-chooser@kgshank.net:
-	git clone https://github.com/kgshank/gse-sound-output-device-chooser.git ${GNOME_EXTENSIONS_ROOT}/gse-sound-output-device-chooser_git
-	# symlink because of nested structure
-	ln -s ${GNOME_EXTENSIONS_ROOT}/gse-sound-output-device-chooser_git/sound-output-device-chooser@kgshank.net \
-		${GNOME_EXTENSIONS_ROOT}/sound-output-device-chooser@kgshank.net
-
-${GNOME_EXTENSIONS_ROOT}/clipboard-indicator@tudmotu.com:
-	git clone https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git $@
-
-${GNOME_EXTENSIONS_ROOT}/switcher@landau.fi:
-	git clone https://github.com/daniellandau/switcher.git $@
-
-${GNOME_EXTENSIONS_ROOT}/putWindow@clemens.lab21.org:
-	sudo pacman -S libwnck3
-	git clone https://github.com/negesti/gnome-shell-extensions-negesti.git $@
-	
-# ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning\:matrix.org:
-# 	git clone https://github.com/paperwm/PaperWM.git $@
-# 
-# install_paperwm: ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning\:matrix.org
-# 	cd ${GNOME_EXTENSIONS_ROOT}/paperwm@hedning:matrix.org \
-# 		&& ./install.sh
