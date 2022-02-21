@@ -10,5 +10,15 @@
         "key": "alt+i",
         "command": "workbench.action.nextEditor",
         "when": "!sideBarFocus"
+    },
+    {
+        "key": "alt+h",
+        "command": "workbench.action.focusLeftGroup",
+        "when": "!sideBarFocus"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.focusRightGroup",
+        "when": "!sideBarFocus"
     }
 ]

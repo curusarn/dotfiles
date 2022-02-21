@@ -26,7 +26,12 @@ PATH=$PATH:$GOPATH/bin
 
 ### ALIASES
 # cd to git root
-cdg() { local groot=$(git rev-parse --show-toplevel) && cd "$groot" || printf "%s\n" "$groot"; }
+cdg() {
+	[ "$#" -le 1 ] || { echo "USAGE: cdg [PATH_RELATIVE_TO_GIT_ROOT]"; return 1; }
+	local arg=""
+	[ "$#" -eq 0 ] || arg=$1
+	local groot=$(git rev-parse --show-toplevel) && cd "$groot/$1" || printf "%s\n" "$groot/$1"
+}
 
 # functional
 alias ranger='source ranger'              # stay in directory after exiting 
