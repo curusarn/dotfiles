@@ -1,0 +1,12 @@
+#
+# ~/dotfiles/shell-common-os-specific
+# 
+# Linux-specific addition to ~/dotfiles/shell-common
+# 
+# This file is meant to be sourced from ~/dotifles/shell-common
+#
+
+export MAKEFLAGS="-j $(nproc)"
+
+which google-chrome-stable &>/dev/null && export BROWSER=$(which google-chrome-stable)
+

@@ -1,0 +1,14 @@
+#
+# ~/dotfiles/shell-common-os-specific
+# 
+# macOS-specific addition to ~/dotfiles/shell-common
+# 
+# This file is meant to be sourced from ~/dotifles/shell-common
+#
+
+PATH="/opt/homebrew/bin:$PATH"
+
+export MAKEFLAGS="-j $(sysctl -n hw.logicalcpu)"
+
+BROWSER='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+

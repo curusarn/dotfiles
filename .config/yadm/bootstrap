@@ -74,11 +74,6 @@ addInclude '.zshrc' 'zshrc' \
            'source ~/dotfiles/zshrc' \
            '# added by dotfiles-bootstrap\nsource ~/dotfiles/zshrc'
 
-# shellrc -> remote
-# addInclude '.shellrc' 'shellrc' \
-#            'source ~/dotfiles/shellrc' \
-#            '# added by dotfiles-bootstrap\nsource ~/dotfiles/shellrc'
-
 
 # set system layout to us caps:super using systemd 
 # sudo localectl set-x11-keymap us caps:super

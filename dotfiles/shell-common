@@ -1,19 +1,18 @@
 #
 # ~/dotfiles/shell-common
 # 
-# This file is meant to be sourced from (~/dotifles/)bashrc and (~/dotifles/)zshrc
+# This file is meant to be sourced from ~/dotifles/bashrc and ~/dotifles/zshrc
 #
 
+# source OS-specific shell config
+. ~/dotfiles/shell-common-os-specific
+
 ### ENV
-export EDITOR=/usr/bin/nvim
+export EDITOR=$(which nvim)
 export GIT_EDITOR="$EDITOR"
 export USE_EDITOR="$EDITOR"
 
 export PAGER=less
-
-export MAKEFLAGS="-j $(nproc)"
-
-which google-chrome-stable &>/dev/null && export BROWSER=$(which google-chrome-stable)
 
 # PATH="$PATH:$HOME/bin"
 PATH="$HOME/bin:$PATH"
@@ -22,7 +21,6 @@ export GOPATH=$HOME/go
 PATH=$PATH:$GOPATH/bin
 # export PATH="$PATH:$HOME/npm/bin"
 # export NODE_PATH="$HOME/npm/lib/node_modules"
-
 
 ### ALIASES
 # cd to git root
@@ -33,15 +31,12 @@ cdg() {
 	local groot=$(git rev-parse --show-toplevel) && cd "$groot/$1" || printf "%s\n" "$groot/$1"
 }
 
-# functional
-alias ranger='source ranger'              # stay in directory after exiting 
 alias ncdu='ncdu -x'                      # do not cross filesystems - I want to free up space on one specific medium
 alias ls='ls -F'
 
 # alias grep='grep --color=tty -d skip'
 # alias cp="cp -i"                          # confirm before overwriting something
 # alias df='df -h'                          # human-readable sizes
-# alias cath='tail -vn +1'                  # cat with filenames as headers
 # alias scrot='scrot -e "[ -e ~/shots ] || mkdir ~/shots && mv \$f ~/shots/ 2>&1 | grep -v \"are the same file\" >&2"'  # save shots to ~/shots
 
 
