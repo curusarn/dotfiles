@@ -118,3 +118,8 @@ bindkey '\e.' insert-last-word
 
 # fuck
 thefuck --version &>/dev/null && eval $(thefuck --alias)
+
+# brew completions
+if [ -d /opt/homebrew/share/zsh/site-functions ]; then
+  fpath+=("/opt/homebrew/share/zsh/site-functions")
+fi

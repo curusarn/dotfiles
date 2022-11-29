@@ -6,7 +6,10 @@
 # This file is meant to be sourced from ~/dotifles/shell-common
 #
 
+# add homebrew to path
 PATH="/opt/homebrew/bin:$PATH"
+# add homebrew GNU coreutils to path
+PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 export MAKEFLAGS="-j $(sysctl -n hw.logicalcpu)"
 
