@@ -8,10 +8,21 @@
 
 # add homebrew to path
 PATH="/opt/homebrew/bin:$PATH"
+PATH="/opt/homebrew/sbin:$PATH"
+
 # add homebrew GNU coreutils to path
 PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+
+PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 export MAKEFLAGS="-j $(sysctl -n hw.logicalcpu)"
 
 BROWSER='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+
+# RubyMine alias
+alias rubymine="/Applications/RubyMine.app/Contents/MacOS/rubymine"
 

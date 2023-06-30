@@ -1,7 +1,41 @@
-Port = 2627
-SesswatchPeriodSeconds = 120
-SesshistInitHistorySize = 1000
-Debug = false
-BindArrowKeysBash = false
-BindArrowKeysZsh = false
-BindControlR = true
+##
+######################
+## RESH config (v1) ##
+######################
+## Here you can find info about RESH configuration options.
+## You can uncomment the options and customize them.
+
+## Required.
+## The config format can change in future versions.
+## ConfigVersion helps us seamlessly upgrade to the new formats.
+# ConfigVersion = "v1"
+
+## Port used by RESH daemon and rest of the components to communicate.
+## Make sure to restart the daemon (pkill resh-daemon) when you change it.
+# Port = 2627
+
+## Controls how much and how detailed logs all RESH components produce.
+## Use "debug" for full logs when you encounter an issue
+## Options: "debug", "info", "warn", "error", "fatal"
+LogLevel = "info"
+
+## When BindControlR is "true" RESH search app is bound to CTRL+R on terminal startup
+# BindControlR = true
+
+## When Debug is "true" the RESH search app runs in debug mode.
+## This is useful for development.
+# Debug = false
+
+## Daemon keeps track of running terminal sessions.
+## SessionWatchPeriodSeconds controls how often daemon checks if the sessions are still alive.
+## You shouldn't need to adjust this.
+# SessionWatchPeriodSeconds = 600
+
+## When RESH is first installed there is no RESH history so there is nothing to search.
+## As a temporary workaround, RESH daemon parses bash/zsh shell history and searches it.
+## Once RESH history is big enough RESH stops using bash/zsh history.
+## ReshHistoryMinSize controls how big RESH history needs to be before this happens.
+## You can increase this this to e.g. 10000 to get RESH to use bash/zsh history longer.
+# ReshHistoryMinSize = 1000
+
+ConfigVersion = "v1"

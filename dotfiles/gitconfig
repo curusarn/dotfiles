@@ -1,5 +1,5 @@
 [core]
-    editor = vim
+    editor = nvim
     autocrlf = input
 
 [push]
@@ -39,6 +39,8 @@
 
     # Switch to master or main whichever exists
     swm = !git switch master 2>/dev/null || git switch main
+    # "git switch fzf"
+    swf = !git switch "$(git branch --all | fzf | tr -d '[:space:]')"
 
     # `git cherry-pick` aliases.
     #cp = cherry-pick -x             # Grab a change from a branch.

@@ -76,6 +76,11 @@ ZSH_THEME=""
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+# brew completions (must be before source oh my zsh - completions load)
+if brew --version &>/dev/null; then
+	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -113,13 +118,8 @@ zstyle ":completion:*" matcher-list ''
 unsetopt BEEP
 
 # yank last arg - how the fuck is this not in oh-my-zsh
-# TODO: push to upstream
 bindkey '\e.' insert-last-word
 
 # fuck
 thefuck --version &>/dev/null && eval $(thefuck --alias)
 
-# brew completions
-if [ -d /opt/homebrew/share/zsh/site-functions ]; then
-  fpath+=("/opt/homebrew/share/zsh/site-functions")
-fi
