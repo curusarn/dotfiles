@@ -1,3 +1,5 @@
 
 #### Apps
-- App to bind back/forward mouse buttons to "3-finger touchpad gestures": https://github.com/noah-nuebling/mac-mouse-fix
+
+- Bind back/forward mouse buttons to "3-finger touchpad gestures": https://github.com/noah-nuebling/mac-mouse-fix
+- Tidy up Menu Bar: https://www.macbartender.com/Bartender4/
