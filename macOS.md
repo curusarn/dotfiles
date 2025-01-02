@@ -12,3 +12,12 @@
 - Caffeine - Keeps your Mac awake: https://www.caffeine-app.net/
 
 - Open links in any browser: https://apps.apple.com/us/app/velja/id1607635845
+
+#### Config
+
+```
+# .ssh/config
+# set more compatible terminfo for ssh 
+Host * 
+  SetEnv TERM=xterm-256color
+```
