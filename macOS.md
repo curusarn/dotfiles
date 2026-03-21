@@ -1,3 +1,10 @@
+### Ghostty
+
+Config:
+
+```
+theme = dark:Catppuccin Frappe,light:Catppuccin Latte
+```
 
 #### Apps
 
